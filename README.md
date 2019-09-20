@@ -1,6 +1,6 @@
 # Chris Traganos
 
-[<img src="./assets/img/trag-square.png" alt="Chris Traganos" width="100">](./assets/img/trag-square.png)
+[<img src="./assets/img/trag-new.jpg" alt="Chris Traganos" width="100">](./assets/img/trag-new.jpg)
 
 # 👋 Hello! I'm Chris Traganos
 Welcome to my placeholder page 🎉 
@@ -14,11 +14,11 @@ At work, I'm focused on `"Scaled Developer Advocacy"`, which is really just a fa
 
 Beyond work, I'm a father of 2 awesome kids and husband to an incredible partner. We've moved from Boston to SF and now Austin over the past 2 decades together.
 
-# 🗺 Locations
+## 🗺 Locations
 
 I'm currently splitting my time between Austin and San Francisco. I moved to Austin about 3 years ago with my family and love it so far. *Reach out if you are curious about moving here!*
 
-Typically I'm working out of Stripe HQ and/or Stripe Seattle one week a month. Our team is very distributed and those in-person planning sessions are the best. The the rest of the month I can be found around the multiple WeWork locations in and around downtown Austin.
+Typically I'm working from Stripe HQ and/or Stripe Seattle one week a month. Our team is very distributed and those in-person planning sessions are the best. The the rest of the month I can be found around the multiple WeWork locations in and around downtown Austin.
 
 Previously I lived in:
 * Sunnyvale, CA
@@ -54,15 +54,16 @@ I have the standard [LinkedIn page](https://www.linkedin.com/in/ctraganos) that 
 
 To start, the best way to reach out is over [Twitter](https://twitter.com/ctraganos) or [LinkedIn](https://www.linkedin.com/in/ctraganos/).
 
-I'm open to speaking at conferences, providing app / UX feedback, reviewing developer documentation, resume review, and providing introductions as appropriate. 
+I'm open to speaking at conferences, providing app / UX feedback, reviewing developer documentation, resume reviews, and providing introductions (*if appropriate!*) 
 
-If you'd like my assistance, it would help to make your request clear and provide the details in advance of a conversation 👍 *(TBH, half the challenge is scheduling and making sure I'm able to be useful.)*
-
-Thanks,
+If you'd like my assistance, it would help to make your request clear and provide the details in advance of a conversation 👍 
+*(Half the challenge is scheduling and making sure I'm able to be useful, tbh)*
 
 ~ Chris
 
+[@ctraganos](https://twitter.com/ctraganos)
 
 
+`P.S.` Credit to [@DynamicWebPaige](https://twitter.com/@DynamicWebPaige) for the idea of having a [simple bio page](https://dynamicwebpaige.github.io/info/)
 
 
