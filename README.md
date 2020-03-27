@@ -36,10 +36,10 @@ I have the standard [LinkedIn page](https://www.linkedin.com/in/ctraganos) that 
     * **What I learned:** Start-ups are *hard*, learn as much as you can, and small offices force you work things out quickly.
 * **[Roku](https://developer.roku.com)** - Streaming television platform that spun out of Netflix *way* back.
   * **What I did:** Leading up to their IPO, I worked with a team of engineers, product managers, and developers to re-launch the Roku developer community and the developer website.
-  * **What I learned:** Unlike many SaaS startups, hardware products have a several month production cycle that forces planned releases. Also keeping a user interface simple and out of the consumer's way was so valuable to see in action.
+  * **What I learned:** Unlike many SaaS startups, hardware products have a several month production cycle that forces planned releases. Also keeping a user interface simple for the consumer was valuable to see in action.
 * **[Evernote](http://dev.evernote.com)** - Note-taking app and open API for storing text, images, attachments, etc.
    * **What I did:** Spent 4+ years launching and scaling the developer relations program along with organizing the [annual developer conferences](https://evernotedevcup.devpost.com/updates/472-join-us-at-the-evernote-trunk-conference) and [accelerator program](https://dev.evernote.com/accelerator/). 
-    * **What I learned:** Companies are simply a complex series of interconnected relationships. Keeping an honest culture while rapidly growing is really hard yet key to long-term survival.
+    * **What I learned:** Companies are simply a complex series of interconnected relationships. Keeping an honest culture while rapidly growing is really hard and crucial for long-term survival.
 * **[Harvard News Office](https://hpac.harvard.edu/)** - The central communications arm of Harvard University.
     * **What I did:** I was a web developer for the digital communications team, working on maintaining Harvard.edu and re-launching the [Harvard Gazette](https://news.harvard.edu/gazette/). 
     * **What I learned:** You can get many things unblocked and out the door once *multiple* stakeholders across an organization see clear benefits to working together towards specific goals.
