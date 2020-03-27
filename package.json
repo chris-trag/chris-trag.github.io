@@ -1,0 +1,23 @@
+{
+  "name": "tragdev",
+  "version": "1.0.0",
+  "description": "[<img src=\"./assets/img/trag-new.jpg\" alt=\"Chris Traganos\" width=\"100\">](./assets/img/trag-new.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctraganos/tragdev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ctraganos/tragdev/issues"
+  },
+  "homepage": "https://github.com/ctraganos/tragdev#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0"
+  }
+}
