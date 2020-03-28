@@ -1,5 +1,5 @@
 ---
-title: 👋 Hello from Chris Trag
+title: 👋 Hello, I'm Chris Trag
 layout: traglayout.njk
 ---
 
