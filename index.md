@@ -11,17 +11,17 @@ Welcome to my placeholder page 🎉
 I assume you landed here by social media or meeting in real life. Either way, welcome and I hope we get the chance to connect.
 
 ## 🤔 Who am I?
-Currently I'm working on Developer Relations at [Stripe](https://stripe.com). It's an amazing gig where I get to work alongside incredible developers and founders from around the world as they build products on top of our [payment APIs](https://stripe.com/docs) and [infrastructure services](https://stripe.com/about). 
+Currently I'm leading the Developer Advocacy at [Stripe](https://stripe.com). It's an amazing place where I get to work alongside incredible developers and founders from around the world as they build products on top of our [payment APIs](https://stripe.com/docs) and [infrastructure services](https://stripe.com/about). 
 
-Specifically I'm focused on _"Scaled Developer Advocacy"_, which is just a fancy way of saying that I'm focused on courting several million developers to choose Stripe as their favorite payments platform. Practically, on a daily basis I'm working lauching new outreach programs, evangelising our updates, and growing the collection of workshops and talks on our [YouTube channel](https://youtube.com/stripedevelopers). In addition I care about growing the collection of 3rd party apps in our [partner gallery](https://stripe.com/partners).
+My focus is _"Scaled Developer Advocacy"_, which is just a fancy way of saying that I'm focused on courting several million developers to choose Stripe as their favorite payments platform. Most days I'm working launching new outreach programs, [evangelising our API updates](https://dev.to/stripe), and growing the collection of workshops and talks on our [YouTube channel](https://youtube.com/stripedevelopers). In addition, I care about growing the collection of 3rd party apps in our [partner gallery](https://stripe.com/partners).
 
 Beyond work, I'm a father of 2 awesome kids and husband to an incredible partner. Over the past two decades we've moved from Boston to SF and now Austin. It's been a fun adventure.
 
 ## 🗺 Locations
 
-I'm currently splitting my time between Austin (primary), Seattle, and San Francisco. I moved to Austin about 3 years ago with my family and love it so far. *Reach out if you are curious about moving to ATX!*
+I'm currently splitting my time between Austin (primary), Seattle, and San Francisco. I moved to Austin about 4 years ago with my family and love it so far. *Reach out if you are curious about moving to ATX!*
 
-When travelling I'm usually working from Stripe HQ and/or the Seattle office every 6-8 weeks. [Our team](https://twitter.com/i/lists/1138184001649356801) is globally distributed and the in-person planning sessions are the best. The majority of any given month I can be found in and around downtown Austin.
+When travelling I'm usually working from Stripe HQ and/or the Seattle office every 6-8 weeks. [Our team](https://twitter.com/stripedev) is globally distributed and the in-person planning sessions are the best. The majority of any given month I can be found in and around downtown Austin.
 
 **Some places I've lived:**
 * Austin, TX
