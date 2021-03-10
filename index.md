@@ -11,7 +11,7 @@ Welcome to my placeholder page 🎉
 I assume you landed here by social media or meeting in real life. Either way, welcome and I hope we get the chance to connect.
 
 ## 🤔 Who am I?
-Currently I'm leading the Developer Advocacy at [Stripe](https://stripe.com). It's an amazing place where I get to work alongside incredible developers and founders from around the world as they build products on top of our [payment APIs](https://stripe.com/docs) and [infrastructure services](https://stripe.com/about). 
+Currently I'm leading the Developer Advocacy team at [Stripe](https://stripe.com). It's an amazing place where I get to work alongside incredible developers and founders from around the world as they build products on top of our [payment APIs](https://stripe.com/docs) and [infrastructure services](https://stripe.com/about). 
 
 My focus is _"Scaled Developer Advocacy"_, which is just a fancy way of saying that I'm focused on courting several million developers to choose Stripe as their favorite payments platform. Most days I'm working launching new outreach programs, [evangelising our API updates](https://dev.to/stripe), and growing the collection of workshops and talks on our [YouTube channel](https://youtube.com/stripedevelopers). In addition, I care about growing the collection of 3rd party apps in our [partner gallery](https://stripe.com/partners).
 
