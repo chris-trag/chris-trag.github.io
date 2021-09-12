@@ -3,7 +3,7 @@ title: 👋 Hello, I'm Chris Trag
 layout: traglayout.njk
 ---
 
-[<img src="/assets/img/trag-grid.jpg" alt="Chris Traganos" >](./assets/img/trag-grid.jpg)
+[<img src="/assets/img/trag-grid.jpg" alt="Chris Traganos" width="150" height="150" >](./assets/img/trag-grid.jpg)
 
 # 👋 Hello! I'm [@chris_trag](https://twitter.com/chris_trag)
 Welcome to my placeholder page 🎉 
