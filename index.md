@@ -5,7 +5,10 @@ layout: traglayout.njk
 
 [<img src="/assets/img/trag-grid.jpg" alt="Chris Traganos" width="150" height="150" >](./assets/img/trag-grid.jpg)
 
-# 👋 Hello! I'm Chris Traganos / [@chris_trag](https://twitter.com/chris_trag) / "Trag" at work / or just Chris works too.
+# 👋 Hello! 
+
+### I'm Chris Traganos / [@chris_trag](https://twitter.com/chris_trag) / 'Trag' at work / or simply 'Chris' works great too. 🙌
+
 Welcome to my mini `about-me` page 🎉 
 
 I assume you landed here by social media or meeting in real life. Either way, welcome and I hope we get the chance to connect.
