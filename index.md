@@ -7,7 +7,7 @@ layout: traglayout.njk
 
 # 👋 Hello! 
 
-### I'm Chris Traganos / [@chris_trag](https://twitter.com/chris_trag) / 'Trag' at work / or simply 'Chris' works great too. 🙌
+### I'm Chris Traganos / [@chris_trag](https://twitter.com/chris_trag) / "Trag" at work / or simply "Chris" works great too. 🙌
 
 Welcome to my mini `about-me` page 🎉 
 
