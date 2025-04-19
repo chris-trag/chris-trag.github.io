@@ -12,7 +12,7 @@ module.exports = function (eleventyConfig) {
     
     let markdownLib = markdownIt(markdownOptions)
         .use(markdownItAttrs)
-        .use(markdownItMark);;
+        .use(markdownItMark);
     eleventyConfig.setLibrary("md", markdownLib);
 
     // Copy only custom CSS files from src/css
@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
     // Watch files for changes
     eleventyConfig.addWatchTarget("src/css/");
     eleventyConfig.addWatchTarget("src/js/");
-    eleventyConfig.addPassthroughCopy("src/img");
+    eleventyConfig.addPassthroughCopy({"src/img": "img"});
 
     // Add this function to create clean URLs with trailing slashes
     eleventyConfig.addGlobalData("permalink", () => {
