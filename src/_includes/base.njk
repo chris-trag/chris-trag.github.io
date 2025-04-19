@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - trag dot dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/custom.css' | url }}">
+</head>
+<body>
+    <nav class="container">
+        <ul role="list">
+            <li><a href="/" class="brand {% if page.url == '/' %}active{% endif %}">🛠️ Trag.dev</a></li>
+
+        </ul>
+        <ul role="list">
+            <li><a href="/speaking" {% if '/speaking' in page.url %}class="active"{% endif %}>Speaking</a></li>
+            <li><a href="/writing" {% if '/writing' in page.url %}class="active"{% endif %}>Writing</a></li>
+            <li><a href="/shelf" {% if '/shelf' in page.url %}class="active"{% endif %}>Shelf</a></li>
+            <li><a href="/office-hours" {% if '/office-hours' in page.url %}class="active"{% endif %}>Office Hours</a></li>
+            <li><a href="/dx" {% if '/dx' in page.url %}class="active"{% endif %}>DX</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+        </button>
+
+    </nav>
+
+
+
+
+    <main class="container">
+        {{ content | safe }}
+    </main>
+    <footer class="container">
+        <p>&copy; {{ page.date.getFullYear() }} Chris Trag</p>
+    </footer>
+    <script src="{{ '/js/theme.js' | url }}"></script>
+</body>
+</html>
+
