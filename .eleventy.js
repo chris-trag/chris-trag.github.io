@@ -45,7 +45,7 @@ module.exports = function (eleventyConfig) {
             output: "dist",
             includes: "_includes"
         },
-        pathPrefix: "/",
+        pathPrefix: "/tragdev/",
         htmlTemplateEngine: "njk",
         markdownTemplateEngine: "njk",
         templateFormats: ["md", "njk", "html"]
