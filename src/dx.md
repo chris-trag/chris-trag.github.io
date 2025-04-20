@@ -1,7 +1,6 @@
 ---
 title: Developer Experience
 layout: base.njk
-permalink: /dx
 ---
 
 # Developer Experience

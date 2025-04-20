@@ -1,7 +1,6 @@
 ---
 title: Office Hours
 layout: base.njk
-permalink: /office-hours
 ---
 
 # Office Hours

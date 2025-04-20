@@ -1,7 +1,6 @@
 ---
 title: Shelf
 layout: base.njk
-permalink: /shelf
 ---
 
 # My Shelf
