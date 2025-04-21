@@ -5,7 +5,7 @@ layout: base.njk
 
 # Writing
 
-## Articles
+### Articles
 
 * [Dev Relevancy & Building Bridges](https://blog.trag.dev/dev-relevancy-building-bridges) - As a leader, it's your job to keep Dev Relations relevant at your company.
 * [3 tasks High School students should do today](https://blog.trag.dev/3-tasks-for-high-schoolers) - Practical advice for high school students interested in tech.
@@ -15,7 +15,7 @@ layout: base.njk
 * [Welcome to the Golden Age of Developer Advocacy](https://dev.to/stripe/welcome-to-the-golden-age-of-developer-advocacy-51fe) - Published on Stripe's dev.to account.
 * [Introducing the Stripe Integration Builder](https://dev.to/stripe/introducing-the-stripe-integration-builder-new-code-samples-and-dev-videos-254d) - New code samples and dev videos.
 * [COVID-19 Resources for Developers](https://dev.to/stripe/covid-19-resources-for-developers-plus-new-api-updates-and-features-2ekf) - Plus new API updates and features.
-* * [Bot Does It Work?](https://medium.com/@ctraganos/bot-does-it-work-ec29644ab3ca) - Exploring the effectiveness of bots in developer workflows.
+* [Bot Does It Work?](https://medium.com/@ctraganos/bot-does-it-work-ec29644ab3ca) - Exploring the effectiveness of bots in developer workflows.
 
 ### Amazon
 * [2025 Look Ahead: Top Dev Events & Courses](https://dev.to/amazonappdev/2025-look-ahead-top-dev-events-courses-for-android-react-native-and-genai-4bd3) - For Android, React Native, and GenAI.
