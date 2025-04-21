@@ -148,7 +148,7 @@ h1 {
     font-size: var(--font-size-h1);
     letter-spacing: -0.03em;
     font-weight: 700;
-    margin-top: 0.5em;
+    margin-top: 0.2em; /* Reduced from 0.5em to 0.2em */
     margin-bottom: 0.4em;
     color: var(--color-text);
 }
@@ -207,7 +207,7 @@ a:hover {
 
 /* Navigation styles */
 nav {
-    padding: 1rem 0;
+    padding: 0.5rem 0; /* Reduced from 1rem to 0.5rem */
 }
 
 nav ul {
@@ -264,7 +264,7 @@ img {
     width: 200px;  /* adjust this value to make image bigger/smaller */
     height: auto;
     display: block;  /* this helps with centering if you want */
-    margin: 2rem 0; /* adds some spacing above/below */
+    margin: 0.5rem 0; /* reduced from 2rem to 0.5rem */
     border-radius: 50%;  /* makes it circular */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* adds subtle shadow */
 }
@@ -401,16 +401,16 @@ pre code {
 
 /* Main content spacing */
 main {
-    padding: 2rem 0;
+    padding: 0.5rem 0; /* Reduced from 2rem to 0.5rem */
 }
 
 /* Footer styling */
 footer {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
+    margin-top: 1rem; /* Reduced from 3rem to 1rem */
+    padding: 1rem 0; /* Reduced from 1.5rem to 1rem */
     font-size: 0.9rem;
     color: var(--color-footer-text);
-    background-color: var(--color-footer-bg);
+    /* background-color: var(--color-footer-bg); */
 }
 
 /* Horizontal rules */
