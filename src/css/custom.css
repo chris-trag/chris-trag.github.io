@@ -486,11 +486,11 @@ h1 .icon-container i {
 
 /* Headshot image styling */
 .headshot {
-    float: right;
-    width: 150px;
-    height: 150px;
+    display: block;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    margin: 0 0 1rem 1.5rem;
+    margin: 0 auto 2rem auto;
     border: 3px solid var(--color-gray-border);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -779,7 +779,9 @@ tr:nth-child(even) {
         padding: 1.5rem 0;
     }
     
+    /* On mobile, make the headshot float right and smaller */
     .headshot {
+        float: right;
         width: 120px;
         height: 120px;
         margin: 0 0 1rem 1rem;
