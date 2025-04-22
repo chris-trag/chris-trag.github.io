@@ -1,6 +1,7 @@
 // Add this to your .eleventy.js file
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItMark = require('markdown-it-mark');
 
 module.exports = function(eleventyConfig) {
   // Configure Markdown processing with attributes support
@@ -10,7 +11,9 @@ module.exports = function(eleventyConfig) {
     linkify: true
   };
   
-  const markdownLibrary = markdownIt(markdownOptions).use(markdownItAttrs);
+  const markdownLibrary = markdownIt(markdownOptions)
+    .use(markdownItAttrs)
+    .use(markdownItMark);
   
   eleventyConfig.setLibrary("md", markdownLibrary);
   
