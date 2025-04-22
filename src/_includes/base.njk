@@ -2,14 +2,18 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>{{ title }} - trag dot dev</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/custom.css' | url }}">
     <!-- FlatIcon CSS - Regular and Solid versions -->
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ '/img/favicon.svg' | url }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ '/img/favicon-180.png' | url }}">
+    <link rel="manifest" href="{{ '/site.webmanifest' | url }}">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JFF8H9Z1P"></script>
     <script>
@@ -23,8 +27,15 @@
 <body>
     <nav class="container">
         <ul role="list">
-            <li><a href="/" class="brand {% if page.url == '/' %}active{% endif %}">Trag.dev</a></li>
-
+            <li>
+                <a href="/" class="brand {% if page.url == '/' %}active{% endif %}">
+                    <span class="icon-container">
+                        <i class="fi fi-rr-message-code nav-icon"></i>
+                        <i class="fi fi-sr-message-code nav-icon-solid"></i>
+                    </span>
+                    <span class="nav-text">Trag.dev</span>
+                </a>
+            </li>
         </ul>
         <ul role="list" class="nav-links">
             <li>
@@ -39,8 +50,8 @@
             <li>
                 <a href="/writing/" {% if '/writing' in page.url %}class="active"{% endif %}>
                     <span class="icon-container">
-                        <i class="fi fi-rr-pencil-ruler nav-icon"></i>
-                        <i class="fi fi-sr-pencil-ruler nav-icon-solid"></i>
+                        <i class="fi fi-rr-lightbulb-on nav-icon"></i>
+                        <i class="fi fi-sr-lightbulb-on nav-icon-solid"></i>
                     </span>
                     <span class="nav-text">Writing</span>
                 </a>

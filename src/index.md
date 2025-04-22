@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: 👋 Hello!
+title: Hello!
 permalink: /
 ---
 

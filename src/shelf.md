@@ -1,5 +1,5 @@
 ---
-title: 📚 Shelf
+title: Shelf
 layout: base.njk
 ---
 

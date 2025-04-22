@@ -1,11 +1,11 @@
 ---
-title: ✏️ Writing
+title: Writing
 layout: base.njk
 ---
 
 # Writing
 
-### Articles
+## Articles
 
 * [Dev Relevancy & Building Bridges](https://blog.trag.dev/dev-relevancy-building-bridges) - As a leader, it's your job to keep Dev Relations relevant at your company.
 * [3 tasks High School students should do today](https://blog.trag.dev/3-tasks-for-high-schoolers) - Practical advice for high school students interested in tech.
@@ -17,7 +17,7 @@ layout: base.njk
 * [COVID-19 Resources for Developers](https://dev.to/stripe/covid-19-resources-for-developers-plus-new-api-updates-and-features-2ekf) - Plus new API updates and features.
 * [Bot Does It Work?](https://medium.com/@ctraganos/bot-does-it-work-ec29644ab3ca) - Exploring the effectiveness of bots in developer workflows.
 
-### Amazon
+## for Amazon
 * [2025 Look Ahead: Top Dev Events & Courses](https://dev.to/amazonappdev/2025-look-ahead-top-dev-events-courses-for-android-react-native-and-genai-4bd3) - For Android, React Native, and GenAI.
 * [February 2025 @AmazonAppDev Newsletter](https://dev.to/amazonappdev/february-2025-amazonappdev-newsletter-1im0)
 * [January 2025 @AmazonAppDev Newsletter](https://dev.to/amazonappdev/january-2025-amazonappdev-newsletter-2e8n)
