@@ -1,5 +1,5 @@
 ---
-title: Speaking
+title: 🎙️ Speaking
 layout: base.njk
 ---
 

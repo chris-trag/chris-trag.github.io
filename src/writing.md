@@ -1,5 +1,5 @@
 ---
-title: Writing
+title: ✏️ Writing
 layout: base.njk
 ---
 
