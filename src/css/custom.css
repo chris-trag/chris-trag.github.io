@@ -812,3 +812,117 @@ tr:nth-child(even) {
         font-size: 0.95rem;
     }
 }
+
+/* Speaker bio callout styles */
+.speaker-bio {
+  background-color: var(--card-background-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: var(--card-box-shadow);
+  position: relative;
+}
+
+.bio-title {
+  margin-bottom: 0.5rem;
+}
+
+.copy-button {
+  background-color: var(--primary);
+  color: var(--primary-inverse);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.copy-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.copy-button.copied {
+  background-color: var(--form-element-valid-border-color);
+}
+
+.speaker-photo {
+  float: right;
+  width: 150px;
+  border-radius: var(--border-radius);
+  margin-top: -4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.speaker-photo:hover {
+  transform: scale(1.05);
+}
+/* Speaker bio callout styles */
+.speaker-bio {
+  background-color: var(--card-background-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin: 1rem 0 2rem;
+  box-shadow: var(--card-box-shadow);
+}
+
+.speaker-bio h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.bio-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .bio-columns {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .bio-text {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .bio-image {
+    flex: 1;
+    max-width: 50%;
+  }
+}
+
+.bio-text p:first-child {
+  margin-top: 0;
+}
+
+.bio-image {
+  margin: 0;
+}
+
+.bio-image img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bio-image img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .bio-image {
+    margin-top: 1.5rem;
+  }
+}

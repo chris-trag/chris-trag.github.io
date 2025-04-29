@@ -2,6 +2,7 @@
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItMark = require('markdown-it-mark');
+const markdownItContainer = require('markdown-it-container');
 
 module.exports = function(eleventyConfig) {
   // Configure Markdown processing with attributes support
@@ -13,7 +14,37 @@ module.exports = function(eleventyConfig) {
   
   const markdownLibrary = markdownIt(markdownOptions)
     .use(markdownItAttrs)
-    .use(markdownItMark);
+    .use(markdownItMark)
+    .use(markdownItContainer, 'speaker-bio', {
+      validate: function(params) {
+        return params.trim() === 'speaker-bio';
+      },
+      render: function(tokens, idx) {
+        if (tokens[idx].nesting === 1) {
+          // opening tag
+          return '<div class="speaker-bio">\n' +
+                 '<div class="bio-columns">\n' +
+                 '<div class="bio-text">\n';
+        } else {
+          // closing tag
+          return '</div>\n';
+        }
+      }
+    })
+    .use(markdownItContainer, 'bio-image', {
+      validate: function(params) {
+        return params.trim() === 'bio-image';
+      },
+      render: function(tokens, idx) {
+        if (tokens[idx].nesting === 1) {
+          // opening tag
+          return '<div class="bio-image">\n';
+        } else {
+          // closing tag
+          return '</div>\n</div>\n</div>\n';
+        }
+      }
+    });
   
   eleventyConfig.setLibrary("md", markdownLibrary);
   
