@@ -297,6 +297,14 @@ nav a.active {
     position: relative;
 }
 
+/* Fix for icon rendering */
+.nav-item .icon {
+    font-weight: normal !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
 /* Show solid icon for active page */
 nav a.active .nav-icon {
     opacity: 0;
@@ -779,12 +787,13 @@ tr:nth-child(even) {
         padding: 1.5rem 0;
     }
     
-    /* On mobile, make the headshot float right and smaller */
+    /* On mobile, center the headshot above the heading */
     .headshot {
-        float: right;
-        width: 120px;
-        height: 120px;
-        margin: 0 0 1rem 1rem;
+        float: none;
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 1.5rem;
+        display: block;
     }
 }
 
@@ -914,11 +923,16 @@ tr:nth-child(even) {
   max-width: 100%;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, rotate 0.3s ease, opacity 0.2s ease;
 }
 
 .bio-image img:hover {
-  transform: scale(1.05);
+  transform: scale(1.02) rotate(1deg);
+}
+
+.bio-image img:active {
+  transform: scale(0.99);
+  opacity: 0.95;
 }
 
 @media (max-width: 767px) {

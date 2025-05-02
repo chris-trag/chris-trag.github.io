@@ -27,6 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/custom.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/nav-icons.css' | url }}">
     <!-- FlatIcon CSS - Regular and Solid versions -->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
@@ -48,40 +49,28 @@
     <nav class="container">
         <ul role="list">
             <li>
-                <a href="/" class="brand {% if page.url == '/' %}active{% endif %}">
-                    <span class="icon-container">
-                        <i class="fi fi-rr-message-code nav-icon"></i>
-                        <i class="fi fi-sr-message-code nav-icon-solid"></i>
-                    </span>
+                <a href="/" class="nav-item nav-home {% if page.url == '/' %}active{% endif %}">
+                    <span class="icon"></span>
                     <span class="nav-text">Trag.dev</span>
                 </a>
             </li>
         </ul>
         <ul role="list" class="nav-links">
             <li>
-                <a href="/speaking/" {% if '/speaking' in page.url %}class="active"{% endif %}>
-                    <span class="icon-container">
-                        <i class="fi fi-rr-square-quote nav-icon"></i>
-                        <i class="fi fi-sr-square-quote nav-icon-solid"></i>
-                    </span>
+                <a href="/speaking/" class="nav-item nav-speaking {% if '/speaking' in page.url %}active{% endif %}">
+                    <span class="icon"></span>
                     <span class="nav-text">Speaking</span>
                 </a>
             </li>
             <li>
-                <a href="/writing/" {% if '/writing' in page.url %}class="active"{% endif %}>
-                    <span class="icon-container">
-                        <i class="fi fi-rr-lightbulb-on nav-icon"></i>
-                        <i class="fi fi-sr-lightbulb-on nav-icon-solid"></i>
-                    </span>
+                <a href="/writing/" class="nav-item nav-writing {% if '/writing' in page.url %}active{% endif %}">
+                    <span class="icon"></span>
                     <span class="nav-text">Writing</span>
                 </a>
             </li>
             <li>
-                <a href="/shelf/" {% if '/shelf' in page.url %}class="active"{% endif %}>
-                    <span class="icon-container">
-                        <i class="fi fi-rr-book-bookmark nav-icon"></i>
-                        <i class="fi fi-sr-book-bookmark nav-icon-solid"></i>
-                    </span>
+                <a href="/shelf/" class="nav-item nav-shelf {% if '/shelf' in page.url %}active{% endif %}">
+                    <span class="icon"></span>
                     <span class="nav-text">Shelf</span>
                 </a>
             </li>

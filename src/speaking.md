@@ -18,7 +18,7 @@ Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](http
 :::
 
 :::bio-image
-![Chris Trag headshot](/img/global/trag.png)
+[![Chris Trag headshot](/img/global/trag.png "Click for headshot")](/img/global/trag.png){target="_blank"}
 :::
 
 ## Past Talks

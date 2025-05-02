@@ -1,0 +1,149 @@
+/* Navigation Icons CSS - Using CSS-based approach for better web standards */
+
+/* Base styles for nav items with icons */
+.nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: none;
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Icon container for positioning */
+.nav-item .icon {
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Regular icon state (visible by default) */
+.nav-item .icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  opacity: 1;
+  font-size: 1.2rem;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Solid icon state (hidden by default) */
+.nav-item .icon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  font-size: 1.2rem;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* On hover, hide regular icon and show solid icon */
+.nav-item:hover .icon::before {
+  opacity: 0;
+}
+
+.nav-item:hover .icon::after {
+  opacity: 1;
+}
+
+/* For active state, always show solid icon */
+.nav-item.active .icon::before {
+  opacity: 0;
+}
+
+.nav-item.active .icon::after {
+  opacity: 1;
+  /* Ensure icon rendering is crisp by overriding font-weight */
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Icon classes for each navigation item - using the exact same FlatIcon codes */
+/* Home icon - message-code */
+.nav-home .icon::before {
+  font-family: 'uicons-regular-rounded';
+  content: "\f714";
+  text-rendering: optimizeLegibility;
+}
+.nav-home .icon::after {
+  font-family: 'uicons-solid-rounded';
+  content: "\f715";
+  text-rendering: optimizeLegibility;
+}
+
+/* Speaking icon - square-quote */
+.nav-speaking .icon::before {
+  font-family: 'uicons-regular-rounded';
+  content: "\f98a";
+  text-rendering: optimizeLegibility;
+}
+.nav-speaking .icon::after {
+  font-family: 'uicons-solid-rounded';
+  content: "\f988";
+  text-rendering: optimizeLegibility;
+}
+
+/* Writing icon - lightbulb-on */
+.nav-writing .icon::before {
+  font-family: 'uicons-regular-rounded';
+  content: "\f6ba";
+  text-rendering: optimizeLegibility;
+}
+.nav-writing .icon::after {
+  font-family: 'uicons-solid-rounded';
+  content: "\f6bd";
+  text-rendering: optimizeLegibility;
+}
+
+/* Shelf icon - book-bookmark */
+.nav-shelf .icon::before {
+  font-family: 'uicons-regular-rounded';
+  content: "\f213";
+  text-rendering: optimizeLegibility;
+}
+.nav-shelf .icon::after {
+  font-family: 'uicons-solid-rounded';
+  content: "\f214";
+  text-rendering: optimizeLegibility;
+}
+
+/* Text styling */
+.nav-item .nav-text {
+  display: inline-block;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .nav-item {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 0.25rem;
+  }
+  
+  .nav-item .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .nav-item .icon::before,
+  .nav-item .icon::after {
+    font-size: 1.5rem;
+  }
+  
+  .nav-item .nav-text {
+    font-size: 0.8rem;
+  }
+}
