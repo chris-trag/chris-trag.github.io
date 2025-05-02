@@ -1,6 +1,10 @@
 ---
 title: Speaking
 layout: base.njk
+description: Chris Trag's speaking engagements, presentations, and interviews on developer advocacy, APIs, and technology platforms.
+og_description: Explore Chris Trag's talks and interviews on developer advocacy, payment technologies, and building developer communities.
+og_image: https://trag.dev/img/global/trag.png
+og_image_alt: Chris Trag speaking
 ---
 
 # Speaking

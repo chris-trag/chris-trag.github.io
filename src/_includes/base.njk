@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>{{ title }} - trag dot dev</title>
+    
+    <!-- OpenGraph and social sharing meta tags -->
+    <meta property="og:title" content="{{ title }} - trag dot dev">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trag.dev{{ page.url }}">
+    <meta property="og:image" content="{% if og_image %}{{ og_image }}{% else %}https://trag.dev/img/global/trag.png{% endif %}">
+    <meta property="og:image:alt" content="{% if og_image_alt %}{{ og_image_alt }}{% else %}Chris Trag{% endif %}">
+    <meta property="og:description" content="{% if og_description %}{{ og_description }}{% else %}{{ description }}{% endif %}">
+    <meta property="og:site_name" content="trag.dev">
+    
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@chris_trag">
+    <meta name="twitter:title" content="{{ title }} - trag dot dev">
+    <meta name="twitter:description" content="{% if og_description %}{{ og_description }}{% else %}{{ description }}{% endif %}">
+    <meta name="twitter:image" content="{% if og_image %}{{ og_image }}{% else %}https://trag.dev/img/global/trag.png{% endif %}">
+    
+    <!-- Standard meta description -->
+    <meta name="description" content="{% if description %}{{ description }}{% endif %}">
+    
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/custom.css' | url }}">

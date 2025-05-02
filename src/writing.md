@@ -1,6 +1,10 @@
 ---
 title: Writing
 layout: base.njk
+description: Articles and blog posts by Chris Trag on developer advocacy, tech leadership, and building developer communities.
+og_description: Read Chris Trag's articles on developer advocacy, tech leadership, and building bridges between developers and platforms.
+og_image: https://trag.dev/img/global/trag.png
+og_image_alt: Chris Trag
 ---
 
 # Writing

@@ -1,6 +1,10 @@
 ---
 title: Shelf
 layout: base.njk
+description: Chris Trag's book recommendations and reading list, featuring fiction, non-fiction, and graphic novels.
+og_description: Explore Chris Trag's bookshelf - a curated collection of fiction, non-fiction, and graphic novels with personal ratings.
+og_image: https://trag.dev/img/global/trag.png
+og_image_alt: Chris Trag's bookshelf
 ---
 
 # My Shelf

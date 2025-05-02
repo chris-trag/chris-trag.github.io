@@ -1,6 +1,10 @@
 ---
 title: Developer Experience
 layout: base.njk
+description: Chris Trag's work on API design, documentation, developer tooling, and community building to create exceptional developer experiences.
+og_description: Explore Chris Trag's focus on API design, documentation, developer tooling, and community building for better developer experiences.
+og_image: https://trag.dev/img/global/trag.png
+og_image_alt: Developer Experience illustration
 ---
 
 # Developer Experience

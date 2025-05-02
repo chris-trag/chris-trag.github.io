@@ -1,6 +1,10 @@
 ---
 title: Office Hours
 layout: base.njk
+description: Schedule office hours with Chris Trag to discuss developer advocacy, API strategy, or community building.
+og_description: Book a session with Chris Trag to discuss developer advocacy, API strategy, community building, or career advice.
+og_image: https://trag.dev/img/global/trag.png
+og_image_alt: Chris Trag office hours
 ---
 
 # Office Hours

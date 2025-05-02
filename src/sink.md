@@ -1,6 +1,10 @@
 ---
 title: Kitchen Sink!
 layout: base.njk
+description: A demonstration page showing all typographic elements and styling available on the site, including headers, text formatting, lists, code examples, and more.
+og_description: See all the design elements and styling capabilities of this site in one place - from typography to code blocks to tables.
+og_image: https://trag.dev/img/global/trag.png
+og_image_alt: Kitchen sink design elements
 ---
 
 # Typography & Elements
