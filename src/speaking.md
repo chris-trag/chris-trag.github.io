@@ -64,6 +64,9 @@ Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](http
 
 ## Interviews
 
+- **Building Developer Relations Teams with Trag** - [BuildandLearn.dev](https://buildandlearn.dev/15)  
+  Interview discussing strategies for building effective developer relations teams, community engagement, and evolving DevRel practices.
+
 - **Devpost Commit Episode 3** - [YouTube](https://www.youtube.com/playlist?list=PLg3BF64d6vht6t20kWdWsc-n0QKMdCaRy)  
   Interview on Devpost's Commit series discussing hackathons and developer communities.
 
