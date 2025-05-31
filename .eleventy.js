@@ -3,6 +3,7 @@ const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItMark = require('markdown-it-mark');
 const markdownItContainer = require('markdown-it-container');
+const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
   // Spotify shortcode - updated to handle full URLs and height parameter
@@ -70,6 +71,11 @@ module.exports = function(eleventyConfig) {
     });
   
   eleventyConfig.setLibrary("md", markdownLibrary);
+  
+  // Add date filter for use in templates
+  eleventyConfig.addFilter("date", function(dateObj, format) {
+    return DateTime.fromJSDate(new Date(dateObj)).toFormat(format);
+  });
   
   // Copy favicon files to the output directory
   eleventyConfig.addPassthroughCopy("src/img");

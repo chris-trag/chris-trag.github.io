@@ -8,7 +8,7 @@ og_image: https://trag.dev/img/global/trag.png
 og_image_alt: Chris Trag headshot
 ---
 
-![Chris Traganos](/img/global/trag.png){.headshot}
+[![Chris Traganos](/img/global/trag-medium.webp){.headshot}](http://localhost:8081/img/global/trag.png)
 
 # <mark><span class="icon-container"><i class="fi fi-rr-hand-wave"></i></span><span class="sr-only">👋</span></mark> Hello!
 

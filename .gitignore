@@ -28,3 +28,4 @@ yarn-error.log*
 *.code-workspace
 *.py
 *.csv
+lighthouse-*.html
