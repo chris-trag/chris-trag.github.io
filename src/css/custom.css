@@ -1,3 +1,48 @@
+/* Spotify embed styling */
+.spotify-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.spotify-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotify-embed:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.spotify-embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+/* Remove height specifications from CSS since we're setting it directly in the iframe */
+.spotify-embed.playlist iframe,
+.spotify-embed.episode iframe,
+.spotify-embed.track iframe {
+  /* Heights now controlled by the height attribute in the iframe */
+}
+
+/* For track embeds - shortest */
+.spotify-embed.track iframe {
+  height: 80px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .spotify-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Custom CSS Variables */
 :root {
     color-scheme: light dark;

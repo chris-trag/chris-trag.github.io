@@ -5,6 +5,29 @@ const markdownItMark = require('markdown-it-mark');
 const markdownItContainer = require('markdown-it-container');
 
 module.exports = function(eleventyConfig) {
+  // Spotify shortcode - updated to handle full URLs and height parameter
+  eleventyConfig.addShortcode("spotify", function(url) {
+    // Extract the type and ID from the URL
+    const urlObj = new URL(url);
+    const pathParts = urlObj.pathname.split('/');
+    const type = pathParts[1]; // playlist, album, track, etc.
+    const id = pathParts[2]; // The ID part
+    
+    // Return the embed HTML with the appropriate type class
+    return `<div class="spotify-embed ${type}">
+      <iframe 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/${type}/${id}?utm_source=generator&theme=0" 
+        width="100%" 
+        height="352"
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
+    </div>`;
+  });
+  
   // Configure Markdown processing with attributes support
   const markdownOptions = {
     html: true,

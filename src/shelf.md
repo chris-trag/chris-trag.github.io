@@ -9,6 +9,15 @@ og_image_alt: Chris Trag's bookshelf
 
 # My Shelf
 
+## Audio
+
+<div class="spotify-grid">
+{% spotify "https://open.spotify.com/playlist/6tsfaAe8Cebz68GZCWohRc?si=ec2ff85b283d433f" %}
+{% spotify "https://open.spotify.com/playlist/7HuRbLA23H6uts6s68UtRf?si=04848980ce7d4208" %}
+{% spotify "https://open.spotify.com/playlist/3Q8wDfJIKK08fpJxtT06YI?si=7d2c627b054c4ef6" %}
+{% spotify "https://open.spotify.com/playlist/4SCxY9Er8jlb3mA0EEsH4x?si=ce4ccb79ed10476a" %}
+</div>
+
 ## Books
 
 * [The Auctioneer](https://www.goodreads.com/book/show/40742435) by Joan Samson - 4/5
@@ -41,7 +50,7 @@ og_image_alt: Chris Trag's bookshelf
 * [Gone Girl](https://www.goodreads.com/book/show/13261812) by Gillian Flynn - 4/5
 * [Hatching Twitter](https://www.goodreads.com/book/show/18656827) by Nick Bilton - 5/5
 * [The Hard Thing About Hard Things](https://www.goodreads.com/book/show/18176747) by Ben Horowitz - 5/5
-* [The Circle)](https://www.goodreads.com/book/show/18302455) by Dave Eggers - 4/5
+* [The Circle](https://www.goodreads.com/book/show/18302455) by Dave Eggers - 4/5
 * [1984](https://www.goodreads.com/book/show/40961427) by George Orwell - 4/5
 * [A Thousand Splendid Suns](https://www.goodreads.com/book/show/4906099) by Khaled Hosseini - 5/5
 * [Amber Blake](https://www.goodreads.com/book/show/43335338) by Jade Lagardère - 2/5
