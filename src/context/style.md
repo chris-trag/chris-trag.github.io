@@ -1,4 +1,4 @@
-# chris_trag_style_guide
+# chris trag style guide
 _Use this document to shape all generated content to match Chris Traganos’s preferred tone and writing style in professional settings._
 
 ## 🔊 Voice & Tone Summary
@@ -38,4 +38,4 @@ Use or append these lines when prompting GenAI tools:
 - `"Rewrite with Chris's tone: fewer words, more clarity, developer-smart."`
 
 ## 📁 Filename
-`chris_trag_style_guide.md`
+`style.md`

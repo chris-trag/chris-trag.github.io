@@ -51,4 +51,4 @@ He works cross-functionally with product, engineering, marketing, and BD teams t
 ---
 
 ## 📁 Filename
-`chris_trag_bio_context_amazon.md`
+`work-bio.md`
