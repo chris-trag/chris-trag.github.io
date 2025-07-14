@@ -1,4 +1,4 @@
-# chris_trag_bio_context_amazon
+# Chris Trag Work Bio
 
 ## 🧾 Summary
 Chris Traganos (aka Chris Trag) leads **Developer Evangelism for Amazon Apps & Games**, with a focus on the **Fire TV**, **Alexa**, and **Amazon Appstore** ecosystems. Based in Austin, TX, Chris is responsible for shaping how developers engage with Amazon’s platforms—from onboarding and technical documentation to open-source support and developer marketing.

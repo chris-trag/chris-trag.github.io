@@ -1,4 +1,4 @@
-# chris trag style guide
+# Chris Trag
 _Use this document to shape all generated content to match Chris Traganos’s preferred tone and writing style in professional settings._
 
 ## 🔊 Voice & Tone Summary
