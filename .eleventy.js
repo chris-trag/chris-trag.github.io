@@ -85,6 +85,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   
+  eleventyConfig.ignores.add("src/context/**");
+
   return {
     dir: {
       input: "src",
