@@ -40,13 +40,13 @@ i[class^="fi-sr-"]:before, i[class*=" fi-sr-"]:before {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.fi-rr-hand-wave:before { content: "\f76b"; }
-.fi-rr-mailbox:before { content: "\f8e6"; }
-.fi-rr-id-badge:before { content: "\f7f7"; }
-.fi-rr-butterfly:before { content: "\f313"; }
-.fi-rr-square-x:before { content: "\fcd1"; }
-.fi-rr-check:before { content: "\f3c8"; }
-.fi-sr-mailbox:before { content: "\f8e6"; }
-.fi-sr-id-badge:before { content: "\f7f7"; }
-.fi-sr-butterfly:before { content: "\f313"; }
-.fi-sr-square-x:before { content: "\fcd1"; }
+.fi-rr-hand-wave:before { content: "\f5e5"; }
+.fi-rr-mailbox:before { content: "\f6e4"; }
+.fi-rr-id-badge:before { content: "\f651"; }
+.fi-rr-butterfly:before { content: "\f294"; }
+.fi-rr-square-x:before { content: "\f995"; }
+.fi-rr-check:before { content: "\f312"; }
+.fi-sr-mailbox:before { content: "\f6e6"; }
+.fi-sr-id-badge:before { content: "\f654"; }
+.fi-sr-butterfly:before { content: "\f295"; }
+.fi-sr-square-x:before { content: "\f993"; }
