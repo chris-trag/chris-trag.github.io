@@ -29,3 +29,4 @@ yarn-error.log*
 *.py
 *.csv
 lighthouse-*.html
+*.report.html
