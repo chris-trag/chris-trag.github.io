@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/work-sans.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'uicons-regular-rounded';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/uicons-regular-rounded.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'uicons-solid-rounded';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/uicons-solid-rounded.woff2') format('woff2');
+}
+
+i[class^="fi-rr-"]:before, i[class*=" fi-rr-"]:before {
+  font-family: uicons-regular-rounded !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+i[class^="fi-sr-"]:before, i[class*=" fi-sr-"]:before {
+  font-family: uicons-solid-rounded !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fi-rr-hand-wave:before { content: "\f76b"; }
+.fi-rr-mailbox:before { content: "\f8e6"; }
+.fi-rr-id-badge:before { content: "\f7f7"; }
+.fi-rr-butterfly:before { content: "\f313"; }
+.fi-rr-square-x:before { content: "\fcd1"; }
+.fi-rr-check:before { content: "\f3c8"; }
+.fi-sr-mailbox:before { content: "\f8e6"; }
+.fi-sr-id-badge:before { content: "\f7f7"; }
+.fi-sr-butterfly:before { content: "\f313"; }
+.fi-sr-square-x:before { content: "\fcd1"; }

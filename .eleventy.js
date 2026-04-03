@@ -85,6 +85,7 @@ module.exports = function(eleventyConfig) {
   // Other existing configuration...
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
+  eleventyConfig.addPassthroughCopy("src/fonts");
   
   eleventyConfig.ignores.add("src/context/**");
 
