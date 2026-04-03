@@ -80,6 +80,7 @@ module.exports = function(eleventyConfig) {
   // Copy favicon files to the output directory
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
   
   // Other existing configuration...
   eleventyConfig.addPassthroughCopy("src/css");
