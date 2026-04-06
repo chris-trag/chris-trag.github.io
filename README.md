@@ -1,147 +1,166 @@
-# Your Own Site
+# trag.dev
 
-This is your (very) own site starter pack! It's designed to be clean, fast, and easy to maintain using Markdown for content. Everytime the markdown is updated in the repo, the website updates auto-magically ✨.
+A fast, clean personal site built with [Eleventy](https://www.11ty.dev/) and [Pico CSS](https://picocss.com/). Content is written in Markdown — update a `.md` file, push, and the site deploys automatically via GitHub Actions.
 
-## Features
+**Live site:** [trag.dev](https://trag.dev)
 
-- Built with Eleventy (11ty) static site generator
-- Content written in Markdown with enhanced features
-- Styled with [Pico CSS](https://picocss.com/) for a clean, responsive design
-- Custom theme switching functionality
-- Optimized for performance and SEO
-- Easy to deploy to GitHub Pages
-- Includes a "Kitchen Sink" example page showing all possible elements
+## Remix This Site
+
+This repo is designed to be forked and remixed. Use the **Fork** button (top right) so there's a trail back to the original — then make it yours.
+
+### Quick start
+
+```bash
+# 1. Fork this repo on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/YOUR_USERNAME.github.io.git
+cd YOUR_USERNAME.github.io
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the dev server
+npm run dev
+
+# 4. Open http://localhost:8080
+```
+
+### What to change
+
+| File | What to do |
+|---|---|
+| `src/index.md` | Replace with your own bio, links, and headshot |
+| `src/speaking.md`, `src/writing.md`, `src/shelf.md` | Edit or delete — these are optional pages |
+| `src/img/global/` | Swap in your own headshot and OG card image |
+| `src/css/custom.css` | Change the color palette and fonts (see below) |
+| `src/_includes/base.njk` | Update site name, OG defaults, analytics ID, and social links |
+| `src/site.webmanifest` | Update with your site name and colors |
+| `src/robots.txt` | Update the sitemap URL to your domain |
+
+### Using an AI agent to remix
+
+If you're using an AI coding agent (Claude Code, Gemini CLI, GitHub Copilot, Kiro, etc.), point it at the **[REMIX.md](.github/REMIX.md)** file:
+
+```
+Read .github/REMIX.md and follow the instructions to remix this site for me.
+My name is [YOUR NAME], I'm a [YOUR ROLE] at [YOUR COMPANY].
+My site will be hosted at [YOUR DOMAIN].
+```
+
+The REMIX file tells the agent to generate a unique color palette and font pairing — not copy the original.
 
 ## Project Structure
 
 ```
 .
-├── .eleventy.js           # Eleventy configuration
-├── src/                   # Source files
-│   ├── _includes/         # Layout templates
-│   ├── css/               # CSS files
-│   ├── js/                # JavaScript files
-│   ├── img/               # Images
-│   ├── sink.md            # Kitchen Sink example page
-│   └── *.md               # Content pages written in Markdown
-├── dist/                  # Built site (generated)
-├── node_modules/          # Dependencies
-└── package.json           # Project configuration
+├── .eleventy.js              # Eleventy config, markdown plugins, shortcodes
+├── .github/
+│   ├── workflows/deploy.yml  # Auto-deploy to GitHub Pages on push
+│   └── REMIX.md              # Instructions for AI agents remixing this site
+├── src/
+│   ├── _includes/base.njk    # HTML layout template (head, nav, footer)
+│   ├── css/
+│   │   ├── custom.css        # All custom styles, colors, typography
+│   │   ├── fonts.css         # Self-hosted font declarations
+│   │   ├── nav-icons.css     # Navigation icon styles
+│   │   └── pico.min.css      # Pico CSS framework
+│   ├── fonts/                # Self-hosted Work Sans + Flaticon icon subsets
+│   ├── img/                  # Images, favicons, OG card
+│   ├── js/
+│   │   ├── theme.js          # Dark/light mode toggle + system preference
+│   │   └── copy.js           # Copy-to-clipboard for speaker bio
+│   ├── index.md              # Homepage
+│   ├── speaking.md           # Speaking page
+│   ├── writing.md            # Writing page
+│   ├── shelf.md              # Bookshelf page
+│   ├── sink.md               # Kitchen sink — shows all available elements
+│   ├── robots.txt            # SEO robots file
+│   ├── site.webmanifest      # PWA manifest
+│   └── sitemap.xml.njk       # Auto-generated sitemap
+├── dist/                     # Built output (generated, not committed)
+└── package.json              # Dependencies: eleventy, markdown-it plugins, luxon
 ```
 
-## Getting Started
+## Tech Stack
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v14 or newer recommended)
-- npm (comes with Node.js)
-
-### Installation
-
-1. Clone this repository:
-   ```zsh
-   git clone https://github.com/yourusername/your-site.git
-   cd your-site
-   ```
-
-2. Install dependencies:
-   ```zsh
-   npm install
-   ```
-
-### Running Locally
-
-To start a development server with live reload:
-
-```zsh
-npm run dev
-```
-
-This will:
-- Clean the `dist` directory
-- Build the site
-- Start a local server at http://localhost:8080
-- Watch for changes and rebuild automatically
-
-### Building for Production
-
-To build the site for production:
-
-```zsh
-npm run build
-```
-
-This generates the static site in the `dist` directory, ready for deployment.
+- **Static site generator:** [Eleventy (11ty)](https://www.11ty.dev/) v2
+- **CSS framework:** [Pico CSS](https://picocss.com/) with custom theme
+- **Fonts:** [Work Sans](https://fonts.google.com/specimen/Work+Sans) (self-hosted, variable weight)
+- **Icons:** [Flaticon UIcons](https://www.flaticon.com/uicons) (self-hosted, subset to ~3KB)
+- **Markdown:** markdown-it with attrs, mark, and container plugins
+- **Deployment:** GitHub Actions → GitHub Pages
+- **Analytics:** Google Analytics 4
 
 ## Customization
 
-### Content
+### Colors
 
-- Edit or add Markdown files in the `src` directory
-- Each Markdown file becomes a page on your site
-- Use front matter (the `---` section at the top of each file) to set page metadata
+All colors are CSS custom properties in `src/css/custom.css`. Light mode and dark mode have separate palettes:
 
-### Styling
+```css
+:root:not([data-theme=dark]), [data-theme=light] {
+    --primary: #1155cc;          /* Main accent */
+    --color-bg: #ffffff;         /* Background */
+    --color-text: #2e2e2e;       /* Body text */
+    --link-color: #0066cc;       /* Links */
+}
 
-- Main styling comes from Pico CSS
-- Custom styles can be added in `src/css/custom.css`
+[data-theme=dark] {
+    --primary: #4d8eee;
+    --color-bg: #0a0c14;
+    --color-text: #f7fafc;
+    --link-color: #4d8eee;
+}
+```
 
-### Layouts
+### Fonts
 
-- Edit layout templates in the `src/_includes` directory
-- Templates use Nunjucks templating language
+Font files live in `src/fonts/` with `@font-face` declarations in `src/css/fonts.css`. To change fonts:
+
+1. Download your font as `.woff2` and drop it in `src/fonts/`
+2. Update the `@font-face` in `src/css/fonts.css`
+3. Update `font-family` references in `src/css/custom.css`
+
+### OG / Social Sharing
+
+Each page's front matter controls its social preview:
+
+```yaml
+---
+title: Your Page Title
+description: SEO description for search engines
+og_description: Shorter description for social cards
+og_image: https://yourdomain.com/img/og-card.png
+og_image_alt: Description of the image
+---
+```
+
+The OG card image should be 1200×630px, under 600KB.
+
+### Analytics
+
+Replace the GA measurement ID in `src/_includes/base.njk`:
+
+```html
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-ID-HERE"></script>
+```
+
+Or remove the entire Google tag block if you don't want analytics.
 
 ## Deployment
 
-### GitHub Pages
+Pushing to `main` triggers the GitHub Actions workflow (`.github/workflows/deploy.yml`) which builds the site and deploys to GitHub Pages. No manual steps needed.
 
-This site is designed to be easily deployed to GitHub Pages:
+To set up on a new fork:
+1. Go to repo Settings → Pages
+2. Set Source to "GitHub Actions"
+3. Push any change to `main` to trigger the first deploy
 
-1. Push your repository to GitHub
-2. Enable GitHub Pages in your repository settings
-3. Set the source to the `main` branch and `/docs` folder or use GitHub Actions
-
-### Other Hosting Options
-
-The built site in the `dist` directory is static HTML, CSS, and JavaScript, so it can be hosted on any web server or static hosting service like:
-
-- Netlify
-- Vercel
-- AWS S3
-- Firebase Hosting
-
-## Creating Your Own Portfolio
-
-To create your own portfolio based on this template:
-
-1. Fork or clone this repository
-2. Modify the content in the Markdown files to reflect your information
-3. Update images in the `src/img` directory
-4. Customize the styling as needed
-5. Deploy to your preferred hosting platform
-
-## Kitchen Sink Example
-
-The site includes a "Kitchen Sink" example page (`src/sink.md`) that demonstrates all the typographic elements and styling available:
-
-- Headers (h1-h6)
-- Text formatting (bold, italic, highlighted)
-- Lists (ordered and unordered)
-- Code blocks with syntax highlighting
-- Blockquotes
-- Tables
-- Images
-- Horizontal rules
-
-This page serves as both documentation and a visual reference for the site's styling capabilities.
+For a custom domain, add a CNAME file or configure it in GitHub Pages settings.
 
 ## License
 
-This project is open source and available under the [ISC License](LICENSE).
+ISC — do whatever you want with it.
 
-## Acknowledgments
+## Credits
 
-- Built with [Eleventy](https://www.11ty.dev/)
-- Styled with [Pico CSS](https://picocss.com/)
-- Icons from [Flaticon](https://www.flaticon.com/)
-- Vibe-checked by [Amazon Q CLI](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html)
+Built by [Chris Trag](https://trag.dev). Styled with [Pico CSS](https://picocss.com/). Icons from [Flaticon](https://www.flaticon.com/).
