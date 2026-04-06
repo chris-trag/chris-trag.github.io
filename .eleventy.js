@@ -88,8 +88,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
   
-  eleventyConfig.ignores.add("src/context/**");
-
   return {
     dir: {
       input: "src",

@@ -1,3 +1,11 @@
+---
+title: Friction Log Template
+layout: base.njk
+permalink: /context/friction-log/
+description: Template for developer experience friction logs.
+templateEngineOverride: md
+---
+
 # {% Product name + version% } Friction log
 
 **by {%NAME%}**

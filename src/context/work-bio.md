@@ -1,3 +1,10 @@
+---
+title: Work Bio
+layout: base.njk
+permalink: /context/work-bio/
+description: AI context file - Chris Trag's background, role, and focus areas.
+---
+
 # Chris Trag Work Bio
 
 ## 🧾 Summary
