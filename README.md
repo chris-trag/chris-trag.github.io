@@ -42,7 +42,7 @@ flowchart LR
     style F fill:#d1fae5,stroke:#34d399,color:#1a1a2e
 ```
 
-You write content in Markdown. When you push to `main`, GitHub Actions runs Eleventy to build static HTML, then deploys it to GitHub Pages. Your site is live at `username.github.io` — no server, no hosting costs. A custom domain is optional.
+You write content in Markdown. When you push to `main`, GitHub Actions runs Eleventy to build static HTML, then deploys it to GitHub Pages. Your site is live at `username.github.io` — no server, no hosting costs. A [custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) is optional.
 
 ## Remix This Site
 
