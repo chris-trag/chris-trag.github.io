@@ -6,14 +6,14 @@ A fast, clean personal site built with [Eleventy](https://www.11ty.dev/) and [Pi
 
 ## Remix This Site
 
-This repo is designed to be forked and remixed. Use the **Fork** button (top right) so there's a trail back to the original — then make it yours.
+This repo is designed to be remixed. Fork it, clone it, whatever works for you — then make it yours.
 
 ### Quick start
 
 ```bash
-# 1. Fork this repo on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/YOUR_USERNAME.github.io.git
-cd YOUR_USERNAME.github.io
+# 1. Clone or fork this repo
+git clone https://github.com/chris-trag/chris-trag.github.io.git my-site
+cd my-site
 
 # 2. Install dependencies
 npm install

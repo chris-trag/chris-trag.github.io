@@ -6,8 +6,8 @@ You are remixing a personal site template originally built by [Chris Trag](https
 
 1. **Do NOT copy the original color palette or fonts.** Generate a unique combination.
 2. **Do NOT copy the original bio text.** Write new content based on what the user tells you.
-3. **Keep the `meta generator` tag** in `src/_includes/base.njk` — it credits the original template.
-4. **Keep the credits line** in the footer or README.
+3. **Replace or remove the Google Analytics ID** — `G-9JFF8H9Z1P` belongs to the original site.
+4. **Keep the `meta generator` tag** in `src/_includes/base.njk` if possible — it's a small credit to the original template.
 
 ## Step-by-step
 
@@ -69,8 +69,8 @@ Download the `.woff2` variable font file, place it in `src/fonts/`, and update `
 In `src/_includes/base.njk`:
 - Update `og:site_name` to the new domain
 - Update `twitter:site` to the new Twitter handle
-- Replace the GA measurement ID (`G-9JFF8H9Z1P`) with the user's, or remove the GA block entirely
-- **Keep the `<meta name="generator">` tag** — do not remove it
+- **Replace or remove the GA measurement ID** — the existing ID (`G-9JFF8H9Z1P`) belongs to the original site and MUST be replaced with the user's own Google Analytics ID, or remove the entire `<!-- Google tag -->` block if they don't want analytics
+- Keep the `<meta name="generator">` tag — it credits the original template
 
 In each `.md` file's front matter:
 - Update `title`, `description`, `og_description`, `og_image`, `og_image_alt`
@@ -104,4 +104,4 @@ If pages were removed, update the nav in `src/_includes/base.njk` and the corres
 
 ## Attribution
 
-This template was built by [Chris Trag](https://trag.dev) ([GitHub](https://github.com/chris-trag/chris-trag.github.io)). If you're remixing it, keep the generator meta tag and a credit in the README or footer. Forking (instead of cloning) on GitHub is appreciated so there's a public trail.
+This template was built by [Chris Trag](https://trag.dev) ([GitHub](https://github.com/chris-trag/chris-trag.github.io)). A small credit in the README, footer, or the `<meta name="generator">` tag is appreciated but not required.
