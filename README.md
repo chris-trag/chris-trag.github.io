@@ -7,12 +7,39 @@ A fast, clean personal site built with [Eleventy](https://www.11ty.dev/) and [Pi
 ## How It Works
 
 ```mermaid
-graph LR
-    A[Edit .md files] --> B[Push to GitHub]
-    B --> C[GitHub Actions builds site]
-    C --> D[Deployed to GitHub Pages]
-    D --> E[Live at username.github.io]
-    E -.->|optional| F[Custom domain]
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1a2744', 'primaryTextColor': '#f7fafc', 'primaryBorderColor': '#4d8eee', 'lineColor': '#4d8eee', 'secondaryColor': '#142040', 'tertiaryColor': '#0a0c14', 'fontSize': '14px' }}}%%
+
+flowchart LR
+    subgraph edit ["✏️ Create"]
+        A["Write Markdown\n(.md files)"]
+        B["Add images\n& assets"]
+    end
+
+    subgraph build ["⚡ Build"]
+        C["Push to\nGitHub"]
+        D["Eleventy\nbuilds HTML"]
+    end
+
+    subgraph deploy ["🚀 Live"]
+        E["GitHub\nPages"]
+        F["yourname.github.io\nor custom domain"]
+    end
+
+    A --> C
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+
+    style edit fill:#142040,stroke:#4d8eee,stroke-width:2px,color:#f7fafc
+    style build fill:#1a2744,stroke:#4d8eee,stroke-width:2px,color:#f7fafc
+    style deploy fill:#0f2a1a,stroke:#34d399,stroke-width:2px,color:#f7fafc
+    style A fill:#1e3a5f,stroke:#4d8eee,color:#f7fafc
+    style B fill:#1e3a5f,stroke:#4d8eee,color:#f7fafc
+    style C fill:#2a1a4a,stroke:#a78bfa,color:#f7fafc
+    style D fill:#2a1a4a,stroke:#a78bfa,color:#f7fafc
+    style E fill:#0f3a2a,stroke:#34d399,color:#f7fafc
+    style F fill:#0f3a2a,stroke:#34d399,color:#f7fafc
 ```
 
 You write content in Markdown. When you push to `main`, GitHub Actions runs Eleventy to build static HTML, then deploys it to GitHub Pages. Your site is live at `username.github.io` — no server, no hosting costs. A custom domain is optional.
