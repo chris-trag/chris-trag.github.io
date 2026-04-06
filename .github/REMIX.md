@@ -23,7 +23,7 @@ Ask for (or use what they've provided):
 - Short bio (2-3 sentences)
 - Social links (LinkedIn, GitHub, Twitter/X, Bluesky, email)
 - Headshot image (or skip for now)
-- Domain name (e.g., `janedoe.dev`)
+- Domain name (optional — the site works at `username.github.io` without one)
 - Any additional pages they want beyond the homepage (speaking, writing, bookshelf, etc.)
 
 ### 2. Generate a unique color palette
@@ -101,10 +101,12 @@ In each `.md` file's front matter:
 
 ### 7. Update deployment files
 
-- Update `src/robots.txt` — change the sitemap URL to the new domain
-- Update `src/sitemap.xml.njk` — add or remove pages to match what exists
+- The repo should be named `username.github.io` for GitHub Pages to work automatically
+- Update `src/robots.txt` — change the sitemap URL to `https://username.github.io/sitemap.xml` (or the custom domain if they have one)
+- Update `src/sitemap.xml.njk` — change the base URL and add/remove pages to match what exists
+- Update canonical URLs in `src/_includes/base.njk` to use `https://username.github.io` or their custom domain
 - In the GitHub repo Settings → Pages, set source to "GitHub Actions"
-- For a custom domain, add a CNAME file
+- For a custom domain (optional), see [GitHub's docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
 
 ## What NOT to change
 

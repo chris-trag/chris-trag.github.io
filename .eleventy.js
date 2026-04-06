@@ -81,6 +81,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/llms.txt");
   
   // Other existing configuration...
   eleventyConfig.addPassthroughCopy("src/css");

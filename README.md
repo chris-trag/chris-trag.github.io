@@ -4,6 +4,19 @@ A fast, clean personal site built with [Eleventy](https://www.11ty.dev/) and [Pi
 
 **Live site:** [trag.dev](https://trag.dev)
 
+## How It Works
+
+```mermaid
+graph LR
+    A[Edit .md files] --> B[Push to GitHub]
+    B --> C[GitHub Actions builds site]
+    C --> D[Deployed to GitHub Pages]
+    D --> E[Live at username.github.io]
+    E -.->|optional| F[Custom domain]
+```
+
+You write content in Markdown. When you push to `main`, GitHub Actions runs Eleventy to build static HTML, then deploys it to GitHub Pages. Your site is live at `username.github.io` — no server, no hosting costs. A custom domain is optional.
+
 ## Remix This Site
 
 This repo is designed to be remixed. Fork it, clone it, whatever works for you — then make it yours.
@@ -47,6 +60,30 @@ My site will be hosted at [YOUR DOMAIN].
 ```
 
 The REMIX file tells the agent to generate a unique color palette and font pairing — not copy the original.
+
+## Deploying to GitHub Pages
+
+Your site will be live at `https://username.github.io` automatically — no custom domain required.
+
+### First-time setup
+
+1. Name your repo `username.github.io` (replace `username` with your GitHub username)
+2. Go to repo **Settings → Pages**
+3. Under "Build and deployment", set Source to **GitHub Actions**
+4. Push any change to `main` — the included workflow (`.github/workflows/deploy.yml`) handles the rest
+
+Your site will be live at `https://username.github.io` within a few minutes.
+
+### Custom domain (optional)
+
+If you have your own domain (e.g., `janedoe.dev`):
+
+1. In repo **Settings → Pages → Custom domain**, enter your domain
+2. Add DNS records with your registrar — see [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+3. GitHub will auto-create a `CNAME` file in your repo
+4. Update `src/robots.txt` and OG URLs to use your domain
+
+Without a custom domain, everything works at `username.github.io` — no extra steps needed.
 
 ## Project Structure
 
@@ -145,17 +182,6 @@ Replace the GA measurement ID in `src/_includes/base.njk`:
 ```
 
 Or remove the entire Google tag block if you don't want analytics.
-
-## Deployment
-
-Pushing to `main` triggers the GitHub Actions workflow (`.github/workflows/deploy.yml`) which builds the site and deploys to GitHub Pages. No manual steps needed.
-
-To set up on a new fork:
-1. Go to repo Settings → Pages
-2. Set Source to "GitHub Actions"
-3. Push any change to `main` to trigger the first deploy
-
-For a custom domain, add a CNAME file or configure it in GitHub Pages settings.
 
 ## License
 

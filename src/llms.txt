@@ -1,0 +1,34 @@
+# trag.dev
+
+> Personal site of Chris Trag — Head of Developer Evangelism at Amazon for Alexa+, Apps & Games.
+
+This is a static personal site built with Eleventy and Pico CSS. It's designed to be forked and remixed.
+
+## Pages
+
+- [Home](https://trag.dev/): Bio, social links, and background
+- [Speaking](https://trag.dev/speaking/): Talks, panels, and interviews
+- [Writing](https://trag.dev/writing/): Articles and blog posts
+- [Shelf](https://trag.dev/shelf/): Book recommendations
+
+## Remix This Site
+
+This site is open source and designed to be remixed. For instructions on how to create your own version, see the REMIX guide:
+
+- [REMIX.md](https://github.com/chris-trag/chris-trag.github.io/blob/main/.github/REMIX.md): Step-by-step instructions for AI agents to remix this site
+- [README](https://github.com/chris-trag/chris-trag.github.io/blob/main/README.md): Project overview, structure, and customization guide
+- [Source code](https://github.com/chris-trag/chris-trag.github.io): Full repo on GitHub
+
+## Tech Stack
+
+- Static site generator: Eleventy (11ty) v2
+- CSS framework: Pico CSS with custom theme
+- Fonts: Work Sans (self-hosted)
+- Icons: Flaticon UIcons (self-hosted, subset)
+- Deployment: GitHub Actions to GitHub Pages
+
+## Contact
+
+- Email: chris@trag.dev
+- LinkedIn: linkedin.com/in/ctraganos
+- Bluesky: bsky.app/profile/trag.dev
