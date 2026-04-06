@@ -41,7 +41,7 @@ npm run dev
 If you're using an AI coding agent (Claude Code, Gemini CLI, GitHub Copilot, Kiro, etc.), point it at the **[REMIX.md](.github/REMIX.md)** file:
 
 ```
-Read .github/REMIX.md and follow the instructions to remix this site for me.
+Read https://github.com/chris-trag/chris-trag.github.io/blob/main/.github/REMIX.md and follow the instructions to remix this site for me.
 My name is [YOUR NAME], I'm a [YOUR ROLE] at [YOUR COMPANY].
 My site will be hosted at [YOUR DOMAIN].
 ```

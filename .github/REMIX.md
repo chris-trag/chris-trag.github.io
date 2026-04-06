@@ -1,12 +1,16 @@
 # REMIX.md — Instructions for AI Agents
 
-You are remixing a personal site template originally built by [Chris Trag](https://trag.dev). This file tells you how to make it unique for the new owner.
+## Goal
+
+The user wants to launch a personal website based on this template. The end result should be a clean, single-page personal site (about/bio page) with their own identity — unique colors, fonts, and content. Additional pages (speaking, writing, bookshelf) are optional and should only be included if the user asks for them.
+
+This template was originally built by [Chris Trag](https://trag.dev). The source repo is at [github.com/chris-trag/chris-trag.github.io](https://github.com/chris-trag/chris-trag.github.io).
 
 ## Rules
 
-1. **Do NOT copy the original color palette or fonts.** Generate a unique combination.
+1. **Do NOT copy the original color palette or fonts.** Generate a unique combination for this person.
 2. **Do NOT copy the original bio text.** Write new content based on what the user tells you.
-3. **Replace or remove the Google Analytics ID** — `G-9JFF8H9Z1P` belongs to the original site.
+3. **Replace or remove the Google Analytics ID** — `G-9JFF8H9Z1P` belongs to the original site and must not be used by anyone else.
 4. **Keep the `meta generator` tag** in `src/_includes/base.njk` if possible — it's a small credit to the original template.
 
 ## Step-by-step
@@ -20,6 +24,7 @@ Ask for (or use what they've provided):
 - Social links (LinkedIn, GitHub, Twitter/X, Bluesky, email)
 - Headshot image (or skip for now)
 - Domain name (e.g., `janedoe.dev`)
+- Any additional pages they want beyond the homepage (speaking, writing, bookshelf, etc.)
 
 ### 2. Generate a unique color palette
 
@@ -54,15 +59,26 @@ Do NOT use Work Sans. Choose a Google Font that fits the user's vibe. Good optio
 
 Download the `.woff2` variable font file, place it in `src/fonts/`, and update `src/css/fonts.css`.
 
-### 4. Update content files
+### 4. Update content
+
+The default site has multiple pages (speaking, writing, shelf). Most people just need a single homepage with their bio and links.
+
+**If the user only wants a bio/about page:**
+- Update `src/index.md` with their bio, social links, and headshot
+- Delete `src/speaking.md`, `src/writing.md`, `src/shelf.md`
+- Remove those nav items from `src/_includes/base.njk`
+- Remove corresponding icon entries from `src/css/nav-icons.css`
+
+**If the user wants additional pages:**
 
 | File | Action |
 |---|---|
 | `src/index.md` | Replace bio, social links, headshot reference |
-| `src/speaking.md` | Replace with user's talks, or delete if not applicable |
-| `src/writing.md` | Replace with user's articles, or delete |
-| `src/shelf.md` | Replace with user's book recs, or delete |
-| `src/sink.md` | Keep as-is (it's a style reference) |
+| `src/speaking.md` | Replace with user's content, or delete |
+| `src/writing.md` | Replace with user's content, or delete |
+| `src/shelf.md` | Replace with user's content, or delete |
+
+Keep `src/sink.md` as-is — it's a style reference page, not public nav.
 
 ### 5. Update site metadata
 
@@ -79,20 +95,16 @@ In each `.md` file's front matter:
 ### 6. Update assets
 
 - Replace `src/img/global/trag.png` and `trag-medium.webp` with the user's headshot
-- Generate a new OG card image (1200×630px) with the user's name and title
+- Generate a new OG card image (1200x630px) with the user's name and title
 - Replace `src/img/favicon.svg` and `src/img/favicon-dark.svg`
 - Update `src/site.webmanifest` with the new site name and colors
 
-### 7. Update deployment
+### 7. Update deployment files
 
-- Update `src/robots.txt` with the new sitemap URL
-- Update `src/sitemap.xml.njk` if pages were added or removed
-- In the repo Settings → Pages, set source to "GitHub Actions"
+- Update `src/robots.txt` — change the sitemap URL to the new domain
+- Update `src/sitemap.xml.njk` — add or remove pages to match what exists
+- In the GitHub repo Settings → Pages, set source to "GitHub Actions"
 - For a custom domain, add a CNAME file
-
-### 8. Navigation
-
-If pages were removed, update the nav in `src/_includes/base.njk` and the corresponding icon entries in `src/css/nav-icons.css`.
 
 ## What NOT to change
 
@@ -104,4 +116,4 @@ If pages were removed, update the nav in `src/_includes/base.njk` and the corres
 
 ## Attribution
 
-This template was built by [Chris Trag](https://trag.dev) ([GitHub](https://github.com/chris-trag/chris-trag.github.io)). A small credit in the README, footer, or the `<meta name="generator">` tag is appreciated but not required.
+This template was built by [Chris Trag](https://trag.dev) ([github.com/chris-trag/chris-trag.github.io](https://github.com/chris-trag/chris-trag.github.io)). A small credit in the README, footer, or the `<meta name="generator">` tag is appreciated but not required.
