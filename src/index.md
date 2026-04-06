@@ -2,7 +2,7 @@
 layout: base.njk
 title: Chris Trag - Developer Relations for Alexa & Amazon Devices
 permalink: /
-description: Chris Trag - Head of Developer Evangelism at Amazon for Alexa+, Apps, & Games. Previously led Developer Advocacy at Stripe, Evernote, and Roku.
+description: Developer experience leader for Amazon, Ex Stripe. Previously built developer programs at Evernote, Roku, and Mio (YC). Advisor on developer tools, product GTMs, and technical communities.
 og_description: Developer experience leader for Amazon, Ex Stripe. Strategic advisor for developer tools, product GTMs, and building technical communities.
 og_image: https://trag.dev/img/global/og-card.png
 og_image_alt: Chris Trag - Developer Relations for Alexa & Amazon Devices
