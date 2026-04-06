@@ -66,6 +66,7 @@ The default site has multiple pages (speaking, writing, shelf). Most people just
 **If the user only wants a bio/about page:**
 - Update `src/index.md` with their bio, social links, and headshot
 - Delete `src/speaking.md`, `src/writing.md`, `src/shelf.md`
+- Delete `src/context/` — these are personal to the original author. Optionally create new context files if the user wants an AI-readable bio and style guide at `/context/`
 - Remove those nav items from `src/_includes/base.njk`
 - Remove corresponding icon entries from `src/css/nav-icons.css`
 
