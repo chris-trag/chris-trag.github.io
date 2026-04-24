@@ -46,4 +46,4 @@ at templates/friction-log-template.md to structure a friction log for {product}.
 
 - [How Stripe uses friction logs](https://mikebifulco.com/posts/how-stripe-uses-friction-logs) by Mike Bifulco
 - [An introduction to friction logging](https://developerrelations.com/developer-experience/an-introduction-to-friction-logging)
-- [frictionlog.com](https://frictionlog.com/)
+- [sbensu on "How to: friction logs"](https://blog.sbensu.com/posts/friction-logs/)
