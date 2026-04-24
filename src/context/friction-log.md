@@ -1,190 +1,49 @@
 ---
-title: Friction Log Template
+title: Friction Log Guide
 layout: base.njk
 permalink: /context/friction-log/
-description: Template for developer experience friction logs.
-templateEngineOverride: md
+description: AI context file - trailhead for writing developer experience friction logs.
 ---
 
-# {% Product name + version% } Friction log
+# Friction Log Guide
 
-**by {%NAME%}**
-**Date:** {%DATE%} *(optional)*
+A friction log is a structured record of what happens when you use a product as an end user. You go through a workflow, write down what worked and what didn't, and share it with the team that built it. The goal: drive empathy for the user experience and surface the fixes that reduce friction.
 
----
+I maintain a dedicated repo with templates, examples, and AI prompts for writing great friction logs.
 
-## BLUF (Bottom line up-front)
+## Go to the repo
 
-*Put the most important details first. Don't tease or delay your main point because people are busy and their time is valuable. BLUF is a military communications acronym that stands for "bottom line up front" and is designed to enforce speed and clarity in reports.*
+**[github.com/chris-trag/friction-log-guide](https://github.com/chris-trag/friction-log-guide)**
 
-**Example:** During integration testing of the {%App%} SDK, we encountered three critical authentication issues that block developer onboarding. The primary friction point is unclear error messaging during OAuth setup, affecting an estimated 60% of new integrators based on support ticket volume.
+| Resource | What it is |
+|---|---|
+| [why-friction-logs.md](https://github.com/chris-trag/friction-log-guide/blob/main/why-friction-logs.md) | Why to write them, what makes a good one, how to start |
+| [example-friction-log.md](https://github.com/chris-trag/friction-log-guide/blob/main/example-friction-log.md) | Completed log for a fictional SDK |
+| [templates/friction-log-template.md](https://github.com/chris-trag/friction-log-guide/blob/main/templates/friction-log-template.md) | Full template: BLUF, persona, pros, cons, friction points, recommendations |
+| [templates/friction-log-template-lite.md](https://github.com/chris-trag/friction-log-guide/blob/main/templates/friction-log-template-lite.md) | Lightweight template for quick reviews |
+| [templates/recording-sop.md](https://github.com/chris-trag/friction-log-guide/blob/main/templates/recording-sop.md) | Screen recording setup (Cap.so, Loom, ScreenFlow, etc.) |
+| [prompts/friction-log-prompts.md](https://github.com/chris-trag/friction-log-guide/blob/main/prompts/friction-log-prompts.md) | AI prompts for Claude Code, Codex, Gemini CLI, Kiro CLI |
 
----
+## Core structure
 
-## Persona *(optional)*
+Every friction log should include:
 
-*Define who you are testing as. This helps fine-tune what someone with this background would expect the product to function like versus what they experienced. Different personas will encounter different friction points based on their expertise, goals, and context.*
+- **BLUF** — bottom line up front. The most important findings in the first paragraph.
+- **Persona** — who you're testing as. Role, background, goals, technical context.
+- **Friction points** — each issue with severity, expected vs. actual behavior, and impact.
+- **Next steps** — action items owned by product, engineering, or docs.
 
-**Role:** *(e.g., Senior Android Engineer, Startup CTO, Junior Developer, Solutions Architect)*
+For the full template with all sections (prerequisites, code snippets, video timestamps, success criteria, appendix), use the [repo](https://github.com/chris-trag/friction-log-guide).
 
-**Background:** *(e.g., 10 years mobile development, first-time API integrator, experienced with similar SDKs)*
+## Point an agent here
 
-**Primary Goal:** *(e.g., Incorporate SDK feature into existing app, Evaluate API for production use, Build proof-of-concept)*
-
-**Technical Context:** *(e.g., Working in legacy codebase, Greenfield project, Tight deadline, Evaluating multiple vendors)*
-
-**Example:**
-- **Role:** Startup CTO
-- **Background:** Full-stack generalist, limited mobile experience, evaluating multiple vendor APIs
-- **Primary Goal:** Determine if Ring API meets technical requirements for MVP launch in 6 weeks
-- **Technical Context:** Small team, no dedicated mobile engineers, need to ship fast
-
----
-
-## Prerequisites *(optional)*
-
-*List what developers need before starting: accounts, tools, access levels, environment setup.*
-
-- Account type required:
-- Tools needed:
-- Access permissions:
-- SDK/API version tested:
-- Environment: OS, device/emulator specs
-
----
-
-## Required steps
-
-*Document the steps needed to test, access gates, or reproduce the integration flow.*
-
-1.
-2.
-3.
-
----
-
-## Questions
-
-*Capture questions that arose during integration. These often reveal documentation gaps or unclear product behavior.*
-
-- Why does...
-- What is the difference between...
-- In the docs, we say X, but the actual behavior is Y. Which is correct?
-- What happens when...
-
----
-
-## Friction
-
-*Document each friction point with severity, context, and impact. Adjust sections as needed for your use case.*
-
-### Section / Route / Feature of App
-
-**Severity:** 🔥 Critical | ⚠️ High | ⚡ Medium | ℹ️ Low *(optional)*
-
-**Issue:** When I went to _____________, this thing happened.
-
-**Time to Complete:** Expected X minutes, actually took Y minutes *(optional)*
-
-**Environment Details:** *(optional)*
-- OS:
-- SDK version:
-- Device/Emulator:
-
-**Expected vs Actual Behavior:** *(optional)*
-- **Expected:** The system should...
-- **Actual:** Instead, the system...
-
-**Attempted Code snippets:** *(optional)*
-
-```javascript
-// app.js
-var spiderman = function (person) {
-  return 'Hello, ' + person;
-};
-var user = 'Peter Parker';
-console.log(spiderman(user));
+```
+Read https://github.com/chris-trag/friction-log-guide and use the full template
+at templates/friction-log-template.md to structure a friction log for {product}.
 ```
 
-**Expected Output:** *(optional)*
-```
-Hello, Peter Parker
-```
+## Further reading
 
-**Actual Output:** *(optional)*
-```
-Error: undefined is not a function
-```
-
-**Error Messages:** *(optional)*
-```
-[Paste console output or error messages here]
-```
-
-**Issue Analysis:**
-
-In this snippet of code, it seems that we're trying to do this, when really this is the intention.
-
-**TBD:**
-- What's the purpose of this code?
-- Is this the recommended approach?
-
-**Status:** 🔥 Bug | 📝 Documentation Gap | 🤔 Unclear Behavior *(optional)*
-
----
-
-### Additional Friction Points *(add as many sections as needed)*
-
-*Copy the friction section template above for each additional issue you encounter.*
-
----
-
-## Video friction logs *(optional)*
-
-*Screen recordings provide context that text cannot capture. Include links to recordings showing the friction in action.*
-
-- Onboarding to the app: [link to video screen recording]
-- Integration recap: [link to video screen recording]
-- Specific error reproduction: [link to video screen recording]
-
----
-
-## Success Criteria *(optional)*
-
-*Define what "working correctly" looks like so teams have clear targets for resolution.*
-
-- Developers should be able to complete authentication in under 5 minutes
-- Error messages should clearly indicate the next action to take
-- Documentation should match actual API behavior
-
----
-
-## Next Steps
-
-*This section should come AFTER the friction log, where you walk through the friction log with Product, Engineering, and Marketing counterparts together. From there, the goal is that several action items and follow-ups for improving the developer experience will materialize.*
-
-### Action items:
-
-- [ ] {%Name%} to work on X — **Priority:** High | **Due:** {%DATE%} *(optional)*
-- [ ] {%Name%} to investigate Y — **Status:** In Progress *(optional)*
-- [ ] {%Name%} to update documentation for Z — **Status:** Blocked *(optional)*
-
----
-
-## Appendix
-
-### Related resources: *(optional)*
-
-- [How we use friction logs to improve products at Stripe](https://dev.to/stripe/how-we-use-friction-logs-to-improve-products-at-stripe-i6n)
+- [How Stripe uses friction logs](https://mikebifulco.com/posts/how-stripe-uses-friction-logs) by Mike Bifulco
 - [An introduction to friction logging](https://developerrelations.com/developer-experience/an-introduction-to-friction-logging)
-- [Friction Logs: The Key to Unlocking Product Growth](https://www.chameleon.io/blog/friction-logs)
-
-### Scratch pad *(optional)*
-
-*Stream of consciousness while integrating. Use this space for raw notes that you'll refine and add to the sections above. Crossed-out text indicates content that has been moved to appropriate sections.*
-
----
-
-**Template Notes:**
-
-All sections marked *(optional)* can be removed or adjusted based on your needs. The core required sections are BLUF, Friction, and Next Steps. The Persona section helps contextualize friction points based on the tester's background and expectations. A Senior Android Engineer will have different expectations and encounter different friction than a Startup CTO evaluating the API for the first time. Add severity indicators, time tracking, environment details, and status tracking only if they help your team prioritize and resolve issues more effectively. This template is flexible—adapt it to match your workflow and the complexity of the integration you're documenting.
+- [frictionlog.com](https://frictionlog.com/)
