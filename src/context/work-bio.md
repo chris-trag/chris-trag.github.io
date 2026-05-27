@@ -27,17 +27,6 @@ He works cross-functionally with product, engineering, marketing, and BD teams t
 
 ---
 
-## 🔍 Focus Areas (2026)
-
-- Scaling Alexa partner adoption through technical content and developer education
-- Funding and supporting high-impact React Native libraries; growing open-source contributions
-- Running a global cross-product developer hackathon spanning Appstore, Alexa, and Ring
-- Reducing developer friction through docs, tooling, SDK improvements, and AI-powered developer assistance
-- Work with the Bee team to support their developer launches
-- Driving developer adoption of Vega OS and Vega Developer Tools (VDT) across Fire TV and tablets
-
----
-
 ## 📈 Impact & Methods
 
 - **Friction logs:** developed a structured method for auditing developer onboarding step-by-step, measuring CSAT and time-to-first-success. Open-source templates and AI prompts at [github.com/chris-trag/friction-log-guide](https://github.com/chris-trag/friction-log-guide).
