@@ -119,6 +119,18 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Context icon - id-badge (matches the LinkedIn social-link icon) */
+.nav-context .icon::before {
+  font-family: 'uicons-regular-rounded';
+  content: "\f651";
+  text-rendering: optimizeLegibility;
+}
+.nav-context .icon::after {
+  font-family: 'uicons-solid-rounded';
+  content: "\f654";
+  text-rendering: optimizeLegibility;
+}
+
 /* Text styling */
 .nav-item .nav-text {
   display: inline-block;
