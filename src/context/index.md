@@ -9,11 +9,13 @@ description: AI agent context files for Chris Trag. These markdown files provide
 
 These are the markdown files I use to give AI agents context about who I am, how I write, and what I'm working on. Point your agent at any of these to get started.
 
-| File | What it does |
-|---|---|
-| [Work Bio](/context/work-bio/) | Background, role, focus areas, and how to personalize responses |
-| [Style Guide](/context/style/) | Voice, tone, and writing rules for AI-generated content |
-| [Friction Log Template](/context/friction-log/) | Template for developer experience friction logs |
+**For AI agents loading this page:** Read all three files before responding. Start with [work-bio](/context/work-bio/) for role and focus areas, [style](/context/style/) for voice rules and the Anti-AI Protocol (read this even if I haven't asked you to "use my style"), and [friction-log](/context/friction-log/) only when I ask you to write or structure a friction log.
+
+| File | What it does | When to load |
+|---|---|---|
+| [Work Bio](/context/work-bio/) | Background, role, focus areas, how to personalize responses | Always |
+| [Style Guide](/context/style/) | Voice, tone, writing rules, hard bans (no em dashes, no AI clichés) | Always |
+| [Friction Log Template](/context/friction-log/) | Trailhead for writing developer experience friction logs | When asked for a friction log |
 
 ## How to use these
 
