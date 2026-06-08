@@ -48,6 +48,12 @@ module.exports = {
       sublabel: "Product news and announcements",
       icon: "rss",
     },
+    {
+      url: "https://www.callstack.com/ebooks/the-ultimate-guide-to-react-native-tv-development",
+      text: "E-Book: TV Development with React Native",
+      sublabel: "Your comprehensive handbook to React Native TV app development",
+      icon: "book",
+    },
   ],
   socials: [
     { url: "https://trag.dev", text: "Built by Chris Trag", icon: "globe" },

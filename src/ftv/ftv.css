@@ -256,6 +256,7 @@ body.linktree-ftv .ft-link[data-icon="youtube"]   .ft-link-icon { color: #FF0000
 body.linktree-ftv .ft-link[data-icon="discourse"] .ft-link-icon { color: #000000; }
 body.linktree-ftv .ft-link[data-icon="linkedin"]  .ft-link-icon { color: #0A66C2; }
 body.linktree-ftv .ft-link[data-icon="rss"]       .ft-link-icon { color: #FC4C02; }
+body.linktree-ftv .ft-link[data-icon="book"]      .ft-link-icon { color: var(--ftv-accent); }
 
 body.linktree-ftv .ft-link-body {
     display: flex;
@@ -431,6 +432,20 @@ body.linktree-ftv .ft-leaves-band {
         /* Cap tighter at desktop so the band doesn't dominate */
         max-height: 30vh;
     }
+    /* Desktop: 2-column grid so 8 cards land 4x2 instead of one tall column */
+    body.linktree-ftv .ft-shell {
+        max-width: 1100px;
+    }
+    body.linktree-ftv .ft-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* Corner QR (hidden on phone/desktop, shown only on TV) */
+body.linktree-ftv .ft-qr {
+    display: none;
 }
 
 /* Tall phones: keep the leaves anchored to the visual bottom edge */
@@ -457,11 +472,20 @@ html.tv {
     scroll-padding-bottom: 8vh;
 }
 
-/* Wider shell + larger gap between hero and links */
+/* TV mode: wide shell with grid of cards, room for QR in bottom-right */
 html.tv body.linktree-ftv .ft-shell {
-    max-width: 900px;
-    padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 4vw, 4rem) clamp(8rem, 22vh, 14rem);
-    gap: clamp(2rem, 4vh, 3.5rem);
+    max-width: none;
+    width: 100%;
+    padding: 5vh 5vw 5vh 5vw;
+    gap: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+/* TV grid: 4 columns of 16:9 cards (8 cards = 4x2). Scales to 3 cols on
+   narrower TVs (rare) via auto-fit. */
+html.tv body.linktree-ftv .ft-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 /* Hero scaled up for 10-foot viewing */
@@ -480,44 +504,72 @@ html.tv body.linktree-ftv .ft-tagline {
     opacity: 0.9;
 }
 
-/* Link cards: bigger type, bigger touch target, more vertical breathing room */
+/* TV cards: 16:9 tile shape, icon top-left, title + sub stacked vertically.
+   Override the phone's 3-column horizontal grid template inside each card. */
 html.tv body.linktree-ftv .ft-link {
-    grid-template-columns: 40px 1fr auto;
-    column-gap: 1.5rem;
-    padding: 1.4rem 1.75rem;
-    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 16 / 9;
+    padding: 1.5rem 1.75rem;
+    border-radius: 16px;
+    gap: 0.75rem;
+    text-align: left;
+    /* Restore from phone's grid */
+    grid-template-columns: none;
+    align-items: stretch;
 }
 
 html.tv body.linktree-ftv .ft-link-icon {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+    align-self: flex-start;
+}
+
+html.tv body.linktree-ftv .ft-link-body {
+    flex: 1;
+    justify-content: flex-end;
 }
 
 html.tv body.linktree-ftv .ft-link-text {
     font-size: 1.5rem;
+    line-height: 1.15;
 }
 
 html.tv body.linktree-ftv .ft-link-sub {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    /* Clamp sublabel to 2 lines on TV cards */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 html.tv body.linktree-ftv .ft-link-arrow {
-    font-size: 1.6rem;
+    /* Hide arrow on TV - the focused card scale + shadow signals interactivity */
+    display: none;
 }
 
-/* Focus is the new hover. D-pad-driven, must be unmissable from 8 feet. */
+/* Focus on TV: scale 1.08x with elevation shadow per Material TV guidance.
+   Outline is solid orange ring, unmissable from 8 feet. */
 html.tv body.linktree-ftv .ft-link:focus,
 html.tv body.linktree-ftv .ft-link:focus-visible {
     outline: 4px solid var(--ftv-orange);
     outline-offset: 4px;
-    transform: translateY(-2px) scale(1.015);
-    box-shadow: var(--ftv-card-shadow-hover);
+    transform: scale(1.08);
+    z-index: 10;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5),
+                0 4px 8px rgba(0, 0, 0, 0.3);
     border-color: rgba(20, 29, 39, 0.18);
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 220ms ease,
+                outline-offset 200ms ease;
 }
 
-/* Hover is meaningless on TV, but keep parity in case Silk surfaces a cursor */
 html.tv body.linktree-ftv .ft-link:hover {
-    transform: translateY(-2px) scale(1.015);
+    transform: scale(1.08);
+    z-index: 10;
 }
 
 /* Hero mark + footer link also get visible focus rings */
@@ -545,7 +597,76 @@ html.tv body.linktree-ftv .ft-mark-link:hover {
     animation: none;
 }
 
-/* Leaves: cap tighter on TV so they don't dominate the focus area */
+/* Leaves: cap tighter on TV so they don't compete with the grid */
 html.tv body.linktree-ftv .ft-leaves-band {
-    max-height: 26vh;
+    max-height: 18vh;
+    opacity: 0.55;
+}
+
+/* Hero is more compact on TV - cards are the focus */
+html.tv body.linktree-ftv .ft-hero {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1.5rem;
+    padding-top: 0;
+}
+
+html.tv body.linktree-ftv .ft-mark {
+    width: 96px;
+    height: 96px;
+}
+
+html.tv body.linktree-ftv .ft-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    display: block;
+}
+
+html.tv body.linktree-ftv .ft-title span {
+    display: inline;
+}
+
+/* Add a single space between every pair of inline spans - title reads as
+   one phrase on TV, not stacked. Works for any title length. */
+html.tv body.linktree-ftv .ft-title span:not(:last-child)::after {
+    content: " ";
+}
+
+html.tv body.linktree-ftv .ft-tagline {
+    font-size: 1.125rem;
+    margin-left: auto;
+    max-width: 32ch;
+    text-align: right;
+}
+
+/* Corner QR: fixed bottom-right, white panel with caption */
+html.tv body.linktree-ftv .ft-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    background: var(--ftv-surface);
+    color: var(--ftv-text-on-light);
+    padding: 0.875rem 0.875rem 1rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+html.tv body.linktree-ftv .ft-qr-caption {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ftv-text-on-light);
+    order: 2;
+}
+
+html.tv body.linktree-ftv .ft-qr img {
+    display: block;
+    width: 180px;
+    height: 180px;
+    order: 1;
 }

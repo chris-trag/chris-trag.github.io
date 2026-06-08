@@ -66,12 +66,13 @@
     gtag('config', 'G-9JFF8H9Z1P');
     </script>
 
-    {# UTM block appended to every outbound link so GA4 attributes QR-driven traffic. #}
-    {% set utm = "?utm_source=qr-card&utm_medium=qr&utm_campaign=irl" %}
+    {# UTM params appended to every outbound link so GA4 attributes QR-driven traffic.
+       Joined with `?` or `&` per URL - some destinations carry their own query string. #}
+    {% set utm_params = "utm_source=qr-card&utm_medium=qr&utm_campaign=irl" %}
 
     <main class="ft-shell">
         <header class="ft-hero">
-            <a class="ft-mark-link" href="https://amazon.com/firetv/{{ utm }}" rel="noopener" target="_blank" aria-label="Fire TV at amazon.com">
+            <a class="ft-mark-link" href="https://amazon.com/firetv/?{{ utm_params }}" rel="noopener" target="_blank" aria-label="Fire TV at amazon.com">
                 <img class="ft-mark" src="/ftv/img/firetv-logo-orange.svg" alt="Fire TV" width="120" height="120">
             </a>
             <h1 class="ft-title">
@@ -82,7 +83,7 @@
 
         <nav class="ft-links" aria-label="Resources">
             {% for link in ftv.links %}
-                <a href="{{ link.url }}{{ utm }}" class="ft-link" data-icon="{{ link.icon }}" rel="noopener" target="_blank">
+                <a href="{{ link.url }}{% if '?' in link.url %}&{% else %}?{% endif %}{{ utm_params }}" class="ft-link" data-icon="{{ link.icon }}" rel="noopener" target="_blank">
                     <span class="ft-link-icon">{% include "icons/" + link.icon + ".njk" ignore missing %}</span>
                     <span class="ft-link-body">
                         <span class="ft-link-text">{{ link.text }}</span>
@@ -94,20 +95,60 @@
         </nav>
 
         <footer class="ft-foot">
-            <p class="ft-built-by">Built by <a href="https://trag.dev/{{ utm }}">Chris Trag</a> for Amazon Developers</p>
+            <p class="ft-built-by">Built by <a href="https://trag.dev/?{{ utm_params }}">Chris Trag</a> for Amazon Developers</p>
         </footer>
     </main>
 
     {# Footer leaves graphic - full-width band centered at bottom of viewport #}
     <div class="ft-leaves-band" aria-hidden="true"></div>
 
-    {# TV-only: autofocus first link card so D-pad lands "in" the nav, not
-       on body. No-op on non-TV (the html.tv class is the gate). #}
+    {# TV-only: corner QR overlay. Lets attendees transfer page to phone
+       without touching the remote. Hidden on phone/desktop via CSS. #}
+    <aside class="ft-qr" aria-label="QR code to open this page on phone">
+        <span class="ft-qr-caption">Scan to Bookmark</span>
+        <img src="/ftv/img/qr-corner.svg" alt="" width="180" height="180">
+    </aside>
+
+    {# TV-only: autofocus + cardinal D-pad spatial navigation.
+       Arrow keys move focus to the spatially-nearest focusable element,
+       not DOM order. Works with the grid layout in CSS. #}
     <script>
         if (document.documentElement.classList.contains("tv")) {
             document.addEventListener("DOMContentLoaded", function () {
                 var first = document.querySelector(".ft-link");
                 if (first) first.focus({ preventScroll: true });
+
+                var KEYS = { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right" };
+                document.addEventListener("keydown", function (e) {
+                    var dir = KEYS[e.key];
+                    if (!dir) return;
+                    var active = document.activeElement;
+                    if (!active || active === document.body) return;
+                    var nodes = Array.prototype.slice.call(
+                        document.querySelectorAll(".ft-link, .ft-mark-link, .ft-foot a")
+                    );
+                    if (nodes.indexOf(active) === -1) return;
+                    var a = active.getBoundingClientRect();
+                    var ax = a.left + a.width / 2, ay = a.top + a.height / 2;
+                    var best = null, bestScore = Infinity;
+                    nodes.forEach(function (n) {
+                        if (n === active) return;
+                        var b = n.getBoundingClientRect();
+                        var bx = b.left + b.width / 2, by = b.top + b.height / 2;
+                        var dx = bx - ax, dy = by - ay;
+                        // Reject candidates not in the requested direction
+                        if (dir === "up" && dy >= -8) return;
+                        if (dir === "down" && dy <= 8) return;
+                        if (dir === "left" && dx >= -8) return;
+                        if (dir === "right" && dx <= 8) return;
+                        // Score: primary axis distance + perpendicular penalty
+                        var primary = (dir === "up" || dir === "down") ? Math.abs(dy) : Math.abs(dx);
+                        var perp = (dir === "up" || dir === "down") ? Math.abs(dx) : Math.abs(dy);
+                        var score = primary + perp * 2;
+                        if (score < bestScore) { bestScore = score; best = n; }
+                    });
+                    if (best) { e.preventDefault(); best.focus(); }
+                });
             });
         }
     </script>
