@@ -21,13 +21,13 @@ module.exports = {
     {
       url: "https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ",
       text: "AmazonAppDev on YouTube",
-      sublabel: "Tutorials, talks, demos",
+      sublabel: "Tutorials, talks, workshops, interviews, and demos",
       icon: "youtube",
     },
     {
       url: "https://dev.to/amazonappdev",
       text: "Technical Articles",
-      sublabel: "Our team building in public",
+      sublabel: "Our developers building in public",
       icon: "devto",
     },
     {
