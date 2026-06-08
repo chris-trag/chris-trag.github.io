@@ -521,7 +521,7 @@ html.tv body.linktree-ftv .ft-hero {
 html.tv body.linktree-ftv .ft-mark-link {
     -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
-    margin-right: 0.75em;
+    margin-right: 0.4em;
 }
 
 html.tv body.linktree-ftv .ft-mark {
