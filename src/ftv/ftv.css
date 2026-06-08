@@ -484,11 +484,10 @@ body.linktree-ftv .ft-qr {
     html.tv { font-size: 22px; }
 }
 
-/* Body uses % for safe-area inset. Top padding clears Silk's browser chrome
-   (URL bar + nav buttons) which sits ~120-140px tall on Fire TV at 1080p.
-   At root font 22px (1920+), 8em = 176px clearance. */
+/* Body uses minimal top padding to clear Silk's URL bar (~80px) without
+   wasting vertical space. At root font 22px (1920+), 4em = 88px clearance. */
 html.tv body.linktree-ftv {
-    padding: 8em 0 0 0;
+    padding: 4em 0 0 0;
     margin: 0;
 }
 
@@ -504,7 +503,8 @@ html.tv body.linktree-ftv .ft-shell {
     flex-direction: column;
 }
 
-/* Compact horizontal hero: mark + title + tagline in one row. */
+/* Compact horizontal hero: mark + title in one row. Tagline hidden in TV
+   mode to claw back vertical space - the cards explain the page. */
 html.tv body.linktree-ftv .ft-hero {
     display: -webkit-flex;
     display: flex;
@@ -513,28 +513,29 @@ html.tv body.linktree-ftv .ft-hero {
     -webkit-align-items: center;
     align-items: center;
     text-align: left;
-    padding: 0 0 1em 0;
-    margin-bottom: 1.5em;
+    padding: 0;
+    margin-bottom: 0.75em;
 }
 
 html.tv body.linktree-ftv .ft-mark-link {
     -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
-    margin-right: 1em;
+    margin-right: 0.75em;
 }
 
 html.tv body.linktree-ftv .ft-mark {
-    width: 4em;
-    height: 4em;
+    width: 2.75em;
+    height: 2.75em;
     border-radius: 22%;
 }
 
 html.tv body.linktree-ftv .ft-title {
-    font-size: 2.25em;
+    font-size: 1.75em;
     display: block;
     -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
     margin: 0;
+    line-height: 1;
 }
 
 html.tv body.linktree-ftv .ft-title span {
@@ -545,12 +546,9 @@ html.tv body.linktree-ftv .ft-title span:not(:last-child)::after {
     content: " ";
 }
 
+/* Tagline hidden on TV - reclaims vertical space for cards */
 html.tv body.linktree-ftv .ft-tagline {
-    font-size: 0.9em;
-    margin: 0 0 0 auto;
-    max-width: 28%;
-    text-align: right;
-    opacity: 0.85;
+    display: none;
 }
 
 /* TV grid: 4 cards per row using flexbox row + wrap. The base .ft-links
@@ -581,11 +579,11 @@ html.tv body.linktree-ftv .ft-link {
     width: 23.5%;
     height: 0;
     padding: 0;                    /* Reset phone padding which would break the aspect-ratio hack */
-    /* 4:3 aspect ratio gives cards more vertical room for icon + title + sub.
-       Math: 75% of 23.5% column width = 17.6% padding-bottom. */
-    padding-bottom: 17.6%;
+    /* 16:9 aspect ratio reclaims vertical space (4:3 was too tall and
+       pushed bottom row off screen). Math: 56.25% of 23.5% = 13.22%. */
+    padding-bottom: 13.22%;
     margin-right: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 1.5%;
     background: var(--ftv-surface);
     border-radius: 14px;
     overflow: hidden;
