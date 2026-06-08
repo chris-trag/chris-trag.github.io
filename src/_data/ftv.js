@@ -50,7 +50,7 @@ module.exports = {
     },
     {
       url: "https://www.callstack.com/ebooks/the-ultimate-guide-to-react-native-tv-development",
-      text: "E-Book: TV Development with React Native",
+      text: "E-Book: TV Apps with React Native",
       sublabel: "Your comprehensive handbook to React Native TV app development",
       icon: "book",
     },

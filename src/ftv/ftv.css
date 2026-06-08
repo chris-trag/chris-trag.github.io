@@ -484,10 +484,10 @@ body.linktree-ftv .ft-qr {
     html.tv { font-size: 22px; }
 }
 
-/* Body uses minimal top padding to clear Silk's URL bar (~80px) without
-   wasting vertical space. At root font 22px (1920+), 4em = 88px clearance. */
+/* Body top padding clears Silk's URL bar with ~1em of breathing room
+   above the title. At root font 22px (1920+), 5em = 110px. */
 html.tv body.linktree-ftv {
-    padding: 4em 0 0 0;
+    padding: 5em 0 0 0;
     margin: 0;
 }
 
