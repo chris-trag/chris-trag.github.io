@@ -455,218 +455,270 @@ body.linktree-ftv .ft-qr {
 
 /* =============================================================
    TV mode (html.tv) - Silk on Fire TV, D-pad navigation, 10-foot view.
-   Set by an inline UA-detect script in linktree.njk. All overrides
-   are scoped here so the existing phone/desktop layout is untouched.
+
+   Silk on Fire TV is a custom Chromium fork. Per Amazon's docs the
+   guaranteed-supported CSS primitives are: media queries, 2D transform,
+   transitions, percentages, em units, flexbox. Modern features like
+   `aspect-ratio`, `clamp()`, CSS Grid, `vw`/`vh`, and `dvh`/`svh` are
+   undocumented and behave inconsistently on Silk - so this entire block
+   uses only Silk-safe primitives. Everything is sized in % or em relative
+   to the viewport / root font size, never fixed pixels.
+
+   Non-TV browsers (phone, tablet, desktop) ignore everything in this
+   block because they never get the html.tv class - their layout above
+   continues to use modern CSS unchanged.
    ============================================================= */
+
+/* Set the root font-size against viewport so everything em-derived scales
+   with TV resolution. 720p (1280x720) and 1080p (1920x1080) both flow. */
+@media screen and (min-width: 960px) {
+    html.tv { font-size: 16px; }
+}
+@media screen and (min-width: 1280px) {
+    html.tv { font-size: 18px; }
+}
+@media screen and (min-width: 1600px) {
+    html.tv { font-size: 20px; }
+}
+@media screen and (min-width: 1920px) {
+    html.tv { font-size: 22px; }
+}
+
+/* Body uses % for safe-area inset. 5% on each axis = ~96x54px of overscan
+   protection at 1920x1080. */
 html.tv body.linktree-ftv {
-    /* TV safe area: even modern Fire TVs are fine, but a 4% inset reads
-       cleaner aesthetically and survives any TV that overscans. */
-    padding: 4vh 5vw;
-    /* Smoother scroll when D-pad jumps focus across cards */
-    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
 }
 
-/* Scroll-padding so the focused card never jams against viewport edges */
-html.tv {
-    scroll-padding-top: 6vh;
-    scroll-padding-bottom: 8vh;
-}
-
-/* TV mode: wide shell with grid of cards, room for QR in bottom-right */
+/* Shell: 90% wide, centered, flex column. Uses em padding (root-relative)
+   instead of vh/vw or clamp(). */
 html.tv body.linktree-ftv .ft-shell {
+    width: 90%;
     max-width: none;
-    width: 100%;
-    padding: 5vh 5vw 5vh 5vw;
-    gap: clamp(1.5rem, 3vh, 2.5rem);
-}
-
-/* TV grid: 4 columns of 16:9 cards (8 cards = 4x2). Scales to 3 cols on
-   narrower TVs (rare) via auto-fit. */
-html.tv body.linktree-ftv .ft-links {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(1rem, 1.5vw, 1.5rem);
-}
-
-/* Hero scaled up for 10-foot viewing */
-html.tv body.linktree-ftv .ft-mark {
-    width: 160px;
-    height: 160px;
-}
-
-html.tv body.linktree-ftv .ft-title {
-    font-size: clamp(4rem, 8vw, 6.5rem);
-}
-
-html.tv body.linktree-ftv .ft-tagline {
-    font-size: 1.5rem;
-    max-width: 36ch;
-    opacity: 0.9;
-}
-
-/* TV cards: 16:9 tile shape, icon top-left, title + sub stacked vertically.
-   Override the phone's 3-column horizontal grid template inside each card. */
-html.tv body.linktree-ftv .ft-link {
+    margin: 0 auto;
+    padding: 2em 0;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
-    aspect-ratio: 16 / 9;
-    padding: 1.5rem 1.75rem;
-    border-radius: 16px;
-    gap: 0.75rem;
-    text-align: left;
-    /* Restore from phone's grid */
-    grid-template-columns: none;
-    align-items: stretch;
 }
 
-html.tv body.linktree-ftv .ft-link-icon {
-    width: 48px;
-    height: 48px;
-    flex: 0 0 auto;
-    align-self: flex-start;
-}
-
-html.tv body.linktree-ftv .ft-link-body {
-    flex: 1;
-    justify-content: flex-end;
-}
-
-html.tv body.linktree-ftv .ft-link-text {
-    font-size: 1.5rem;
-    line-height: 1.15;
-}
-
-html.tv body.linktree-ftv .ft-link-sub {
-    font-size: 0.95rem;
-    line-height: 1.3;
-    /* Clamp sublabel to 2 lines on TV cards */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-html.tv body.linktree-ftv .ft-link-arrow {
-    /* Hide arrow on TV - the focused card scale + shadow signals interactivity */
-    display: none;
-}
-
-/* Focus on TV: scale 1.08x with elevation shadow per Material TV guidance.
-   Outline is solid orange ring, unmissable from 8 feet. */
-html.tv body.linktree-ftv .ft-link:focus,
-html.tv body.linktree-ftv .ft-link:focus-visible {
-    outline: 4px solid var(--ftv-orange);
-    outline-offset: 4px;
-    transform: scale(1.08);
-    z-index: 10;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5),
-                0 4px 8px rgba(0, 0, 0, 0.3);
-    border-color: rgba(20, 29, 39, 0.18);
-    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
-                box-shadow 220ms ease,
-                outline-offset 200ms ease;
-}
-
-html.tv body.linktree-ftv .ft-link:hover {
-    transform: scale(1.08);
-    z-index: 10;
-}
-
-/* Hero mark + footer link also get visible focus rings */
-html.tv body.linktree-ftv .ft-mark-link:focus,
-html.tv body.linktree-ftv .ft-mark-link:focus-visible {
-    outline: 4px solid var(--ftv-accent-light);
-    outline-offset: 6px;
-}
-
-html.tv body.linktree-ftv .ft-foot a:focus,
-html.tv body.linktree-ftv .ft-foot a:focus-visible {
-    outline: 3px solid var(--ftv-accent-light);
-    outline-offset: 4px;
-    color: var(--ftv-orange);
-}
-
-/* Footer line readable at 8ft */
-html.tv body.linktree-ftv .ft-foot {
-    font-size: 1.05rem;
-}
-
-/* Disable the wiggle - it's hover-driven, no hover on TV, and the focus
-   ring already signals interactivity */
-html.tv body.linktree-ftv .ft-mark-link:hover {
-    animation: none;
-}
-
-/* Leaves: cap tighter on TV so they don't compete with the grid */
-html.tv body.linktree-ftv .ft-leaves-band {
-    max-height: 18vh;
-    opacity: 0.55;
-}
-
-/* Hero is more compact on TV - cards are the focus */
+/* Compact horizontal hero: mark + title + tagline in one row. */
 html.tv body.linktree-ftv .ft-hero {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-align-items: center;
     align-items: center;
     text-align: left;
-    gap: 1.5rem;
-    padding-top: 0;
+    padding: 0 0 1em 0;
+    margin-bottom: 1.5em;
+}
+
+html.tv body.linktree-ftv .ft-mark-link {
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    margin-right: 1em;
 }
 
 html.tv body.linktree-ftv .ft-mark {
-    width: 96px;
-    height: 96px;
+    width: 4em;
+    height: 4em;
+    border-radius: 22%;
 }
 
 html.tv body.linktree-ftv .ft-title {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-size: 2.25em;
     display: block;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    margin: 0;
 }
 
 html.tv body.linktree-ftv .ft-title span {
     display: inline;
 }
 
-/* Add a single space between every pair of inline spans - title reads as
-   one phrase on TV, not stacked. Works for any title length. */
 html.tv body.linktree-ftv .ft-title span:not(:last-child)::after {
     content: " ";
 }
 
 html.tv body.linktree-ftv .ft-tagline {
-    font-size: 1.125rem;
-    margin-left: auto;
-    max-width: 32ch;
+    font-size: 0.9em;
+    margin: 0 0 0 auto;
+    max-width: 28%;
     text-align: right;
+    opacity: 0.85;
 }
 
-/* Corner QR: fixed bottom-right, white panel with caption */
-html.tv body.linktree-ftv .ft-qr {
+/* TV grid: 4 cards per row using flexbox row + wrap. The base .ft-links
+   uses flex-direction: column, so we must explicitly set row here. */
+html.tv body.linktree-ftv .ft-links {
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+/* Each card is 23.5% wide (4 cards x 23.5% = 94% + 3 x 2% gutters = 100%).
+   Aspect ratio for 16:9 via padding-bottom hack (Silk doesn't support
+   aspect-ratio CSS property reliably).
+
+   Trick: padding-bottom: 56.25% gives 16:9 relative to width.
+   Content is positioned absolutely inside. */
+html.tv body.linktree-ftv .ft-link {
+    display: block;
+    position: relative;
+    width: 23.5%;
+    height: 0;
+    padding: 0;                    /* Reset phone padding which would break the aspect-ratio hack */
+    padding-bottom: 13.22%;        /* 56.25% of 23.5% = 16:9 within the column */
+    margin-right: 2%;
+    margin-bottom: 2%;
+    background: var(--ftv-surface);
+    border-radius: 14px;
+    overflow: hidden;
+    /* Reset properties from phone-mode card */
+    grid-template-columns: none;
+    align-items: stretch;
+    text-align: left;
+    border: 1px solid rgba(20, 29, 39, 0.08);
+    -webkit-transition: -webkit-transform 200ms ease, box-shadow 220ms ease;
+    transition: transform 200ms ease, box-shadow 220ms ease;
+}
+
+/* Drop right-margin on every 4th card so the row ends flush */
+html.tv body.linktree-ftv .ft-link:nth-child(4n) {
+    margin-right: 0;
+}
+
+/* Inner content lives in an absolutely-positioned wrapper that fills the
+   padding-bottom box. Without this, content would sit on top of the box
+   without filling it. */
+html.tv body.linktree-ftv .ft-link > * {
+    position: absolute;
+}
+
+html.tv body.linktree-ftv .ft-link-icon {
+    top: 1em;
+    left: 1em;
+    width: 2em;
+    height: 2em;
+    -webkit-flex: none;
+    flex: none;
+}
+
+html.tv body.linktree-ftv .ft-link-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+html.tv body.linktree-ftv .ft-link-body {
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    top: auto;
+    display: block;
+}
+
+html.tv body.linktree-ftv .ft-link-text {
+    font-size: 1.1em;
+    line-height: 1.15;
+    color: var(--ftv-text-on-light);
+    font-weight: 700;
+    margin-bottom: 0.25em;
+    display: block;
+}
+
+html.tv body.linktree-ftv .ft-link-sub {
+    font-size: 0.78em;
+    line-height: 1.3;
+    color: rgba(20, 29, 39, 0.62);
+    display: block;
+    /* Limit to 1-2 lines visually via overflow */
+    max-height: 2.6em;
+    overflow: hidden;
+}
+
+html.tv body.linktree-ftv .ft-link-arrow {
+    display: none;
+}
+
+/* Focus state: 2D transform (Silk-supported) + outline. */
+html.tv body.linktree-ftv .ft-link:focus,
+html.tv body.linktree-ftv .ft-link:focus-visible {
+    outline: 4px solid var(--ftv-orange);
+    outline-offset: 4px;
+    -webkit-transform: scale(1.06);
+    transform: scale(1.06);
+    z-index: 10;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* Hero mark focus: olive-light ring */
+html.tv body.linktree-ftv .ft-mark-link:focus,
+html.tv body.linktree-ftv .ft-mark-link:focus-visible {
+    outline: 4px solid var(--ftv-accent-light);
+    outline-offset: 6px;
+}
+
+/* Disable hover wiggle on TV */
+html.tv body.linktree-ftv .ft-mark-link:hover {
+    -webkit-animation: none;
+    animation: none;
+}
+
+/* Leaves: dialed back so they don't compete with grid. Use % units. */
+html.tv body.linktree-ftv .ft-leaves-band {
+    max-height: 20%;
+    opacity: 0.5;
+}
+
+/* Footer */
+html.tv body.linktree-ftv .ft-foot {
+    font-size: 0.85em;
+    margin-top: 1em;
+}
+
+/* Corner QR: positioned absolutely (Silk supports position:fixed but use
+   absolute for safer scroll-anchored behavior). Sized in em so it scales. */
+html.tv body.linktree-ftv .ft-qr {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
+    -webkit-align-items: center;
     align-items: center;
     position: fixed;
-    bottom: 5vh;
-    right: 5vw;
+    bottom: 3%;
+    right: 3%;
     background: var(--ftv-surface);
     color: var(--ftv-text-on-light);
-    padding: 0.875rem 0.875rem 1rem;
-    border-radius: 14px;
+    padding: 0.6em 0.6em 0.8em;
+    border-radius: 12px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
-    gap: 0.5rem;
     z-index: 20;
 }
 
 html.tv body.linktree-ftv .ft-qr-caption {
-    font-size: 0.875rem;
+    font-size: 0.75em;
     font-weight: 700;
-    letter-spacing: -0.01em;
     color: var(--ftv-text-on-light);
-    order: 2;
+    margin-top: 0.4em;
 }
 
 html.tv body.linktree-ftv .ft-qr img {
     display: block;
-    width: 180px;
-    height: 180px;
-    order: 1;
+    width: 7em;
+    height: 7em;
 }
