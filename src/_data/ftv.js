@@ -21,7 +21,7 @@ module.exports = {
     {
       url: "https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ",
       text: "AmazonAppDev on YouTube",
-      sublabel: "Tutorials, talks, workshops, interviews, and demos",
+      sublabel: "Tutorials, talks, workshops, and interviews",
       icon: "youtube",
     },
     {
