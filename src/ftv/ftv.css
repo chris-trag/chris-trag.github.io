@@ -485,19 +485,19 @@ body.linktree-ftv .ft-qr {
 }
 
 /* Body uses % for safe-area inset. 5% on each axis = ~96x54px of overscan
-   protection at 1920x1080. */
+   protection at 1920x1080. Top padding clears Silk's browser chrome
+   (URL bar + nav buttons) which sits ~80-100px tall at the top. */
 html.tv body.linktree-ftv {
-    padding: 0;
+    padding: 6em 0 0 0;
     margin: 0;
 }
 
-/* Shell: 90% wide, centered, flex column. Uses em padding (root-relative)
-   instead of vh/vw or clamp(). */
+/* Shell: 90% wide, centered, flex column. */
 html.tv body.linktree-ftv .ft-shell {
     width: 90%;
     max-width: none;
     margin: 0 auto;
-    padding: 2em 0;
+    padding: 0 0 2em 0;
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
@@ -581,7 +581,9 @@ html.tv body.linktree-ftv .ft-link {
     width: 23.5%;
     height: 0;
     padding: 0;                    /* Reset phone padding which would break the aspect-ratio hack */
-    padding-bottom: 13.22%;        /* 56.25% of 23.5% = 16:9 within the column */
+    /* 4:3 aspect ratio gives cards more vertical room for icon + title + sub.
+       Math: 75% of 23.5% column width = 17.6% padding-bottom. */
+    padding-bottom: 17.6%;
     margin-right: 2%;
     margin-bottom: 2%;
     background: var(--ftv-surface);
@@ -608,9 +610,12 @@ html.tv body.linktree-ftv .ft-link > * {
     position: absolute;
 }
 
+/* Icon sits in top-right of the card so the title can flow full-width
+   from the left without wrapping under the icon. */
 html.tv body.linktree-ftv .ft-link-icon {
     top: 1em;
-    left: 1em;
+    right: 1em;
+    left: auto;
     width: 2em;
     height: 2em;
     -webkit-flex: none;
@@ -624,10 +629,10 @@ html.tv body.linktree-ftv .ft-link-icon svg {
 }
 
 html.tv body.linktree-ftv .ft-link-body {
+    top: 1em;
     bottom: 1em;
     left: 1em;
-    right: 1em;
-    top: auto;
+    right: 4em;        /* Reserve space on the right for the icon */
     display: block;
 }
 
