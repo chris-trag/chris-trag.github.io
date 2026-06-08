@@ -44,7 +44,7 @@ module.exports = {
     },
     {
       url: "https://developer.amazon.com/apps-and-games/subscribe-newsletter",
-      text: "AmazonAppDev Newsletter",
+      text: "Developer Newsletter",
       sublabel: "News, product releases, and updates",
       icon: "newsletter",
     },
