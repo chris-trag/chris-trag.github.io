@@ -33,7 +33,7 @@ module.exports = {
     {
       url: "https://community.amazondeveloper.com/c/fire-apps/17",
       text: "Developer Community",
-      sublabel: "Forums for Fire TV, Alexa, and Ring developers",
+      sublabel: "Open discussions for Fire TV, Alexa, and Ring developers",
       icon: "discourse",
     },
     {
@@ -43,14 +43,14 @@ module.exports = {
       icon: "linkedin",
     },
     {
-      url: "https://developer.amazon.com/apps-and-games/blogs",
-      text: "Amazon Apps & Games Blog",
-      sublabel: "Product news and announcements",
-      icon: "rss",
+      url: "https://developer.amazon.com/apps-and-games/subscribe-newsletter",
+      text: "AmazonAppDev Newsletter",
+      sublabel: "News, product releases, and updates",
+      icon: "newsletter",
     },
     {
       url: "https://www.callstack.com/ebooks/the-ultimate-guide-to-react-native-tv-development",
-      text: "E-Book: TV Apps with React Native",
+      text: "E-Book: TV Apps w/ React Native",
       sublabel: "Your comprehensive handbook to React Native TV app development",
       icon: "book",
     },

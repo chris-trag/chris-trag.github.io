@@ -257,6 +257,7 @@ body.linktree-ftv .ft-link[data-icon="discourse"] .ft-link-icon { color: #000000
 body.linktree-ftv .ft-link[data-icon="linkedin"]  .ft-link-icon { color: #0A66C2; }
 body.linktree-ftv .ft-link[data-icon="rss"]       .ft-link-icon { color: #FC4C02; }
 body.linktree-ftv .ft-link[data-icon="book"]      .ft-link-icon { color: var(--ftv-accent); }
+body.linktree-ftv .ft-link[data-icon="newsletter"].ft-link-icon { color: var(--ftv-accent); }
 
 body.linktree-ftv .ft-link-body {
     display: flex;
