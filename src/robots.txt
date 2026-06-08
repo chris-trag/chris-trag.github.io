@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /ftv/
 
 Sitemap: https://trag.dev/sitemap.xml

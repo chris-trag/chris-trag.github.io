@@ -87,6 +87,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
+
+  // Per-event /ftv linktree assets (CSS, fonts, images)
+  eleventyConfig.addPassthroughCopy("src/ftv/ftv.css");
+  eleventyConfig.addPassthroughCopy("src/ftv/fonts");
+  eleventyConfig.addPassthroughCopy("src/ftv/img");
+
+  // Watch passthrough paths so CSS/SVG/icon edits trigger live reload.
+  // Without these, Eleventy only watches templates and you'd need a manual
+  // server restart for every CSS or asset change.
+  eleventyConfig.addWatchTarget("./src/ftv/ftv.css");
+  eleventyConfig.addWatchTarget("./src/ftv/img/");
+  eleventyConfig.addWatchTarget("./src/_includes/icons/");
   
   return {
     dir: {

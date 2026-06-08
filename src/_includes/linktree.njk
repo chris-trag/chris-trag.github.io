@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="generator" content="trag.dev-template (github.com/chris-trag/chris-trag.github.io)">
+
+    <title>{{ title }}</title>
+
+    {# Booth resource page; not for general indexing. #}
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+
+    <meta name="description" content="{% if description %}{{ description }}{% endif %}">
+    <meta name="theme-color" content="#141D27">
+
+    {# OpenGraph + Twitter for QR-share / Slack unfurls #}
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trag.dev{{ page.url }}">
+    <meta property="og:image" content="{% if og_image %}{{ og_image }}{% else %}https://trag.dev/ftv/img/og-card.png{% endif %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Fire TV Developer Resources">
+    <meta property="og:description" content="{% if description %}{{ description }}{% endif %}">
+    <meta property="og:site_name" content="trag.dev">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@chris_trag">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{% if description %}{{ description }}{% endif %}">
+    <meta name="twitter:image" content="{% if og_image %}{{ og_image }}{% else %}https://trag.dev/ftv/img/og-card.png{% endif %}">
+
+    {# Favicons - per-event Fire TV mark, not the trag.dev mark.
+       Orange-bg vector SVG is 3KB pure-vector vs the old 32KB SVG that
+       embedded a base64 PNG. Same visual, 90%+ smaller. #}
+    <link rel="icon" href="/ftv/img/firetv-logo-orange.svg" type="image/svg+xml">
+    <link rel="icon" href="/ftv/img/firetv-favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/ftv/img/firetv-favicon-180.png">
+
+    <link rel="canonical" href="https://trag.dev{{ page.url }}">
+
+    <link rel="stylesheet" href="/ftv/ftv.css">
+
+    {# Detect Silk-on-Fire-TV before first paint so .tv overrides apply
+       cleanly with no flash. Match: Silk/<ver> + AFT* device id (per
+       https://docs.aws.amazon.com/silk/latest/developerguide/user-agent.html).
+       AFT* covers all current Fire TV devices (AFTM/AFTS/AFTSS/AFTANL/AFTKA/etc.)
+       and excludes Fire tablets (KFFOWI-style ids). #}
+    <script>
+        (function () {
+            var ua = navigator.userAgent || "";
+            if (/Silk\//.test(ua) && /\bAFT[A-Z0-9]+/.test(ua)) {
+                document.documentElement.classList.add("tv");
+            }
+        })();
+    </script>
+</head>
+<body class="linktree linktree-ftv">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JFF8H9Z1P"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9JFF8H9Z1P');
+    </script>
+
+    {# UTM block appended to every outbound link so GA4 attributes QR-driven traffic. #}
+    {% set utm = "?utm_source=qr-card&utm_medium=qr&utm_campaign=irl" %}
+
+    <main class="ft-shell">
+        <header class="ft-hero">
+            <a class="ft-mark-link" href="https://amazon.com/firetv/{{ utm }}" rel="noopener" target="_blank" aria-label="Fire TV at amazon.com">
+                <img class="ft-mark" src="/ftv/img/firetv-logo-orange.svg" alt="Fire TV" width="120" height="120">
+            </a>
+            <h1 class="ft-title">
+                {% for line in ftv.hero.title %}<span>{{ line }}</span>{% endfor %}
+            </h1>
+            <p class="ft-tagline">{{ ftv.hero.tagline }}</p>
+        </header>
+
+        <nav class="ft-links" aria-label="Resources">
+            {% for link in ftv.links %}
+                <a href="{{ link.url }}{{ utm }}" class="ft-link" data-icon="{{ link.icon }}" rel="noopener" target="_blank">
+                    <span class="ft-link-icon">{% include "icons/" + link.icon + ".njk" ignore missing %}</span>
+                    <span class="ft-link-body">
+                        <span class="ft-link-text">{{ link.text }}</span>
+                        {% if link.sublabel %}<span class="ft-link-sub">{{ link.sublabel }}</span>{% endif %}
+                    </span>
+                    <span class="ft-link-arrow" aria-hidden="true">&#8599;</span>
+                </a>
+            {% endfor %}
+        </nav>
+
+        <footer class="ft-foot">
+            <p class="ft-built-by">Built by <a href="https://trag.dev/{{ utm }}">Chris Trag</a> for Amazon Developers</p>
+        </footer>
+    </main>
+
+    {# Footer leaves graphic - full-width band centered at bottom of viewport #}
+    <div class="ft-leaves-band" aria-hidden="true"></div>
+
+    {# TV-only: autofocus first link card so D-pad lands "in" the nav, not
+       on body. No-op on non-TV (the html.tv class is the gate). #}
+    <script>
+        if (document.documentElement.classList.contains("tv")) {
+            document.addEventListener("DOMContentLoaded", function () {
+                var first = document.querySelector(".ft-link");
+                if (first) first.focus({ preventScroll: true });
+            });
+        }
+    </script>
+</body>
+</html>

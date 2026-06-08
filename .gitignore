@@ -30,3 +30,10 @@ yarn-error.log*
 *.csv
 lighthouse-*.html
 *.report.html
+
+# Local scratch / staging folders (never commit machine-local paths or notes)
+scratch/
+.scratch/
+notes/
+*.local.md
+PROJECT-STATE.md

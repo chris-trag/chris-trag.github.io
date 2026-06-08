@@ -1,0 +1,551 @@
+/* =============================================================
+   Fire TV developer resources linktree theme.
+   Scoped under body.linktree-ftv so nothing leaks into the rest
+   of the site. Cream-on-navy with one orange accent.
+   ============================================================= */
+
+/* ---- Self-hosted display font -------------------------------- */
+@font-face {
+    font-family: "Ember Modern Display Standard";
+    src: url("/ftv/fonts/EmberModernDisplayStd-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Ember Modern Display Standard";
+    src: url("/ftv/fonts/EmberModernDisplayStd-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---- Tokens (scoped) ----------------------------------------- */
+body.linktree-ftv {
+    --ftv-bg: #141D27;
+    --ftv-surface: #F4F2EE;
+    --ftv-accent: #667425;
+    --ftv-accent-light: #C6C880;
+    --ftv-orange: #FC4C02;
+    --ftv-text-on-dark: #F4F2EE;
+    --ftv-text-on-light: #141D27;
+
+    /* Derived */
+    --ftv-hairline: rgba(244, 242, 238, 0.08);
+    --ftv-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+                       0 6px 16px rgba(0, 0, 0, 0.28),
+                       0 1px 2px rgba(0, 0, 0, 0.18);
+    --ftv-card-shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+                             0 14px 32px rgba(0, 0, 0, 0.42),
+                             0 2px 4px rgba(0, 0, 0, 0.22);
+
+    --ftv-stack: "Ember Modern Display Standard", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, system-ui, sans-serif;
+}
+
+/* ---- Page chrome --------------------------------------------- */
+body.linktree-ftv {
+    margin: 0;
+    min-height: 100svh;
+    background-color: var(--ftv-bg);
+    color: var(--ftv-text-on-dark);
+    font-family: var(--ftv-stack);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+body.linktree-ftv * {
+    box-sizing: border-box;
+}
+
+body.linktree-ftv a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ---- Atmospheric leaves -------------------------------------- */
+/* Full-width band centered at bottom of viewport. */
+body.linktree-ftv .ft-leaves-band {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    /* Source is 4317x1200 vector landscape (~3.6:1, edges cleaned up). Use an
+       `aspect-ratio` so the band always renders at the image's natural ratio,
+       never clipping the top of the leaves. Cap on wide screens so the band
+       doesn't take over the viewport. */
+    aspect-ratio: 4317 / 1200;
+    max-height: 38vh;
+    /* Vector SVG (~19KB optimized via SVGO) replaces 32KB WebP - sharper at
+       any pixel density and 40% smaller. Aspect ratio is now 3840:1200 (3.2:1
+       ratio matches what was set above). */
+    background-image: url("/ftv/img/bottom-leaves.svg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    /* `contain` always fits the whole graphic - prevents top-clipping when
+       the band hits its max-height cap on tall desktop viewports. */
+    background-size: contain;
+    pointer-events: none;
+    z-index: -1;
+    will-change: transform, opacity;
+}
+
+/* ---- Shell --------------------------------------------------- */
+body.linktree-ftv .ft-shell {
+    max-width: 640px;
+    margin: 0 auto;
+    /* Bottom padding clears the fixed leaves band so the footer line sits on
+       solid navy. Leaves band renders at viewport-width / 3.6 (4317:1200 ratio),
+       capped at 38vh. Padding adds ~80px breathing room for the footer text. */
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2rem) calc(min(27.79vw, 38vh) + 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 2.75rem);
+    min-height: 100svh;
+}
+
+/* ---- Hero ---------------------------------------------------- */
+body.linktree-ftv .ft-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    padding-top: clamp(0.5rem, 3vw, 1.25rem);
+}
+
+body.linktree-ftv .ft-mark-link {
+    display: inline-block;
+    border-radius: 22%;
+    line-height: 0; /* kill inline-baseline gap so the focus ring hugs the tile */
+    transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+
+body.linktree-ftv .ft-mark-link:focus-visible {
+    outline: 2px solid var(--ftv-accent-light);
+    outline-offset: 4px;
+}
+
+body.linktree-ftv .ft-mark {
+    width: 120px;
+    height: 120px;
+    border-radius: 22%; /* ~Apple-icon mask */
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35),
+                0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+/* Subtle hover micro-interaction: a tiny wiggle that runs once per hover.
+   Rotation peaks at ~3deg and settles back; total duration 520ms so it
+   feels playful but not cartoony. */
+@keyframes ft-mark-wiggle {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-3deg) scale(1.04); }
+    40%  { transform: rotate(2.5deg) scale(1.04); }
+    60%  { transform: rotate(-1.5deg) scale(1.03); }
+    80%  { transform: rotate(0.75deg) scale(1.02); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+body.linktree-ftv .ft-mark-link:hover {
+    animation: ft-mark-wiggle 520ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+body.linktree-ftv .ft-title {
+    margin: 0;
+    font-family: var(--ftv-stack);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 9vw, 5rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--ftv-text-on-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.linktree-ftv .ft-title span {
+    display: block;
+}
+
+/* Middle line carries the single Amazon-orange accent (≤5% of
+   pixels on the page). First/last stay cream. */
+body.linktree-ftv .ft-title span:nth-child(2) {
+    color: var(--ftv-orange);
+}
+
+body.linktree-ftv .ft-tagline {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.45;
+    color: var(--ftv-text-on-dark);
+    opacity: 0.82;
+    /* Wraps naturally on phones, fits on one line on tablet/desktop/TV */
+    max-width: 32ch;
+}
+
+/* ---- Link cards ---------------------------------------------- */
+body.linktree-ftv .ft-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+body.linktree-ftv .ft-link {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1rem 1.125rem;
+    background: var(--ftv-surface);
+    color: var(--ftv-text-on-light);
+    border: 1px solid rgba(20, 29, 39, 0.08);
+    border-radius: 14px;
+    box-shadow: var(--ftv-card-shadow);
+    transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 220ms ease;
+    will-change: transform;
+    text-align: left;
+}
+
+body.linktree-ftv .ft-link:hover,
+body.linktree-ftv .ft-link:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: var(--ftv-card-shadow-hover);
+    border-color: rgba(20, 29, 39, 0.14);
+}
+
+body.linktree-ftv .ft-link:focus-visible {
+    outline: 2px solid var(--ftv-accent-light);
+    outline-offset: 3px;
+}
+
+body.linktree-ftv .ft-link:active {
+    transform: translateY(0);
+}
+
+body.linktree-ftv .ft-link-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ftv-text-on-light);
+}
+
+/* SVG icons inherit currentColor from .ft-link-icon */
+body.linktree-ftv .ft-link-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Per-service brand colors. Amazon (Developer mark) and Dev.to icons are
+   self-coloring SVGs (multi-fill paths or rect+text), so they ignore
+   currentColor and render with their own internal palette. */
+body.linktree-ftv .ft-link[data-icon="github"]    .ft-link-icon { color: #181717; }
+body.linktree-ftv .ft-link[data-icon="youtube"]   .ft-link-icon { color: #FF0000; }
+body.linktree-ftv .ft-link[data-icon="discourse"] .ft-link-icon { color: #000000; }
+body.linktree-ftv .ft-link[data-icon="linkedin"]  .ft-link-icon { color: #0A66C2; }
+body.linktree-ftv .ft-link[data-icon="rss"]       .ft-link-icon { color: #FC4C02; }
+
+body.linktree-ftv .ft-link-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0; /* allow truncation */
+}
+
+body.linktree-ftv .ft-link-text {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: var(--ftv-text-on-light);
+}
+
+body.linktree-ftv .ft-link-sub {
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: rgba(20, 29, 39, 0.62);
+    letter-spacing: 0;
+    /* Long sublabels wrap to a second line instead of overflowing */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+body.linktree-ftv .ft-link-arrow {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: rgba(20, 29, 39, 0.42);
+    transition: color 180ms ease, transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body.linktree-ftv .ft-link:hover .ft-link-arrow,
+body.linktree-ftv .ft-link:focus-visible .ft-link-arrow {
+    color: var(--ftv-orange);
+    transform: translate(2px, -2px);
+}
+
+/* ---- Footer -------------------------------------------------- */
+body.linktree-ftv .ft-foot {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: rgba(244, 242, 238, 0.62);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+body.linktree-ftv .ft-foot p {
+    margin: 0 0 0.375rem;
+}
+
+body.linktree-ftv .ft-foot a {
+    color: var(--ftv-accent-light);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+body.linktree-ftv .ft-foot a:hover {
+    color: var(--ftv-orange);
+}
+
+/* ---- Orchestrated reveal (CSS-only, ~1s total) --------------- */
+@keyframes ft-fade-scale {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+}
+@keyframes ft-slide-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ft-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes ft-leaves-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+body.linktree-ftv .ft-mark,
+body.linktree-ftv .ft-title span,
+body.linktree-ftv .ft-tagline,
+body.linktree-ftv .ft-link,
+body.linktree-ftv .ft-foot,
+body.linktree-ftv .ft-leaves-band {
+    opacity: 0;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body.linktree-ftv .ft-mark {
+    animation: ft-fade-scale 300ms 0ms forwards;
+}
+body.linktree-ftv .ft-title span:nth-child(1) {
+    animation: ft-slide-up 380ms 100ms forwards;
+}
+body.linktree-ftv .ft-title span:nth-child(2) {
+    animation: ft-slide-up 380ms 180ms forwards;
+}
+body.linktree-ftv .ft-title span:nth-child(3) {
+    animation: ft-slide-up 380ms 260ms forwards;
+}
+body.linktree-ftv .ft-tagline {
+    animation: ft-fade-in 420ms 380ms forwards;
+}
+
+/* Stagger link cards starting at 500ms, +60ms each */
+body.linktree-ftv .ft-link:nth-child(1) { animation: ft-slide-up 380ms 500ms forwards; }
+body.linktree-ftv .ft-link:nth-child(2) { animation: ft-slide-up 380ms 560ms forwards; }
+body.linktree-ftv .ft-link:nth-child(3) { animation: ft-slide-up 380ms 620ms forwards; }
+body.linktree-ftv .ft-link:nth-child(4) { animation: ft-slide-up 380ms 680ms forwards; }
+body.linktree-ftv .ft-link:nth-child(5) { animation: ft-slide-up 380ms 740ms forwards; }
+body.linktree-ftv .ft-link:nth-child(6) { animation: ft-slide-up 380ms 800ms forwards; }
+body.linktree-ftv .ft-link:nth-child(7) { animation: ft-slide-up 380ms 860ms forwards; }
+body.linktree-ftv .ft-link:nth-child(8) { animation: ft-slide-up 380ms 920ms forwards; }
+body.linktree-ftv .ft-link:nth-child(9) { animation: ft-slide-up 380ms 980ms forwards; }
+
+body.linktree-ftv .ft-foot {
+    animation: ft-fade-in 500ms 980ms forwards;
+}
+
+body.linktree-ftv .ft-leaves-band {
+    animation: ft-leaves-up 900ms 700ms forwards;
+}
+
+/* ---- Reduced motion: snap to final state --------------------- */
+@media (prefers-reduced-motion: reduce) {
+    body.linktree-ftv .ft-mark,
+    body.linktree-ftv .ft-title span,
+    body.linktree-ftv .ft-tagline,
+    body.linktree-ftv .ft-link,
+    body.linktree-ftv .ft-foot,
+    body.linktree-ftv .ft-leaves-band {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    body.linktree-ftv .ft-link {
+        transition: none;
+    }
+
+    /* Suppress hover wiggle for reduced-motion users */
+    body.linktree-ftv .ft-mark-link,
+    body.linktree-ftv .ft-mark-link:hover {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* ---- Tablet / desktop polish --------------------------------- */
+@media (min-width: 768px) {
+    body.linktree-ftv .ft-shell {
+        padding-top: clamp(3rem, 8vh, 5rem);
+    }
+    body.linktree-ftv .ft-link {
+        padding: 1.125rem 1.25rem;
+    }
+    /* On tablet+ there's room for the tagline on one line */
+    body.linktree-ftv .ft-tagline {
+        max-width: 56ch;
+    }
+}
+
+@media (min-width: 1024px) {
+    body.linktree-ftv .ft-leaves-band {
+        /* Cap tighter at desktop so the band doesn't dominate */
+        max-height: 30vh;
+    }
+}
+
+/* Tall phones: keep the leaves anchored to the visual bottom edge */
+@supports (height: 100dvh) {
+    body.linktree-ftv .ft-shell { min-height: 100dvh; }
+}
+
+/* =============================================================
+   TV mode (html.tv) - Silk on Fire TV, D-pad navigation, 10-foot view.
+   Set by an inline UA-detect script in linktree.njk. All overrides
+   are scoped here so the existing phone/desktop layout is untouched.
+   ============================================================= */
+html.tv body.linktree-ftv {
+    /* TV safe area: even modern Fire TVs are fine, but a 4% inset reads
+       cleaner aesthetically and survives any TV that overscans. */
+    padding: 4vh 5vw;
+    /* Smoother scroll when D-pad jumps focus across cards */
+    scroll-behavior: smooth;
+}
+
+/* Scroll-padding so the focused card never jams against viewport edges */
+html.tv {
+    scroll-padding-top: 6vh;
+    scroll-padding-bottom: 8vh;
+}
+
+/* Wider shell + larger gap between hero and links */
+html.tv body.linktree-ftv .ft-shell {
+    max-width: 900px;
+    padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 4vw, 4rem) clamp(8rem, 22vh, 14rem);
+    gap: clamp(2rem, 4vh, 3.5rem);
+}
+
+/* Hero scaled up for 10-foot viewing */
+html.tv body.linktree-ftv .ft-mark {
+    width: 160px;
+    height: 160px;
+}
+
+html.tv body.linktree-ftv .ft-title {
+    font-size: clamp(4rem, 8vw, 6.5rem);
+}
+
+html.tv body.linktree-ftv .ft-tagline {
+    font-size: 1.5rem;
+    max-width: 36ch;
+    opacity: 0.9;
+}
+
+/* Link cards: bigger type, bigger touch target, more vertical breathing room */
+html.tv body.linktree-ftv .ft-link {
+    grid-template-columns: 40px 1fr auto;
+    column-gap: 1.5rem;
+    padding: 1.4rem 1.75rem;
+    border-radius: 18px;
+}
+
+html.tv body.linktree-ftv .ft-link-icon {
+    width: 40px;
+    height: 40px;
+}
+
+html.tv body.linktree-ftv .ft-link-text {
+    font-size: 1.5rem;
+}
+
+html.tv body.linktree-ftv .ft-link-sub {
+    font-size: 1.05rem;
+}
+
+html.tv body.linktree-ftv .ft-link-arrow {
+    font-size: 1.6rem;
+}
+
+/* Focus is the new hover. D-pad-driven, must be unmissable from 8 feet. */
+html.tv body.linktree-ftv .ft-link:focus,
+html.tv body.linktree-ftv .ft-link:focus-visible {
+    outline: 4px solid var(--ftv-orange);
+    outline-offset: 4px;
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: var(--ftv-card-shadow-hover);
+    border-color: rgba(20, 29, 39, 0.18);
+}
+
+/* Hover is meaningless on TV, but keep parity in case Silk surfaces a cursor */
+html.tv body.linktree-ftv .ft-link:hover {
+    transform: translateY(-2px) scale(1.015);
+}
+
+/* Hero mark + footer link also get visible focus rings */
+html.tv body.linktree-ftv .ft-mark-link:focus,
+html.tv body.linktree-ftv .ft-mark-link:focus-visible {
+    outline: 4px solid var(--ftv-accent-light);
+    outline-offset: 6px;
+}
+
+html.tv body.linktree-ftv .ft-foot a:focus,
+html.tv body.linktree-ftv .ft-foot a:focus-visible {
+    outline: 3px solid var(--ftv-accent-light);
+    outline-offset: 4px;
+    color: var(--ftv-orange);
+}
+
+/* Footer line readable at 8ft */
+html.tv body.linktree-ftv .ft-foot {
+    font-size: 1.05rem;
+}
+
+/* Disable the wiggle - it's hover-driven, no hover on TV, and the focus
+   ring already signals interactivity */
+html.tv body.linktree-ftv .ft-mark-link:hover {
+    animation: none;
+}
+
+/* Leaves: cap tighter on TV so they don't dominate the focus area */
+html.tv body.linktree-ftv .ft-leaves-band {
+    max-height: 26vh;
+}
