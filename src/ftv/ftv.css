@@ -484,11 +484,11 @@ body.linktree-ftv .ft-qr {
     html.tv { font-size: 22px; }
 }
 
-/* Body uses % for safe-area inset. 5% on each axis = ~96x54px of overscan
-   protection at 1920x1080. Top padding clears Silk's browser chrome
-   (URL bar + nav buttons) which sits ~80-100px tall at the top. */
+/* Body uses % for safe-area inset. Top padding clears Silk's browser chrome
+   (URL bar + nav buttons) which sits ~120-140px tall on Fire TV at 1080p.
+   At root font 22px (1920+), 8em = 176px clearance. */
 html.tv body.linktree-ftv {
-    padding: 6em 0 0 0;
+    padding: 8em 0 0 0;
     margin: 0;
 }
 
@@ -611,13 +611,17 @@ html.tv body.linktree-ftv .ft-link > * {
 }
 
 /* Icon sits in top-right of the card so the title can flow full-width
-   from the left without wrapping under the icon. */
+   from the left without wrapping under the icon. Force absolute positioning
+   with !important to win over any base-style flex rules. */
 html.tv body.linktree-ftv .ft-link-icon {
-    top: 1em;
-    right: 1em;
-    left: auto;
-    width: 2em;
-    height: 2em;
+    position: absolute !important;
+    top: 1em !important;
+    right: 1em !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 2em !important;
+    height: 2em !important;
+    margin: 0 !important;
     -webkit-flex: none;
     flex: none;
 }
@@ -629,11 +633,14 @@ html.tv body.linktree-ftv .ft-link-icon svg {
 }
 
 html.tv body.linktree-ftv .ft-link-body {
-    top: 1em;
-    bottom: 1em;
-    left: 1em;
-    right: 4em;        /* Reserve space on the right for the icon */
-    display: block;
+    position: absolute !important;
+    top: 1em !important;
+    bottom: 1em !important;
+    left: 1em !important;
+    right: 4em !important;        /* Reserve space on the right for the icon */
+    display: block !important;
+    -webkit-flex-direction: column;
+    flex-direction: column;
 }
 
 html.tv body.linktree-ftv .ft-link-text {
