@@ -8,26 +8,26 @@ module.exports = {
   links: [
     {
       url: "https://developer.amazon.com/docs/apps-and-games/documentation.html",
-      text: "Fire TV & Appstore Documentation",
-      sublabel: "Fire OS + Vega + Amazon Appstore",
+      text: "Fire TV Documentation",
+      sublabel: "Specs & resources for building apps",
       icon: "amazon",
     },
     {
       url: "https://github.com/amazonappdev",
       text: "Sample Code on GitHub",
-      sublabel: "amazonappdev",
+      sublabel: "Sample code, reference apps, and libraries",
       icon: "github",
     },
     {
       url: "https://www.youtube.com/channel/UCT9ApARFgQJOeqD-ygmxnJQ",
-      text: "Amazon Developer on YouTube",
+      text: "AmazonAppDev on YouTube",
       sublabel: "Tutorials, talks, demos",
       icon: "youtube",
     },
     {
       url: "https://dev.to/amazonappdev",
-      text: "Technical Articles on Dev.to",
-      sublabel: "@amazonappdev",
+      text: "Technical Articles",
+      sublabel: "Our team building in public",
       icon: "devto",
     },
     {
@@ -38,7 +38,7 @@ module.exports = {
     },
     {
       url: "https://www.linkedin.com/showcase/amazon-appstore-developers/",
-      text: "Amazon Developer on LinkedIn",
+      text: "AmazonAppDev on LinkedIn",
       sublabel: "Showcase page for Amazon Devices builders",
       icon: "linkedin",
     },
