@@ -489,7 +489,7 @@ body.linktree-ftv .ft-qr {
    keeps the footer line above the leaves graphic and inside the
    caption-safe zone of the TV. */
 html.tv body.linktree-ftv {
-    padding: 5em 0 7em 0;
+    padding: 5em 0 9em 0;
     margin: 0;
 }
 
@@ -690,10 +690,9 @@ html.tv body.linktree-ftv .ft-mark-link:hover {
     animation: none;
 }
 
-/* Leaves: dialed back so they don't crowd the footer or compete with the
-   grid. 10% max-height keeps them as a thin atmospheric strip. */
+/* Leaves: dialed back so they don't compete with grid. Use % units. */
 html.tv body.linktree-ftv .ft-leaves-band {
-    max-height: 10%;
+    max-height: 20%;
     opacity: 0.5;
 }
 
