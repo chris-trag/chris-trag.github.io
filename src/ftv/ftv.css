@@ -610,7 +610,9 @@ html.tv body.linktree-ftv .ft-hero {
 html.tv body.linktree-ftv .ft-mark-link {
     -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
-    margin-right: 0.4em;
+    /* Tile has internal padding around the wordmark, so the visual gap
+       reads larger than the literal margin. 0.1em compensates for that. */
+    margin-right: 0.1em;
 }
 
 html.tv body.linktree-ftv .ft-mark {
@@ -673,7 +675,7 @@ html.tv body.linktree-ftv .ft-link {
        pushed bottom row off screen). Math: 56.25% of 23.5% = 13.22%. */
     padding-bottom: 13.22%;
     margin-right: 2%;
-    margin-bottom: 1.5%;
+    margin-bottom: 2%;             /* Match column gutter for consistent grid rhythm */
     background: var(--ftv-surface);
     border-radius: 14px;
     overflow: hidden;
