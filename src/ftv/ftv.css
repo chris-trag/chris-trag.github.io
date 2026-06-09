@@ -316,33 +316,57 @@ body.linktree-ftv .ft-foot p {
     margin: 0 0 0.375rem;
 }
 
-/* Highlighter-style links - solid background, tight padding, soft corners.
-   Chris Trag = Amazon electric blue. Amazon Developers = Fire TV orange. */
+/* Skewed-highlighter footer credits (technique from pepelsbey.dev).
+   Three stacked linear-gradients per link: angled left edge, flat middle,
+   angled right edge. Wraps cleanly across lines via box-decoration-break.
+   Fallback for Silk/older browsers: solid background-color (declared first,
+   gradients layered on top). If the gradients don't render, the solid
+   color shows through as a regular highlight. */
 body.linktree-ftv .ft-foot a {
+    --hl-skew: 0.3em;
+    --hl-height: 1.2em;
+    --hl-overlap: 0.25em;
+
     color: #FFFFFF;
     text-decoration: none;
-    padding: 0.15em 0.4em;
-    border-radius: 4px;
-    /* Drop the text-shadow on highlighted text - the solid bg already
-       provides contrast, and shadow on top reads muddy. */
     text-shadow: none;
-    /* Tiny vertical alignment nudge so the highlight box sits flush with
-       the surrounding "Built by ... for ..." baseline. */
-    display: inline-block;
+    padding: 0 var(--hl-overlap);
+    margin: 0 calc(var(--hl-overlap) * -1);
+
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    background-repeat: no-repeat;
+    background-position: left center, center, right center;
 }
 
 body.linktree-ftv .ft-foot a:nth-of-type(1) {
     /* Chris Trag - Amazon electric blue */
     background-color: #00A8E1;
+    background-image:
+        linear-gradient(to bottom right, transparent 50%, #00A8E1 50%),
+        linear-gradient(#00A8E1, #00A8E1),
+        linear-gradient(to top left, transparent 50%, #00A8E1 50%);
+    background-size:
+        var(--hl-skew) var(--hl-height),
+        calc(100% - var(--hl-skew) * 2 + 1px) var(--hl-height),
+        var(--hl-skew) var(--hl-height);
 }
 
 body.linktree-ftv .ft-foot a:nth-of-type(2) {
     /* Amazon Developers - Fire TV orange */
     background-color: var(--ftv-orange);
+    background-image:
+        linear-gradient(to bottom right, transparent 50%, var(--ftv-orange) 50%),
+        linear-gradient(var(--ftv-orange), var(--ftv-orange)),
+        linear-gradient(to top left, transparent 50%, var(--ftv-orange) 50%);
+    background-size:
+        var(--hl-skew) var(--hl-height),
+        calc(100% - var(--hl-skew) * 2 + 1px) var(--hl-height),
+        var(--hl-skew) var(--hl-height);
 }
 
 body.linktree-ftv .ft-foot a:hover {
-    /* Slight darken on hover for interactive feedback */
     -webkit-filter: brightness(1.1);
     filter: brightness(1.1);
 }
@@ -719,13 +743,19 @@ html.tv body.linktree-ftv .ft-leaves-band {
     opacity: 0.5;
 }
 
-/* Footer: small breathing room above. Body's padding-bottom handles
-   the bottom safe-area clearance, not padding on the footer itself
-   (padding-bottom on .ft-foot doesn't push the text up - it just
-   extends the box). */
+/* Footer in TV mode: pin to the bottom of the viewport with fixed
+   positioning so it stays visible regardless of card content height.
+   Sits above the leaves graphic and inside the title-safe zone. */
 html.tv body.linktree-ftv .ft-foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 2em;
+    z-index: 15;
     font-size: 0.85em;
-    margin-top: 1.5em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 /* Corner QR: positioned absolutely (Silk supports position:fixed but use
