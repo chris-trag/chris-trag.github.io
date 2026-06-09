@@ -304,24 +304,47 @@ body.linktree-ftv .ft-foot {
     margin-top: auto;
     padding-top: 1.5rem;
     text-align: center;
-    color: rgba(244, 242, 238, 0.62);
+    color: #FFFFFF;
     font-size: 0.8125rem;
-    line-height: 1.5;
+    line-height: 1.8;
+    /* Subtle shadow so plain text ("Built by", "for") stays legible against
+       the leaves graphic if they overlap. */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 body.linktree-ftv .ft-foot p {
     margin: 0 0 0.375rem;
 }
 
+/* Highlighter-style links - solid background, tight padding, soft corners.
+   Chris Trag = Amazon electric blue. Amazon Developers = Fire TV orange. */
 body.linktree-ftv .ft-foot a {
-    color: var(--ftv-accent-light);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    /* Drop the text-shadow on highlighted text - the solid bg already
+       provides contrast, and shadow on top reads muddy. */
+    text-shadow: none;
+    /* Tiny vertical alignment nudge so the highlight box sits flush with
+       the surrounding "Built by ... for ..." baseline. */
+    display: inline-block;
+}
+
+body.linktree-ftv .ft-foot a:nth-of-type(1) {
+    /* Chris Trag - Amazon electric blue */
+    background-color: #00A8E1;
+}
+
+body.linktree-ftv .ft-foot a:nth-of-type(2) {
+    /* Amazon Developers - Fire TV orange */
+    background-color: var(--ftv-orange);
 }
 
 body.linktree-ftv .ft-foot a:hover {
-    color: var(--ftv-orange);
+    /* Slight darken on hover for interactive feedback */
+    -webkit-filter: brightness(1.1);
+    filter: brightness(1.1);
 }
 
 /* ---- Orchestrated reveal (CSS-only, ~1s total) --------------- */
