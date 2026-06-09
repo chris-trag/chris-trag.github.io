@@ -485,10 +485,11 @@ body.linktree-ftv .ft-qr {
     html.tv { font-size: 22px; }
 }
 
-/* Body top padding clears Silk's URL bar with ~1em of breathing room
-   above the title. At root font 22px (1920+), 5em = 110px. */
+/* Body padding: top clears Silk's URL bar (~1em above title), bottom
+   keeps the footer line inside the caption-safe zone of the TV
+   (typically the bottom 5-10% is overscan/title-unsafe). */
 html.tv body.linktree-ftv {
-    padding: 5em 0 0 0;
+    padding: 5em 0 4em 0;
     margin: 0;
 }
 
@@ -695,12 +696,13 @@ html.tv body.linktree-ftv .ft-leaves-band {
     opacity: 0.5;
 }
 
-/* Footer: lift off the bottom edge so it stays inside the TV title-safe area
-   (caption-safe zone is roughly bottom 10% on most TVs). */
+/* Footer: small breathing room above. Body's padding-bottom handles
+   the bottom safe-area clearance, not padding on the footer itself
+   (padding-bottom on .ft-foot doesn't push the text up - it just
+   extends the box). */
 html.tv body.linktree-ftv .ft-foot {
     font-size: 0.85em;
     margin-top: 1.5em;
-    padding-bottom: 3em;
 }
 
 /* Corner QR: positioned absolutely (Silk supports position:fixed but use
