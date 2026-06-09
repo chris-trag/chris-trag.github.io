@@ -228,8 +228,14 @@ body.linktree-ftv .ft-link:focus-visible {
     outline-offset: 3px;
 }
 
+/* Press-down: subtle scale + transition that's just barely perceptible.
+   Reads as "tactile" without being bouncy. ~60ms transition keeps the
+   feel snappy under touch. */
 body.linktree-ftv .ft-link:active {
-    transform: translateY(0);
+    transform: scale(0.98);
+    transition: transform 60ms ease, box-shadow 60ms ease;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+                0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 body.linktree-ftv .ft-link-icon {
@@ -333,7 +339,7 @@ body.linktree-ftv .ft-foot a {
     padding: 0 var(--hl-overlap);
     /* Small horizontal margin keeps the highlight visually separated from
        the plain "by" / "for" / "Amazon Developers" text it sits between. */
-    margin: 0 0.4em;
+    margin: 0 0.2em;
 
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
@@ -368,9 +374,22 @@ body.linktree-ftv .ft-foot a:nth-of-type(2) {
         var(--hl-skew) var(--hl-height);
 }
 
+body.linktree-ftv .ft-foot a {
+    -webkit-transition: -webkit-filter 120ms ease;
+    transition: filter 120ms ease;
+}
+
 body.linktree-ftv .ft-foot a:hover {
     -webkit-filter: brightness(1.1);
     filter: brightness(1.1);
+}
+
+/* Press-down micro-interaction: subtle darken while pointer/touch/keyboard
+   is actively pressing. No transform on highlights so the marker shape
+   stays geometrically clean. */
+body.linktree-ftv .ft-foot a:active {
+    -webkit-filter: brightness(0.9);
+    filter: brightness(0.9);
 }
 
 /* ---- Orchestrated reveal (CSS-only, ~1s total) --------------- */
