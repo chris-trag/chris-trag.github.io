@@ -486,10 +486,10 @@ body.linktree-ftv .ft-qr {
 }
 
 /* Body padding: top clears Silk's URL bar (~1em above title), bottom
-   keeps the footer line inside the caption-safe zone of the TV
-   (typically the bottom 5-10% is overscan/title-unsafe). */
+   keeps the footer line above the leaves graphic and inside the
+   caption-safe zone of the TV. */
 html.tv body.linktree-ftv {
-    padding: 5em 0 4em 0;
+    padding: 5em 0 7em 0;
     margin: 0;
 }
 
@@ -690,9 +690,10 @@ html.tv body.linktree-ftv .ft-mark-link:hover {
     animation: none;
 }
 
-/* Leaves: dialed back so they don't compete with grid. Use % units. */
+/* Leaves: dialed back so they don't crowd the footer or compete with the
+   grid. 10% max-height keeps them as a thin atmospheric strip. */
 html.tv body.linktree-ftv .ft-leaves-band {
-    max-height: 20%;
+    max-height: 10%;
     opacity: 0.5;
 }
 
