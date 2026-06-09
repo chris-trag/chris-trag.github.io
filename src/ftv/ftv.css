@@ -331,7 +331,9 @@ body.linktree-ftv .ft-foot a {
     text-decoration: none;
     text-shadow: none;
     padding: 0 var(--hl-overlap);
-    margin: 0 calc(var(--hl-overlap) * -1);
+    /* Small horizontal margin keeps the highlight visually separated from
+       the plain "by" / "for" / "Amazon Developers" text it sits between. */
+    margin: 0 0.4em;
 
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
