@@ -214,6 +214,12 @@ body.linktree-ftv .ft-link {
                 border-color 220ms ease;
     will-change: transform;
     text-align: left;
+    /* Kill iOS Safari's default gray tap-highlight so our custom press
+       animation shows through cleanly */
+    -webkit-tap-highlight-color: transparent;
+    /* GPU-promote so transforms render smoothly on press */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 body.linktree-ftv .ft-link:hover,
@@ -228,14 +234,27 @@ body.linktree-ftv .ft-link:focus-visible {
     outline-offset: 3px;
 }
 
-/* Press-down: subtle scale + transition that's just barely perceptible.
-   Reads as "tactile" without being bouncy. ~60ms transition keeps the
-   feel snappy under touch. */
+/* Press-down: instant scale to 0.97, return is animated by the base
+   .ft-link transition (180ms ease-out). Snappy on the way down,
+   smooth on the way up - feels like a real button.
+   `transition: none` ensures the press is visible immediately even
+   on fast click-and-navigate (browser opens new tab, but the press
+   frame paints first). */
 body.linktree-ftv .ft-link:active {
-    transform: scale(0.98);
-    transition: transform 60ms ease, box-shadow 60ms ease;
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    transition: none;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
                 0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+/* Touch devices: same press treatment via @media hover:none, ensuring
+   iOS Safari fires :active reliably on tap */
+@media (hover: none) {
+    body.linktree-ftv .ft-link:active {
+        -webkit-transform: scale(0.97);
+        transform: scale(0.97);
+    }
 }
 
 body.linktree-ftv .ft-link-icon {
@@ -377,6 +396,7 @@ body.linktree-ftv .ft-foot a:nth-of-type(2) {
 body.linktree-ftv .ft-foot a {
     -webkit-transition: -webkit-filter 120ms ease;
     transition: filter 120ms ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body.linktree-ftv .ft-foot a:hover {
@@ -384,12 +404,12 @@ body.linktree-ftv .ft-foot a:hover {
     filter: brightness(1.1);
 }
 
-/* Press-down micro-interaction: subtle darken while pointer/touch/keyboard
-   is actively pressing. No transform on highlights so the marker shape
-   stays geometrically clean. */
+/* Press-down micro-interaction: instant darken (no transition) while
+   pointer/touch/keyboard is actively pressing. Return animates back. */
 body.linktree-ftv .ft-foot a:active {
-    -webkit-filter: brightness(0.9);
-    filter: brightness(0.9);
+    -webkit-filter: brightness(0.85);
+    filter: brightness(0.85);
+    transition: none;
 }
 
 /* ---- Orchestrated reveal (CSS-only, ~1s total) --------------- */
