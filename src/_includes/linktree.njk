@@ -109,6 +109,197 @@
         <img src="/ftv/img/qr-corner.svg" alt="" width="180" height="180">
     </aside>
 
+    {# Phone/desktop: tap-to-reveal QR. Subtle glyph in bottom-right; a click
+       opens a small cream panel anchored above it (slide-presentation style).
+       Hidden on TV mode where .ft-qr already provides a permanent overlay. #}
+    <button type="button" class="ft-qr-toggle" aria-label="Show QR code for this page" aria-expanded="false" aria-controls="ft-qr-pop">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M0 0h7v7H0zM2 2h3v3H2zM17 0h7v7h-7zM19 2h3v3h-3zM0 17h7v7H0zM2 19h3v3H2z"/>
+            <path d="M9 2h2v2H9zM13 2h2v2h-2zM11 5h2v2h-2zM9 9h2v2H9zM13 9h2v2h-2zM17 9h2v2h-2zM21 9h2v2h-2zM11 11h2v2h-2zM15 11h2v2h-2zM19 11h2v2h-2zM9 13h2v2H9zM13 13h2v2h-2zM17 13h2v2h-2zM21 13h2v2h-2zM9 17h2v2H9zM13 17h2v2h-2zM17 17h2v2h-2zM9 21h2v2H9zM13 21h2v2h-2zM17 21h2v2h-2zM21 21h2v2h-2z"/>
+        </svg>
+    </button>
+    <div class="ft-qr-pop" id="ft-qr-pop" role="dialog" aria-label="Scan to open this page on your phone" hidden>
+        <div class="ft-qr-pop-controls" role="group" aria-label="QR controls">
+            <button type="button" class="ft-qr-pop-handle" aria-label="Drag to move (double-click to reset)" title="Drag to move - double-click to reset">
+                <span aria-hidden="true">⋮⋮</span>
+            </button>
+            <div class="ft-qr-pop-sizes" role="group" aria-label="QR size">
+                <button type="button" class="ft-qr-size" data-size="s" aria-label="Small">S</button>
+                <button type="button" class="ft-qr-size" data-size="m" aria-pressed="true" aria-label="Medium">M</button>
+                <button type="button" class="ft-qr-size" data-size="l" aria-label="Large">L</button>
+            </div>
+        </div>
+        <img src="/ftv/img/qr-corner.svg" alt="QR code linking to this page" width="160" height="160">
+        <span class="ft-qr-pop-caption">Scan to Bookmark</span>
+    </div>
+
+    <script>
+        (function () {
+            var toggle = document.querySelector(".ft-qr-toggle");
+            var pop = document.querySelector(".ft-qr-pop");
+            var handle = pop && pop.querySelector(".ft-qr-pop-handle");
+            if (!toggle || !pop) return;
+
+            var STORAGE_KEY = "ft-qr-pop-pos";
+            var SIZE_KEY = "ft-qr-pop-size";
+            var sizeButtons = pop.querySelectorAll(".ft-qr-size");
+
+            function applySize(size) {
+                pop.setAttribute("data-size", size);
+                sizeButtons.forEach(function (btn) {
+                    btn.setAttribute("aria-pressed", btn.dataset.size === size ? "true" : "false");
+                });
+                try { localStorage.setItem(SIZE_KEY, size); } catch (e) {}
+                /* If pinned to a custom position, re-clamp so the resized
+                   panel doesn't overflow the viewport */
+                if (pop.style.left) {
+                    var x = parseFloat(pop.style.left) || 0;
+                    var y = parseFloat(pop.style.top) || 0;
+                    /* Defer one frame so layout reflects the new size */
+                    requestAnimationFrame(function () { setPixelPosition(x, y); });
+                }
+            }
+
+            function applyStoredSize() {
+                try {
+                    var saved = localStorage.getItem(SIZE_KEY);
+                    if (saved === "s" || saved === "m" || saved === "l") {
+                        applySize(saved);
+                        return;
+                    }
+                } catch (e) {}
+                applySize("m");
+            }
+
+            sizeButtons.forEach(function (btn) {
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    applySize(btn.dataset.size);
+                });
+            });
+
+            function open() {
+                pop.hidden = false;
+                toggle.setAttribute("aria-expanded", "true");
+                applyStoredSize();
+                applyStoredPosition();
+            }
+            function close() {
+                pop.hidden = true;
+                toggle.setAttribute("aria-expanded", "false");
+            }
+            function isOpen() { return !pop.hidden; }
+
+            /* Sticky popover: only the toggle button (or ESC) closes it.
+               Click-outside-to-dismiss was removed because clicking link
+               cards should NOT close the QR - the QR is meant to stay put
+               while you interact with the page (cast/HDMI workflow). */
+            toggle.addEventListener("click", function (e) {
+                e.stopPropagation();
+                isOpen() ? close() : open();
+            });
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape" && isOpen()) {
+                    close();
+                    toggle.focus();
+                }
+            });
+
+            /* ---- Drag-to-reposition ----
+               Switches from right/bottom anchor to absolute left/top pixels
+               while dragging. Position persists to localStorage. Double-click
+               the handle to reset. Constrained so it can't leave the viewport. */
+            function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
+
+            function setPixelPosition(x, y) {
+                var rect = pop.getBoundingClientRect();
+                var maxX = window.innerWidth - rect.width;
+                var maxY = window.innerHeight - rect.height;
+                x = clamp(x, 0, Math.max(0, maxX));
+                y = clamp(y, 0, Math.max(0, maxY));
+                pop.style.left = x + "px";
+                pop.style.top = y + "px";
+                pop.style.right = "auto";
+                pop.style.bottom = "auto";
+            }
+
+            function applyStoredPosition() {
+                try {
+                    var raw = localStorage.getItem(STORAGE_KEY);
+                    if (!raw) return;
+                    var pos = JSON.parse(raw);
+                    if (typeof pos.x === "number" && typeof pos.y === "number") {
+                        setPixelPosition(pos.x, pos.y);
+                    }
+                } catch (e) { /* ignore corrupt storage */ }
+            }
+
+            function resetPosition() {
+                pop.style.left = "";
+                pop.style.top = "";
+                pop.style.right = "";
+                pop.style.bottom = "";
+                try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+            }
+
+            if (handle) {
+                var dragging = false;
+                var pointerId = null;
+                var offsetX = 0, offsetY = 0;
+
+                handle.addEventListener("pointerdown", function (e) {
+                    if (e.button !== undefined && e.button !== 0) return; /* primary button only */
+                    var rect = pop.getBoundingClientRect();
+                    offsetX = e.clientX - rect.left;
+                    offsetY = e.clientY - rect.top;
+                    dragging = true;
+                    pointerId = e.pointerId;
+                    pop.classList.add("ft-qr-pop--dragging");
+                    /* Capture pointer so we keep getting events even if it leaves the handle */
+                    try { handle.setPointerCapture(pointerId); } catch (err) {}
+                    e.preventDefault();
+                });
+
+                handle.addEventListener("pointermove", function (e) {
+                    if (!dragging || e.pointerId !== pointerId) return;
+                    setPixelPosition(e.clientX - offsetX, e.clientY - offsetY);
+                });
+
+                function endDrag(e) {
+                    if (!dragging || (e && e.pointerId !== pointerId)) return;
+                    dragging = false;
+                    pop.classList.remove("ft-qr-pop--dragging");
+                    try { handle.releasePointerCapture(pointerId); } catch (err) {}
+                    /* Persist the final position */
+                    var rect = pop.getBoundingClientRect();
+                    try {
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify({ x: rect.left, y: rect.top }));
+                    } catch (err) {}
+                }
+                handle.addEventListener("pointerup", endDrag);
+                handle.addEventListener("pointercancel", endDrag);
+
+                /* Double-click handle to reset to default corner */
+                handle.addEventListener("dblclick", function (e) {
+                    e.preventDefault();
+                    resetPosition();
+                });
+
+                /* Block click bubbling on the handle so dragging doesn't close the popover */
+                handle.addEventListener("click", function (e) { e.stopPropagation(); });
+            }
+
+            /* Re-clamp on resize so the popover never ends up off-screen
+               after switching monitors or resizing the window */
+            window.addEventListener("resize", function () {
+                if (!isOpen() || !pop.style.left) return;
+                var x = parseFloat(pop.style.left) || 0;
+                var y = parseFloat(pop.style.top) || 0;
+                setPixelPosition(x, y);
+            });
+        })();
+    </script>
+
     {# TV-only: autofocus + cardinal D-pad spatial navigation.
        Arrow keys move focus to the spatially-nearest focusable element,
        not DOM order. Works with the grid layout in CSS. #}

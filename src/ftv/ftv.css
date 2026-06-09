@@ -537,6 +537,259 @@ body.linktree-ftv .ft-qr {
     display: none;
 }
 
+/* ---- Tap-to-reveal QR (phone/desktop only) ------------------- */
+/* Subtle glyph fixed bottom-right. Cream-tinted, low opacity so it floats
+   above the navy without competing with content. Click expands the
+   companion popover panel (slide-presentation style). */
+body.linktree-ftv .ft-qr-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: var(--ftv-surface);
+    opacity: 0.28;
+    transition: opacity 220ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 30;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.linktree-ftv .ft-qr-toggle svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+}
+
+body.linktree-ftv .ft-qr-toggle:hover,
+body.linktree-ftv .ft-qr-toggle:focus-visible,
+body.linktree-ftv .ft-qr-toggle[aria-expanded="true"] {
+    opacity: 0.85;
+    transform: scale(1.06);
+}
+
+body.linktree-ftv .ft-qr-toggle:focus-visible {
+    outline: 2px solid var(--ftv-accent-light);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+body.linktree-ftv .ft-qr-toggle:active {
+    transform: scale(0.96);
+    transition: none;
+}
+
+/* Popover panel: cream card anchored above the toggle. Sits where a
+   slide-deck QR would: bottom-right corner, not center-screen. */
+body.linktree-ftv .ft-qr-pop {
+    position: fixed;
+    right: 1rem;
+    bottom: calc(1rem + 32px + 0.75rem);
+    background: var(--ftv-surface);
+    color: var(--ftv-text-on-light);
+    padding: 0.875rem 0.875rem 0.75rem;
+    border-radius: 14px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42),
+                0 2px 4px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 29;
+    animation: ft-qr-pop-in 200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+body.linktree-ftv .ft-qr-pop[hidden] {
+    display: none;
+}
+
+body.linktree-ftv .ft-qr-pop img {
+    display: block;
+    width: 160px;
+    height: 160px;
+    border-radius: 6px;
+    transition: width 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                height 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Three sizes set via data-size attribute on the popover. Default = medium. */
+body.linktree-ftv .ft-qr-pop[data-size="s"] img { width: 112px; height: 112px; }
+body.linktree-ftv .ft-qr-pop[data-size="m"] img { width: 160px; height: 160px; }
+body.linktree-ftv .ft-qr-pop[data-size="l"] img { width: 240px; height: 240px; }
+
+/* Top control strip groups the drag handle and size chips */
+body.linktree-ftv .ft-qr-pop-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 14px 14px 0 0;
+    pointer-events: none; /* let children opt back in */
+}
+body.linktree-ftv .ft-qr-pop-controls > * {
+    pointer-events: auto;
+}
+
+/* Size chip row */
+body.linktree-ftv .ft-qr-pop-sizes {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+body.linktree-ftv .ft-qr-pop:hover .ft-qr-pop-sizes,
+body.linktree-ftv .ft-qr-pop:focus-within .ft-qr-pop-sizes,
+body.linktree-ftv .ft-qr-pop--dragging .ft-qr-pop-sizes {
+    opacity: 1;
+}
+
+@media (hover: none) {
+    body.linktree-ftv .ft-qr-pop-sizes {
+        opacity: 0.7;
+    }
+}
+
+body.linktree-ftv .ft-qr-size {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    color: rgba(20, 29, 39, 0.55);
+    font-family: var(--ftv-stack);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    width: 1.5rem;
+    height: 1.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 160ms ease, background 160ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.linktree-ftv .ft-qr-size:hover {
+    background: rgba(20, 29, 39, 0.06);
+    color: rgba(20, 29, 39, 0.85);
+}
+
+body.linktree-ftv .ft-qr-size:focus-visible {
+    outline: 2px solid var(--ftv-accent-light);
+    outline-offset: 1px;
+}
+
+body.linktree-ftv .ft-qr-size[aria-pressed="true"] {
+    background: var(--ftv-accent);
+    color: var(--ftv-surface);
+}
+
+/* Drag handle: subtle dotted-grip glyph at the top of the panel.
+   Hidden by default so it doesn't compete with the QR visually -
+   revealed on hover/focus of the popover, while dragging, and on
+   touch devices where there's no hover affordance.
+
+   touch-action:none tells the browser to skip its own scroll/zoom
+   gesture handling so pointermove fires reliably on touchscreens. */
+body.linktree-ftv .ft-qr-pop-handle {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0.125rem 0.5rem;
+    background: transparent;
+    border: 0;
+    color: rgba(20, 29, 39, 0.55);
+    font-size: 0.875rem;
+    line-height: 1;
+    letter-spacing: 0.15em;
+    text-align: left;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 180ms ease, color 180ms ease, background 180ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Reveal on popover hover, when any descendant has focus, when the
+   handle itself is hovered/focused, or while dragging. */
+body.linktree-ftv .ft-qr-pop:hover .ft-qr-pop-handle,
+body.linktree-ftv .ft-qr-pop:focus-within .ft-qr-pop-handle,
+body.linktree-ftv .ft-qr-pop-handle:hover,
+body.linktree-ftv .ft-qr-pop-handle:focus-visible,
+body.linktree-ftv .ft-qr-pop--dragging .ft-qr-pop-handle {
+    opacity: 1;
+}
+
+body.linktree-ftv .ft-qr-pop-handle:hover,
+body.linktree-ftv .ft-qr-pop-handle:focus-visible {
+    background: rgba(20, 29, 39, 0.04);
+}
+
+body.linktree-ftv .ft-qr-pop-handle:focus-visible {
+    outline: 2px solid var(--ftv-accent-light);
+    outline-offset: -2px;
+}
+
+/* Touch devices have no hover - keep the handle visible (faintly) so the
+   affordance is discoverable, but dimmer than the desktop hover state. */
+@media (hover: none) {
+    body.linktree-ftv .ft-qr-pop-handle {
+        opacity: 0.45;
+    }
+}
+
+body.linktree-ftv .ft-qr-pop--dragging {
+    /* Skip the slide-in animation while dragging - it would fight the cursor */
+    animation: none !important;
+    /* Slight elevation to feel "lifted" off the page */
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.5),
+                0 4px 8px rgba(0, 0, 0, 0.28);
+}
+
+body.linktree-ftv .ft-qr-pop--dragging .ft-qr-pop-handle {
+    cursor: grabbing;
+    color: rgba(20, 29, 39, 0.7);
+}
+
+/* Make room at the top for the handle */
+body.linktree-ftv .ft-qr-pop {
+    padding-top: 1.5rem;
+}
+
+body.linktree-ftv .ft-qr-pop-caption {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--ftv-text-on-light);
+    letter-spacing: -0.005em;
+}
+
+@keyframes ft-qr-pop-in {
+    from { opacity: 0; transform: translateY(6px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.linktree-ftv .ft-qr-pop {
+        animation: none;
+    }
+    body.linktree-ftv .ft-qr-toggle {
+        transition: opacity 120ms ease;
+    }
+}
+
 /* Tall phones: keep the leaves anchored to the visual bottom edge */
 @supports (height: 100dvh) {
     body.linktree-ftv .ft-shell { min-height: 100dvh; }
@@ -832,4 +1085,11 @@ html.tv body.linktree-ftv .ft-qr img {
     display: block;
     width: 7em;
     height: 7em;
+}
+
+/* Suppress phone/desktop tap-to-reveal QR on TV - the persistent .ft-qr
+   overlay above already shows the same code, no need for a toggle. */
+html.tv body.linktree-ftv .ft-qr-toggle,
+html.tv body.linktree-ftv .ft-qr-pop {
+    display: none !important;
 }
