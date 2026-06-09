@@ -695,10 +695,12 @@ html.tv body.linktree-ftv .ft-leaves-band {
     opacity: 0.5;
 }
 
-/* Footer */
+/* Footer: lift off the bottom edge so it stays inside the TV title-safe area
+   (caption-safe zone is roughly bottom 10% on most TVs). */
 html.tv body.linktree-ftv .ft-foot {
     font-size: 0.85em;
-    margin-top: 1em;
+    margin-top: 1.5em;
+    padding-bottom: 3em;
 }
 
 /* Corner QR: positioned absolutely (Silk supports position:fixed but use
