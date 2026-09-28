@@ -24,7 +24,8 @@ module.exports = function(eleventyConfig) {
         frameBorder="0" 
         allowfullscreen="" 
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
+        loading="lazy"
+        title="Spotify ${type} player">
       </iframe>
     </div>`;
   });

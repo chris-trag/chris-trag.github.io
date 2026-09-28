@@ -65,8 +65,10 @@ The default site has multiple pages (speaking, writing, shelf). Most people just
 
 **If the user only wants a bio/about page:**
 - Update `src/index.md` with their bio, social links, and headshot
-- Delete `src/speaking.md`, `src/writing.md`, `src/shelf.md`
-- Delete `src/context/` — these are personal to the original author. Optionally create new context files if the user wants an AI-readable bio and style guide at `/context/`
+- Delete `src/speaking.md`, `src/writing.md`, `src/shelf.md`, `src/dx.md`, `src/office-hours.md`
+- Delete `src/context/`, `src/llms.txt`, and `src/llms-full.txt` — these are personal to the original author. Optionally create new context files if the user wants an AI-readable bio and style guide at `/context/`
+- Delete `src/ftv/`, `src/_includes/linktree.njk`, `src/_data/ftv.js`, and the `.eleventy.js` lines that copy `src/ftv/*` — an event-specific link page that belongs to the original author
+- Delete `src/feed.xml.njk` and `src/_data/articles.json` (or replace the articles with the user's own) and remove the RSS `<link rel="alternate">` from `base.njk` if the feed is deleted
 - Remove those nav items from `src/_includes/base.njk`
 - Remove corresponding icon entries from `src/css/nav-icons.css`
 
@@ -79,13 +81,15 @@ The default site has multiple pages (speaking, writing, shelf). Most people just
 | `src/writing.md` | Replace with user's content, or delete |
 | `src/shelf.md` | Replace with user's content, or delete |
 
-Keep `src/sink.md` as-is — it's a style reference page, not public nav.
+Keep `src/sink.md` as-is — it's a style reference page. It is `noindex` and left out of the sitemap. Update `src/404.md` so its links only point at pages that still exist.
 
 ### 5. Update site metadata
 
 In `src/_includes/base.njk`:
 - Update `og:site_name` to the new domain
 - Update `twitter:site` to the new Twitter handle
+- Rewrite the `Person` JSON-LD block (homepage only): name, job title, employer, `sameAs` links, and image. Do not leave the original author's details in it
+- Update the `theme-color` values if the new palette's background colors differ from `#ffffff` / `#0a0c14`
 - **Replace or remove the GA measurement ID** — the existing ID (`G-9JFF8H9Z1P`) belongs to the original site and MUST be replaced with the user's own Google Analytics ID, or remove the entire `<!-- Google tag -->` block if they don't want analytics
 - Keep the `<meta name="generator">` tag — it credits the original template
 
@@ -95,7 +99,7 @@ In each `.md` file's front matter:
 
 ### 6. Update assets
 
-- Replace `src/img/global/trag.png` and `trag-medium.webp` with the user's headshot
+- Replace `src/img/global/trag.jpg` and `trag-medium.webp` with the user's headshot (keep the click-through image a high-quality JPG, roughly 1200px square and under 1MB, and update the references in `src/index.md` and `src/speaking.md`). Delete the unused `trag-small.*`, `trag-medium.png`, `trag.webp` files, and the original author's `trag.png` (kept only so old external links to it keep working)
 - Generate a new OG card image (1200x630px) with the user's name and title
 - Replace `src/img/favicon.svg` and `src/img/favicon-dark.svg`
 - Update `src/site.webmanifest` with the new site name and colors
@@ -104,7 +108,7 @@ In each `.md` file's front matter:
 
 - The repo should be named `username.github.io` for GitHub Pages to work automatically
 - Update `src/robots.txt` — change the sitemap URL to `https://username.github.io/sitemap.xml` (or the custom domain if they have one)
-- Update `src/sitemap.xml.njk` — change the base URL and add/remove pages to match what exists
+- Update `src/sitemap.xml.njk` — change the base URL. Pages are listed automatically; any page with `noindex: true` in its front matter is skipped
 - Update canonical URLs in `src/_includes/base.njk` to use `https://username.github.io` or their custom domain
 - In the GitHub repo Settings → Pages, set source to "GitHub Actions"
 - For a custom domain (optional), see [GitHub's docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
@@ -115,7 +119,6 @@ In each `.md` file's front matter:
 - `.github/workflows/deploy.yml` — deployment pipeline is ready to go
 - `src/css/pico.min.css` — the base CSS framework
 - `src/js/theme.js` — dark/light mode toggle
-- `src/js/copy.js` — copy-to-clipboard utility
 
 ## Attribution
 

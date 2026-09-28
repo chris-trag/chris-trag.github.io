@@ -36,6 +36,9 @@
     <meta name="description" content="{% if description %}{{ description }}{% endif %}">
     {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
     
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0c14" media="(prefers-color-scheme: dark)">
+
     <link rel="preload" href="{{ '/fonts/work-sans.woff2' | url }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/css/fonts.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
@@ -48,6 +51,32 @@
     <link rel="manifest" href="{{ '/site.webmanifest' | url }}">
     <link rel="canonical" href="https://trag.dev{{ page.url }}">
     <link rel="alternate" type="application/rss+xml" title="Chris Trag - Writing Feed" href="https://trag.dev/feed.xml">
+    {% if page.url == '/' %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Chris Trag",
+        "alternateName": "Chris Traganos",
+        "url": "https://trag.dev/",
+        "image": "https://trag.dev/img/global/trag.jpg",
+        "jobTitle": "Head of Evangelism",
+        "description": {{ description | dump | safe }},
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Amazon",
+            "url": "https://www.amazon.com/"
+        },
+        "knowsAbout": ["Developer Relations", "Developer Experience", "Developer Advocacy", "Developer Tools"],
+        "sameAs": [
+            "https://github.com/chris-trag",
+            "https://www.linkedin.com/in/ctraganos",
+            "https://bsky.app/profile/trag.dev",
+            "https://twitter.com/chris_trag"
+        ]
+    }
+    </script>
+    {% endif %}
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>

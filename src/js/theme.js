@@ -16,11 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         
-        // Update favicon based on theme
-        const faviconLink = document.querySelector('link[rel="icon"]');
+        // Update the SVG favicon based on theme (leave the .ico fallback alone)
+        const faviconLink = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
         if (faviconLink) {
             faviconLink.href = theme === 'dark' ? '/img/favicon-dark.svg' : '/img/favicon.svg';
         }
+
+        // Keep the browser UI color in sync with a manual theme choice
+        document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+            meta.setAttribute('content', theme === 'dark' ? '#0a0c14' : '#ffffff');
+        });
     };
 
     // Initial theme setup

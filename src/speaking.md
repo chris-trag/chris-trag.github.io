@@ -18,7 +18,7 @@ Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](http
 :::
 
 :::bio-image
-[![Chris Trag headshot](/img/global/trag-medium.webp "Click for headshot"){width=220 height=220}](/img/global/trag.png){target="_blank"}
+[![Chris Trag headshot](/img/global/trag-medium.webp "Click for headshot"){width=220 height=220}](/img/global/trag.jpg){target="_blank"}
 :::
 
 ## Past Talks
@@ -100,5 +100,3 @@ Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](http
 - **For Harvard, an IT summit** - [Harvard Gazette](https://news.harvard.edu/gazette/story/2011/06/for-harvard-an-it-summit/)  
   Feature on Harvard's IT summit with Chris's contributions.
 
-- **Chris Traganos - Stripe** - [Podcast](https://podcasts.apple.com/no/podcast/chris-traganos-stripe/id1508982499?i=1000475733516)  
-  Podcast interview discussing payment technologies and developer experience at Stripe.

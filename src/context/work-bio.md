@@ -41,7 +41,7 @@ He works cross-functionally with product, engineering, marketing, and BD teams t
 
 - **[trag.dev](https://trag.dev):** personal site, writing, speaking archive, and AI-agent context files (this page)
 - **[github.com/chris-trag](https://github.com/chris-trag):** sample code, friction-log guide, public projects
-- **[linkedin.com/in/chris-trag](https://www.linkedin.com/in/chris-trag/):** technical community posts on DevRel, AI workflows, Fire TV strategy
+- **[linkedin.com/in/ctraganos](https://www.linkedin.com/in/ctraganos/):** technical community posts on DevRel, AI workflows, Fire TV strategy
 - **[youtube.com/@chris_trag](https://www.youtube.com/@chris_trag):** personal channel
 - **[Amazon Developer YouTube](https://www.youtube.com/@AmazonAppDev):** long-form educational content on Amazon device SDKs, React Native, and AI integration
 - **[dev.to/trag](https://dev.to/trag):** technical articles
