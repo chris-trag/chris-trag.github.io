@@ -9,15 +9,6 @@ og_image_alt: Chris Trag's shelf - books, music, and recommendations
 
 # My Shelf
 
-## Audio
-
-<div class="spotify-grid">
-{% spotify "https://open.spotify.com/playlist/6tsfaAe8Cebz68GZCWohRc?si=ec2ff85b283d433f" %}
-{% spotify "https://open.spotify.com/playlist/7HuRbLA23H6uts6s68UtRf?si=04848980ce7d4208" %}
-{% spotify "https://open.spotify.com/playlist/3Q8wDfJIKK08fpJxtT06YI?si=7d2c627b054c4ef6" %}
-{% spotify "https://open.spotify.com/playlist/4SCxY9Er8jlb3mA0EEsH4x?si=ce4ccb79ed10476a" %}
-</div>
-
 ## Books
 
 * [The Auctioneer](https://www.goodreads.com/book/show/40742435) by Joan Samson - 4/5
@@ -82,3 +73,13 @@ og_image_alt: Chris Trag's shelf - books, music, and recommendations
 * [Watchmen](https://www.goodreads.com/book/show/472331) by Alan Moore - 5/5
 * [World War Z](https://www.goodreads.com/book/show/8908) by Max Brooks - 4/5
 * [Zeitoun](https://www.goodreads.com/book/show/8503590) by Dave Eggers - 5/5
+
+## Audio
+
+<div class="spotify-grid">
+{% spotify "https://open.spotify.com/playlist/6uWe2VpJNYckwgJJ2XFs4l?si=9d4073c3134b4564" %}
+{% spotify "https://open.spotify.com/playlist/6tsfaAe8Cebz68GZCWohRc?si=ec2ff85b283d433f" %}
+{% spotify "https://open.spotify.com/playlist/7HuRbLA23H6uts6s68UtRf?si=04848980ce7d4208" %}
+{% spotify "https://open.spotify.com/playlist/3Q8wDfJIKK08fpJxtT06YI?si=7d2c627b054c4ef6" %}
+{% spotify "https://open.spotify.com/playlist/4SCxY9Er8jlb3mA0EEsH4x?si=ce4ccb79ed10476a" %}
+</div>
