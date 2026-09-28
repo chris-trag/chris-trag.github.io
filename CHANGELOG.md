@@ -19,6 +19,7 @@
 - Headshot marked `fetchpriority="high"`; click-through headshot is now a q95 4:4:4 JPG (2.3MB PNG to 640KB); the original `trag.png` stays in place so existing external links keep working
 
 ### Cleanup
+- Speaking page headings now descend in order (h1 > h2 About > h3 Past Talks / Interviews); Lighthouse accessibility 98 to 100
 - Removed unused `copy.js` and `.copy-button` styles
 - Ignored the local `.claude/` folder
 - Refreshed README and REMIX.md for the current file layout

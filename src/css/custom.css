@@ -923,7 +923,10 @@ tr:nth-child(even) {
   box-shadow: var(--card-box-shadow);
 }
 
-.speaker-bio h3 {
+.speaker-bio h2 {
+  /* Keep the bio card heading at its original h3 size */
+  font-size: var(--font-size-h3);
+  letter-spacing: -0.01em;
   margin-top: 0;
   margin-bottom: 1rem;
 }
