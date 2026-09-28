@@ -1,0 +1,22 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chris Trag - Writing</title>
+    <link>https://trag.dev/writing/</link>
+    <description>Articles and newsletters by Chris Trag on developer advocacy, tech leadership, and building developer communities.</description>
+    <language>en-us</language>
+    <atom:link href="https://trag.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    {% for article in articles %}
+    <item>
+      <title>{{ article.title }}</title>
+      <link>{{ article.url }}</link>
+      <guid isPermaLink="true">{{ article.url }}</guid>
+      <description>{{ article.description }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

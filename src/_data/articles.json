@@ -1,0 +1,80 @@
+[
+  {
+    "title": "Dev Relevancy & Building Bridges",
+    "url": "https://blog.trag.dev/dev-relevancy-building-bridges",
+    "description": "As a leader, it's your job to keep Dev Relations relevant at your company.",
+    "section": "Articles"
+  },
+  {
+    "title": "3 tasks High School students should do today",
+    "url": "https://blog.trag.dev/3-tasks-for-high-schoolers",
+    "description": "Practical advice for high school students interested in tech.",
+    "section": "Articles"
+  },
+  {
+    "title": "Why I became a Developer Advocate",
+    "url": "https://blog.trag.dev/why-i-became-a-developer-advocate",
+    "description": "My journey into Developer Relations.",
+    "section": "Articles"
+  },
+  {
+    "title": "Welcome to the Golden Age of Developer Advocacy",
+    "url": "https://blog.trag.dev/welcome-to-the-golden-age-of-developer-advocacy",
+    "description": "Insights on the growing importance of Developer Advocacy.",
+    "section": "Articles"
+  },
+  {
+    "title": "Bot Does It Work?",
+    "url": "https://medium.com/@ctraganos/bot-does-it-work-ec29644ab3ca",
+    "description": "Exploring the effectiveness of bots in developer workflows.",
+    "section": "Articles"
+  },
+  {
+    "title": "2025 Look Ahead: Top Dev Events & Courses",
+    "url": "https://dev.to/amazonappdev/2025-look-ahead-top-dev-events-courses-for-android-react-native-and-genai-4bd3",
+    "description": "For Android, React Native, and GenAI.",
+    "section": "For Amazon"
+  },
+  {
+    "title": "February 2025 @AmazonAppDev Newsletter",
+    "url": "https://dev.to/amazonappdev/february-2025-amazonappdev-newsletter-1im0",
+    "description": "Published in For Amazon",
+    "section": "For Amazon"
+  },
+  {
+    "title": "January 2025 @AmazonAppDev Newsletter",
+    "url": "https://dev.to/amazonappdev/january-2025-amazonappdev-newsletter-2e8n",
+    "description": "Published in For Amazon",
+    "section": "For Amazon"
+  },
+  {
+    "title": "Top Android & React Native Events to Attend in 2024",
+    "url": "https://dev.to/amazonappdev/top-android-react-native-events-to-attend-in-2024-477e",
+    "description": "Published in For Amazon",
+    "section": "For Amazon"
+  },
+  {
+    "title": "What's New with Amazon Appstore for Developers in 2022",
+    "url": "https://dev.to/amazonappdev/whats-new-with-amazon-appstore-for-developers-in-2022-slides-52me",
+    "description": "Published in For Amazon",
+    "section": "For Amazon"
+  },
+  {
+    "title": "Introducing the React Stripe.JS library, API updates, and new guides",
+    "url": "https://dev.to/stripe/introducing-the-react-stripe-js-library-api-updates-and-new-guides-3501",
+    "description": "Published in For Stripe",
+    "section": "For Stripe"
+  },
+  {
+    "title": "The Stripe integration builder + new code samples and dev videos",
+    "url": "https://dev.to/stripe/introducing-the-stripe-integration-builder-new-code-samples-and-dev-videos-254d",
+    "description": "Published in For Stripe",
+    "section": "For Stripe"
+  },
+  {
+    "title": "COVID-19 Resources for Developers",
+    "url": "https://dev.to/stripe/covid-19-resources-for-developers-plus-new-api-updates-and-features-2ekf",
+    "description": "Published in For Stripe",
+    "section": "For Stripe"
+  }
+]

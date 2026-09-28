@@ -12,13 +12,13 @@ og_image_alt: Chris Trag speaking
 :::speaker-bio
 ### About Chris Trag
 
-Chris is the ==Head of Evangelism at Amazon== where he works with creators around the world to build apps & games for Alexa+, Fire TVs, Ring, and Echo devices. He previously launched developer programs at Stripe, Evernote, Roku, and was the web developer for Harvard.edu.
+Chris is the ==Head of Evangelism at Amazon== where he works with creators around the world to build apps & games for Alexa+, Fire TVs, Ring, and Echo devices. He previously launched developer programs at Stripe, Evernote, Roku, and was the web developer for [Harvard.edu](https://news.harvard.edu/gazette/story/2011/06/for-harvard-an-it-summit/).
 
 Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](https://www.linkedin.com/in/ctraganos/), and [trag.dev](https://trag.dev/)
 :::
 
 :::bio-image
-[![Chris Trag headshot](/img/global/trag-medium.webp "Click for headshot")](/img/global/trag.png){target="_blank"}
+[![Chris Trag headshot](/img/global/trag-medium.webp "Click for headshot"){width=220 height=220}](/img/global/trag.png){target="_blank"}
 :::
 
 ## Past Talks

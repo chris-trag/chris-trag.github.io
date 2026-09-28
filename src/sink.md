@@ -5,6 +5,8 @@ description: A demonstration page showing all typographic elements and styling a
 og_description: See all the design elements and styling capabilities of this site in one place - from typography to code blocks to tables.
 og_image: https://trag.dev/img/global/trag.png
 og_image_alt: Kitchen sink design elements
+eleventyExcludeFromCollections: true
+noindex: true
 ---
 
 # Typography & Elements
@@ -106,6 +108,6 @@ function checkDrsAvailability(gap, zone) {
 
 This horizontal rule separates content sections clearly while maintaining the overall design aesthetic.
 
-![F1 Car Aerodynamics](https://get.svg.workers.dev/?s=320x180&f=gray "F1 Car Aerodynamics")
+![F1 Car Aerodynamics](/img/placeholder.svg "F1 Car Aerodynamics")
 
 The image above demonstrates proper spacing and alignment within the content flow.

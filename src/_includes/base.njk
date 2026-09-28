@@ -2,12 +2,20 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="generator" content="trag.dev-template (github.com/chris-trag/chris-trag.github.io)">
-    <title>{{ title }}</title>
+    <script>
+    (function() {
+        var savedTheme = localStorage.getItem('theme');
+        var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+    {% set page_title = title if page.url == '/' or 'Chris Trag' in title else title + ' | Chris Trag' %}
+    <title>{{ page_title }}</title>
     
     <!-- OpenGraph and social sharing meta tags -->
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="{{ page_title }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://trag.dev{{ page.url }}">
     <meta property="og:image" content="{% if og_image %}{{ og_image }}{% else %}https://trag.dev/img/global/og-card.png{% endif %}">
@@ -20,24 +28,29 @@
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@chris_trag">
-    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:title" content="{{ page_title }}">
     <meta name="twitter:description" content="{% if og_description %}{{ og_description }}{% else %}{{ description }}{% endif %}">
     <meta name="twitter:image" content="{% if og_image %}{{ og_image }}{% else %}https://trag.dev/img/global/og-card.png{% endif %}">
     
     <!-- Standard meta description -->
     <meta name="description" content="{% if description %}{{ description }}{% endif %}">
+    {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
     
+    <link rel="preload" href="{{ '/fonts/work-sans.woff2' | url }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/css/fonts.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/custom.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/nav-icons.css' | url }}">
     <!-- Favicon -->
+    <link rel="icon" href="{{ '/favicon.ico' | url }}" sizes="32x32">
     <link rel="icon" href="{{ '/img/favicon.svg' | url }}" type="image/svg+xml">
     <link rel="apple-touch-icon" href="{{ '/img/favicon-180.png' | url }}">
     <link rel="manifest" href="{{ '/site.webmanifest' | url }}">
     <link rel="canonical" href="https://trag.dev{{ page.url }}">
+    <link rel="alternate" type="application/rss+xml" title="Chris Trag - Writing Feed" href="https://trag.dev/feed.xml">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JFF8H9Z1P"></script>
     <script>
@@ -49,7 +62,7 @@
     <nav class="container">
         <ul role="list">
             <li>
-                <a href="/" class="nav-item nav-home {% if page.url == '/' %}active{% endif %}">
+                <a href="/" class="nav-item nav-home {% if page.url == '/' %}active{% endif %}" {% if page.url == '/' %}aria-current="page"{% endif %}>
                     <span class="icon"></span>
                     <span class="nav-text">Trag.dev</span>
                 </a>
@@ -57,33 +70,31 @@
         </ul>
         <ul role="list" class="nav-links">
             <li>
-                <a href="/speaking/" class="nav-item nav-speaking {% if '/speaking' in page.url %}active{% endif %}">
+                <a href="/speaking/" class="nav-item nav-speaking {% if '/speaking' in page.url %}active{% endif %}" {% if '/speaking' in page.url %}aria-current="page"{% endif %}>
                     <span class="icon"></span>
                     <span class="nav-text">Speaking</span>
                 </a>
             </li>
             <li>
-                <a href="/writing/" class="nav-item nav-writing {% if '/writing' in page.url %}active{% endif %}">
+                <a href="/writing/" class="nav-item nav-writing {% if '/writing' in page.url %}active{% endif %}" {% if '/writing' in page.url %}aria-current="page"{% endif %}>
                     <span class="icon"></span>
                     <span class="nav-text">Writing</span>
                 </a>
             </li>
             <li>
-                <a href="/shelf/" class="nav-item nav-shelf {% if '/shelf' in page.url %}active{% endif %}">
+                <a href="/shelf/" class="nav-item nav-shelf {% if '/shelf' in page.url %}active{% endif %}" {% if '/shelf' in page.url %}aria-current="page"{% endif %}>
                     <span class="icon"></span>
                     <span class="nav-text">Shelf</span>
                 </a>
             </li>
             <li>
-                <a href="/context/" class="nav-item nav-context {% if '/context' in page.url %}active{% endif %}">
+                <a href="/context/" class="nav-item nav-context {% if '/context' in page.url %}active{% endif %}" {% if '/context' in page.url %}aria-current="page"{% endif %}>
                     <span class="icon"></span>
                     <span class="nav-text">Context</span>
                 </a>
             </li>
-            {# <li><a href="/office-hours/" {% if '/office-hours' in page.url %}class="active"{% endif %}>Office Hours</a></li>
-            <li><a href="/dx/" {% if '/dx' in page.url %}class="active"{% endif %}>DX</a></li> #}
         </ul>
-        <button id="theme-toggle" aria-label="Toggle theme">
+        <button id="theme-toggle" aria-label="Toggle light or dark theme" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"/>
                 <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
@@ -92,16 +103,12 @@
 
     </nav>
 
-
-
-
-    <main class="container">
+    <main id="main-content" class="container">
         {{ content | safe }}
     </main>
     <footer class="container">
-        <p>&copy; {{ page.date.getFullYear() }} Chris Trag</p>
+        <p>&copy; {{ "now" | date("yyyy") }} Chris Trag</p>
     </footer>
     <script src="{{ '/js/theme.js' | url }}"></script>
-    <script src="{{ '/js/copy.js' | url }}"></script>
 </body>
 </html>

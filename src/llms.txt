@@ -1,8 +1,12 @@
 # trag.dev
 
-> Personal site of Chris Trag — Head of Developer Evangelism at Amazon for Alexa+, Apps & Games.
+> Personal site of Chris Trag - Head of Developer Evangelism at Amazon for Alexa+, Apps & Games.
 
 This is a static personal site built with Eleventy and Pico CSS. It's designed to be forked and remixed.
+
+## Full Context
+
+- [Full Agent Context](https://trag.dev/llms-full.txt): Complete combined context (Work Bio, Style Guide, and Friction Log Guide)
 
 ## Pages
 
@@ -10,6 +14,7 @@ This is a static personal site built with Eleventy and Pico CSS. It's designed t
 - [Speaking](https://trag.dev/speaking/): Talks, panels, and interviews
 - [Writing](https://trag.dev/writing/): Articles and blog posts
 - [Shelf](https://trag.dev/shelf/): Book recommendations
+- [Context](https://trag.dev/context/): Dedicated AI agent context files
 
 ## Remix This Site
 
@@ -30,5 +35,6 @@ This site is open source and designed to be remixed. For instructions on how to 
 ## Contact
 
 - Email: chris@trag.dev
+- GitHub: github.com/chris-trag
 - LinkedIn: linkedin.com/in/ctraganos
 - Bluesky: bsky.app/profile/trag.dev

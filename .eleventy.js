@@ -73,15 +73,25 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setLibrary("md", markdownLibrary);
   
   // Add date filter for use in templates
-  eleventyConfig.addFilter("date", function(dateObj, format) {
-    return DateTime.fromJSDate(new Date(dateObj)).toFormat(format);
+  eleventyConfig.addFilter("date", function(dateObj, format = "yyyy-MM-dd") {
+    // Handle 'now' or missing date
+    if (!dateObj || dateObj === "now") {
+      return DateTime.now().toFormat(format);
+    }
+    const d = dateObj instanceof Date ? dateObj : new Date(dateObj);
+    if (isNaN(d.getTime())) {
+      return DateTime.now().toFormat(format);
+    }
+    return DateTime.fromJSDate(d).toFormat(format);
   });
   
-  // Copy favicon files to the output directory
+  // Copy favicon and static files to the output directory
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/llms.txt");
+  eleventyConfig.addPassthroughCopy("src/llms-full.txt");
   
   // Other existing configuration...
   eleventyConfig.addPassthroughCopy("src/css");

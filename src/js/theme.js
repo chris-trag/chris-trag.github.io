@@ -31,19 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
+        themeToggle.setAttribute('aria-pressed', newTheme === 'dark');
     });
     
-    // Fix for iOS Safari overscroll
-    document.addEventListener('touchmove', function(e) {
-        if (e.touches.length > 1) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-    
-    // Prevent pull-to-refresh on mobile
-    document.body.addEventListener('touchstart', function(e) {
-        if (e.touches.length > 1) {
-            e.preventDefault();
-        }
-    }, { passive: false });
+    // Set initial aria-pressed state
+    themeToggle.setAttribute('aria-pressed', document.documentElement.getAttribute('data-theme') === 'dark');
 });
