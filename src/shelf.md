@@ -12,7 +12,7 @@ og_image_alt: Chris Trag's shelf - books, music, and recommendations
 ## Books
 
 * [Between Two Fires](https://www.goodreads.com/book/show/13543121) by Christopher Buehlman
-* [London Falling: A Mysterious Death in a Gilded City and a Family's Search for Truth](https://www.goodreads.com/book/show/238228437) by Patrick Radden Keefe
+* [London Falling](https://www.goodreads.com/book/show/238228437) by Patrick Radden Keefe
 * [Project Hail Mary](https://www.goodreads.com/book/show/222697645) by Andy Weir
 * [Odyssey](https://www.goodreads.com/book/show/55886800) by Stephen Fry
 * [Troy](https://www.goodreads.com/book/show/53443339) by Stephen Fry
