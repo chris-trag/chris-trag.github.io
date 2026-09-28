@@ -902,31 +902,6 @@ tr:nth-child(even) {
   margin-bottom: 0.5rem;
 }
 
-.copy-button {
-  background-color: var(--primary);
-  color: var(--primary-inverse);
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-top: -1rem;
-  margin-bottom: 1rem;
-}
-
-.copy-button:hover {
-  background-color: var(--primary-hover);
-}
-
-.copy-button.copied {
-  background-color: var(--form-element-valid-border-color);
-}
-
 .speaker-photo {
   float: right;
   width: 150px;
@@ -1004,5 +979,59 @@ tr:nth-child(even) {
 @media (max-width: 767px) {
   .bio-image {
     margin-top: 1.5rem;
+  }
+}
+
+/* Keyboard focus: visible ring for keyboard users only */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .bio-image img:hover,
+  .bio-image img:active,
+  .spotify-embed:hover {
+    transform: none;
+  }
+}
+
+/* Print: drop chrome and embeds, use plain black on white */
+@media print {
+  nav,
+  #theme-toggle,
+  .skip-link,
+  .spotify-embed,
+  footer {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
   }
 }

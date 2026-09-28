@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-09-28
+
+### SEO
+- Sitemap now generated from the page collection: adds `/context/*`, skips `noindex` pages, drops the misleading build-date `lastmod`
+- Added `Person` JSON-LD on the homepage
+- Marked the placeholder `/dx/` and `/office-hours/` pages `noindex`
+- Added a custom `404.html` with links to the main pages
+- Fixed a redirecting link in the friction-log guide
+- Replaced three dead Stripe dev.to article links with Wayback Machine snapshots
+- Removed a dead Apple Podcasts link on the Speaking page (show no longer exists, no archive copy)
+- Corrected the LinkedIn URL in the work bio and `llms-full.txt` to `/in/ctraganos`
+
+### Accessibility & Performance
+- Added `theme-color` meta tags (light/dark), kept in sync with the manual theme toggle
+- Theme toggle now swaps only the SVG favicon, not the `.ico` fallback
+- Added `:focus-visible` outlines, `prefers-reduced-motion` handling, and a print stylesheet
+- Headshot marked `fetchpriority="high"`; click-through headshot is now a q95 4:4:4 JPG (2.3MB PNG to 640KB); the original `trag.png` stays in place so existing external links keep working
+
+### Cleanup
+- Removed unused `copy.js` and `.copy-button` styles
+- Ignored the local `.claude/` folder
+- Refreshed README and REMIX.md for the current file layout
+
 ## 2026-04-06
 
 ### OG / Social Sharing

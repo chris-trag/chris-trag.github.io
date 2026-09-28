@@ -25,6 +25,6 @@ og_image_alt: Chris Trag
 * [What's New with Amazon Appstore for Developers in 2022](https://dev.to/amazonappdev/whats-new-with-amazon-appstore-for-developers-in-2022-slides-52me)
 
 ## For Stripe
-* [Introducing the React Stripe.JS library, API updates, and new guides](https://dev.to/stripe/introducing-the-react-stripe-js-library-api-updates-and-new-guides-3501)
-* [The Stripe integration builder + new code samples and dev videos](https://dev.to/stripe/introducing-the-stripe-integration-builder-new-code-samples-and-dev-videos-254d)
-* [COVID-19 Resources for Developers](https://dev.to/stripe/covid-19-resources-for-developers-plus-new-api-updates-and-features-2ekf)
+* [Introducing the React Stripe.JS library, API updates, and new guides](https://web.archive.org/web/20241220064104/https://dev.to/stripe/introducing-the-react-stripe-js-library-api-updates-and-new-guides-3501)
+* [The Stripe integration builder + new code samples and dev videos](https://web.archive.org/web/20250718001845/https://dev.to/stripe/introducing-the-stripe-integration-builder-new-code-samples-and-dev-videos-254d)
+* [COVID-19 Resources for Developers](https://web.archive.org/web/20241220073416/https://dev.to/stripe/covid-19-resources-for-developers-plus-new-api-updates-and-features-2ekf)

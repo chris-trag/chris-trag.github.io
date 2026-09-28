@@ -8,7 +8,7 @@ og_image: https://trag.dev/img/global/og-card.png
 og_image_alt: Chris Trag - Developer Relations for Alexa & Amazon Devices
 ---
 
-[![Chris Traganos](/img/global/trag-medium.webp){.headshot width=220 height=220}](/img/global/trag.png)
+[![Chris Traganos](/img/global/trag-medium.webp){.headshot width=220 height=220 fetchpriority=high}](/img/global/trag.jpg)
 
 # <mark><span class="icon-container"><i class="fi fi-rr-hand-wave" aria-hidden="true"></i></span><span class="sr-only">👋</span></mark> Hello!
 

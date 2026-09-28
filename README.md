@@ -70,11 +70,19 @@ npm run dev
 |---|---|
 | `src/index.md` | Replace with your own bio, links, and headshot |
 | `src/speaking.md`, `src/writing.md`, `src/shelf.md` | Edit or delete — these are optional pages |
-| `src/img/global/` | Swap in your own headshot and OG card image |
+| `src/dx.md`, `src/office-hours.md` | Unfinished placeholder pages (`noindex`). Fill in or delete |
+| `src/context/`, `src/llms.txt`, `src/llms-full.txt` | Personal AI-context files for the original author. Delete, or rewrite as your own |
+| `src/ftv/`, `src/_includes/linktree.njk`, `src/_data/ftv.js` | Event-specific link page for `/ftv/`. Delete |
+| `src/feed.xml.njk`, `src/_data/articles.json` | RSS feed built from the author's articles. Replace or delete |
+| `src/img/global/` | Swap in your own headshot (`trag.jpg`, `trag-medium.webp`) and OG card image |
 | `src/css/custom.css` | Change the color palette and fonts (see below) |
-| `src/_includes/base.njk` | Update site name, OG defaults, analytics ID, and social links |
+| `src/_includes/base.njk` | Update site name, OG defaults, canonical URL, analytics ID, social links, and the `Person` JSON-LD block |
+| `src/404.md` | Update the links to match the pages you keep |
 | `src/site.webmanifest` | Update with your site name and colors |
 | `src/robots.txt` | Update the sitemap URL to your domain |
+| `src/sitemap.xml.njk` | Change the `https://trag.dev` base URL to your domain (pages are listed automatically) |
+
+The domain `https://trag.dev` is hardcoded in `base.njk`, `sitemap.xml.njk`, `feed.xml.njk`, `robots.txt`, and each page's `og_image`. Search the repo for `trag.dev` to find every spot.
 
 ### Using an AI agent to remix
 
@@ -108,7 +116,7 @@ If you have your own domain (e.g., `janedoe.dev`):
 1. In repo **Settings → Pages → Custom domain**, enter your domain
 2. Add DNS records with your registrar — see [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
 3. GitHub will auto-create a `CNAME` file in your repo
-4. Update `src/robots.txt` and OG URLs to use your domain
+4. Update `src/robots.txt`, `src/sitemap.xml.njk`, `base.njk` canonical/OG URLs, and each page's `og_image` to use your domain
 
 Without a custom domain, everything works at `username.github.io` — no extra steps needed.
 
@@ -121,25 +129,34 @@ Without a custom domain, everything works at `username.github.io` — no extra s
 │   ├── workflows/deploy.yml  # Auto-deploy to GitHub Pages on push
 │   └── REMIX.md              # Instructions for AI agents remixing this site
 ├── src/
-│   ├── _includes/base.njk    # HTML layout template (head, nav, footer)
+│   ├── _data/                # articles.json (RSS feed), ftv.js (/ftv/ links)
+│   ├── _includes/
+│   │   ├── base.njk          # HTML layout template (head, nav, footer, JSON-LD)
+│   │   ├── linktree.njk      # Layout for the /ftv/ link page
+│   │   └── icons/            # Inline SVG icons for the link page
 │   ├── css/
 │   │   ├── custom.css        # All custom styles, colors, typography
 │   │   ├── fonts.css         # Self-hosted font declarations
 │   │   ├── nav-icons.css     # Navigation icon styles
 │   │   └── pico.min.css      # Pico CSS framework
+│   ├── context/              # AI-agent context files served at /context/
 │   ├── fonts/                # Self-hosted Work Sans + Flaticon icon subsets
+│   ├── ftv/                  # Assets for the event-specific /ftv/ page
 │   ├── img/                  # Images, favicons, OG card
 │   ├── js/
-│   │   ├── theme.js          # Dark/light mode toggle + system preference
-│   │   └── copy.js           # Copy-to-clipboard for speaker bio
+│   │   └── theme.js          # Dark/light mode toggle + system preference
 │   ├── index.md              # Homepage
 │   ├── speaking.md           # Speaking page
 │   ├── writing.md            # Writing page
 │   ├── shelf.md              # Bookshelf page
-│   ├── sink.md               # Kitchen sink — shows all available elements
+│   ├── dx.md, office-hours.md # Placeholder pages (noindex)
+│   ├── sink.md               # Kitchen sink — shows all available elements (noindex)
+│   ├── 404.md                # Custom 404 page (served as /404.html)
+│   ├── feed.xml.njk          # RSS feed generated from _data/articles.json
+│   ├── llms.txt, llms-full.txt # AI-readable site summary and combined context
 │   ├── robots.txt            # SEO robots file
 │   ├── site.webmanifest      # PWA manifest
-│   └── sitemap.xml.njk       # Auto-generated sitemap
+│   └── sitemap.xml.njk       # Sitemap generated from all pages without noindex
 ├── dist/                     # Built output (generated, not committed)
 └── package.json              # Dependencies: eleventy, markdown-it plugins, luxon
 ```
@@ -151,6 +168,7 @@ Without a custom domain, everything works at `username.github.io` — no extra s
 - **Fonts:** [Work Sans](https://fonts.google.com/specimen/Work+Sans) (self-hosted, variable weight)
 - **Icons:** [Flaticon UIcons](https://www.flaticon.com/uicons) (self-hosted, subset to ~3KB)
 - **Markdown:** markdown-it with attrs, mark, and container plugins
+- **SEO:** canonical URLs, Open Graph/Twitter cards, `Person` JSON-LD on the homepage, generated sitemap, RSS feed, `llms.txt`
 - **Deployment:** GitHub Actions → GitHub Pages
 - **Analytics:** Google Analytics 4
 
@@ -184,6 +202,10 @@ Font files live in `src/fonts/` with `@font-face` declarations in `src/css/fonts
 2. Update the `@font-face` in `src/css/fonts.css`
 3. Update `font-family` references in `src/css/custom.css`
 
+### Keeping a page out of search
+
+Add `noindex: true` to a page's front matter. It gets a `noindex, nofollow` meta tag and is left out of `sitemap.xml` automatically.
+
 ### OG / Social Sharing
 
 Each page's front matter controls its social preview:
@@ -198,7 +220,7 @@ og_image_alt: Description of the image
 ---
 ```
 
-The OG card image should be 1200×630px, under 600KB.
+The OG card image should be 1200×630px, under 600KB. Use a JPG (or optimized PNG) for large photos; the headshot click-through is a q95 JPG instead of a multi-megabyte PNG.
 
 ### Analytics
 

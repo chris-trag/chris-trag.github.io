@@ -37,3 +37,6 @@ scratch/
 notes/
 *.local.md
 PROJECT-STATE.md
+
+# Local Claude Code config (machine-specific hooks/settings)
+.claude/
