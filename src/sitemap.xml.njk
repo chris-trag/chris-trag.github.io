@@ -4,34 +4,11 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all | sort(false, false, "url") %}
+{%- if item.url and item.url.endsWith("/") and not item.data.noindex %}
   <url>
-    <loc>https://trag.dev/</loc>
-    <lastmod>{{ "now" | date("yyyy-MM-dd") }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://trag.dev{{ item.url }}</loc>
   </url>
-  <url>
-    <loc>https://trag.dev/shelf/</loc>
-    <lastmod>{{ "now" | date("yyyy-MM-dd") }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://trag.dev/speaking/</loc>
-    <lastmod>{{ "now" | date("yyyy-MM-dd") }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://trag.dev/writing/</loc>
-    <lastmod>{{ "now" | date("yyyy-MM-dd") }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://trag.dev/context/</loc>
-    <lastmod>{{ "now" | date("yyyy-MM-dd") }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+{%- endif %}
+{%- endfor %}
 </urlset>
