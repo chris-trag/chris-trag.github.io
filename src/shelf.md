@@ -11,6 +11,12 @@ og_image_alt: Chris Trag's shelf - books, music, and recommendations
 
 ## Books
 
+* [Between Two Fires](https://www.goodreads.com/book/show/13543121) by Christopher Buehlman - 5/5
+* [London Falling: A Mysterious Death in a Gilded City and a Family's Search for Truth](https://www.goodreads.com/book/show/238228437) by Patrick Radden Keefe - 2/5
+* [Project Hail Mary](https://www.goodreads.com/book/show/222697645) by Andy Weir - 4/5
+* [Odyssey](https://www.goodreads.com/book/show/55886800) by Stephen Fry - 4/5
+* [Troy](https://www.goodreads.com/book/show/53443339) by Stephen Fry
+* [Mythos: The Greek Myths Reimagined](https://www.goodreads.com/book/show/46228086) by Stephen Fry - 4/5
 * [The Auctioneer](https://www.goodreads.com/book/show/40742435) by Joan Samson - 4/5
 * [A Farewell to Arms](https://www.goodreads.com/book/show/17978811) by Ernest Hemingway - 4/5
 * [The Remains of the Day](https://www.goodreads.com/book/show/57934597) by Kazuo Ishiguro - 3/5
