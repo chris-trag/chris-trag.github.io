@@ -10,7 +10,7 @@ og_image_alt: Chris Trag speaking
 # Speaking
 
 :::speaker-bio
-### About Chris Trag
+## About Chris Trag
 
 Chris is the ==Head of Evangelism at Amazon== where he works with creators around the world to build apps & games for Alexa+, Fire TVs, Ring, and Echo devices. He previously launched developer programs at Stripe, Evernote, Roku, and was the web developer for [Harvard.edu](https://news.harvard.edu/gazette/story/2011/06/for-harvard-an-it-summit/).
 
@@ -21,7 +21,7 @@ Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](http
 [![Chris Trag headshot](/img/global/trag-medium.webp "Click for headshot"){width=220 height=220}](/img/global/trag.jpg){target="_blank"}
 :::
 
-## Past Talks
+### Past Talks
 
 - **TV App Development With React Native Is Not Just Mobile, But Bigger** - [YouTube](https://www.youtube.com/watch?v=G1_RMxtswsc)  
   React Universe On Air #49 discussing extending React Native to TV platforms and larger screens.
@@ -62,7 +62,7 @@ Connect with Chris on [Twitter](https://twitter.com/chris_trag), [Linkedin](http
 - **From Hackathons to Startups: Building Products from Fresh Ideas** - [SlideShare](https://www.slideshare.net/ctraganos/from-hackathons-to-startups-building-products-from-fresh-ideas)  
   Presentation on transforming hackathon projects into viable startup products.
 
-## Interviews
+### Interviews
 
 - **Building Developer Relations Teams with Trag** - [BuildandLearn.dev](https://buildandlearn.dev/15)  
   Interview discussing strategies for building effective developer relations teams, community engagement, and evolving DevRel practices.
